@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #0C0A09;
+  --surface: #1C1917;
+  --border: #44403C;
+  --accent: #CA8A04;
+  --accent-hover: #EAB308;
+  --text: #FAFAF9;
+  --text-muted: #A8A29E;
+  --font-heading: 'Bodoni Moda', serif;
+  --font-body: 'Jost', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* Navbar */
+.navbar {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(12, 10, 9, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(68, 64, 60, 0.4);
+}
+
+/* Language toggle */
+.lang-btn {
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.lang-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Hero gradient accent */
+.hero-gradient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(202, 138, 4, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+}
+
+/* Gold line accent */
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Service cards */
+.service-card {
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(202, 138, 4, 0.08);
+}
+
+/* Strength cards */
+.strength-card {
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.strength-card:hover {
+  border-color: rgba(202, 138, 4, 0.4);
+}
+
+/* CTA buttons */
+.cta-btn {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(202, 138, 4, 0.25);
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Scroll animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-gradient {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .service-card:hover,
+  .cta-btn:hover {
+    transform: none;
+  }
+}
+
+/* Focus states */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

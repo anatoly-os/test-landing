@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anatolii Osokin — Product Engineer & Tech Leader</title>
+  <meta name="description" content="I build apps 10x faster & 3x cheaper. 14 years of software engineering, product management, and tech leadership. Let's build something great together.">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0C0A09',
+            surface: '#1C1917',
+            brd: '#44403C',
+            accent: '#CA8A04',
+            'accent-hover': '#EAB308',
+            light: '#FAFAF9',
+            muted: '#A8A29E',
+          },
+          fontFamily: {
+            heading: ['"Bodoni Moda"', 'serif'],
+            body: ['"Jost"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-body bg-dark text-light">
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-16 sm:h-20">
+      <!-- Logo / Name -->
+      <a href="#" class="font-heading text-lg sm:text-xl font-semibold tracking-wide cursor-pointer">
+        Anatolii Osokin
+      </a>
+
+      <!-- Nav Links (desktop) -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-muted hover:text-light transition-colors duration-200 text-sm tracking-wide uppercase cursor-pointer"
+           data-en="About" data-ru="Обо мне">About</a>
+        <a href="#services" class="text-muted hover:text-light transition-colors duration-200 text-sm tracking-wide uppercase cursor-pointer"
+           data-en="Services" data-ru="Услуги">Services</a>
+        <a href="#contact" class="text-muted hover:text-light transition-colors duration-200 text-sm tracking-wide uppercase cursor-pointer"
+           data-en="Contact" data-ru="Контакт">Contact</a>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="flex items-center gap-1">
+        <button class="lang-btn active px-2 py-1 text-sm font-medium border border-transparent rounded cursor-pointer" data-lang="en">EN</button>
+        <span class="text-brd text-sm">/</span>
+        <button class="lang-btn px-2 py-1 text-sm font-medium border border-transparent rounded cursor-pointer" data-lang="ru">RU</button>
+      </div>
+    </div>
+
+    <!-- Mobile nav links -->
+    <div class="flex md:hidden items-center justify-center gap-6 pb-3 -mt-1">
+      <a href="#about" class="text-muted hover:text-light transition-colors duration-200 text-xs tracking-wide uppercase cursor-pointer"
+         data-en="About" data-ru="Обо мне">About</a>
+      <a href="#services" class="text-muted hover:text-light transition-colors duration-200 text-xs tracking-wide uppercase cursor-pointer"
+         data-en="Services" data-ru="Услуги">Services</a>
+      <a href="#contact" class="text-muted hover:text-light transition-colors duration-200 text-xs tracking-wide uppercase cursor-pointer"
+         data-en="Contact" data-ru="Контакт">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="hero-gradient"></div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="gold-line mx-auto mb-8"></div>
+
+      <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6">
+        <span data-en="I Build Apps 10x Faster &amp; 3x Cheaper"
+              data-ru="Создаю приложения в 10 раз быстрее и в 3 раза дешевле">I Build Apps 10x Faster &amp; 3x Cheaper</span>
+      </h1>
+
+      <p class="text-muted text-lg sm:text-xl md:text-2xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+        <span data-en="Product Engineer &amp; Tech Leader with 14 years of experience. Ex-Director of Technology at Ozon. I turn ideas into products that work."
+              data-ru="Продуктовый инженер и технический лидер с 14-летним опытом. Экс-директор по технологиям Ozon. Превращаю идеи в работающие продукты.">Product Engineer &amp; Tech Leader with 14 years of experience. Ex-Director of Technology at Ozon. I turn ideas into products that work.</span>
+      </p>
+
+      <a href="#contact"
+         class="cta-btn inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-dark font-medium px-8 py-4 rounded-lg text-lg cursor-pointer"
+         data-en="Let's Talk" data-ru="Давайте поговорим">
+        <span>Let's Talk</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+      </a>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted opacity-60">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="fade-in-up mb-16 max-w-3xl">
+        <p class="text-accent text-sm font-medium tracking-widest uppercase mb-4"
+           data-en="About" data-ru="Обо мне">About</p>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+            data-en="Engineer. Leader. Builder."
+            data-ru="Инженер. Лидер. Создатель.">
+          Engineer. Leader. Builder.
+        </h2>
+        <p class="text-muted text-lg leading-relaxed"
+           data-en="I started writing C++ for desktop applications like BricsCAD, Renga, and MuseScore. Then I spent 5 years mastering iOS development with Swift and SwiftUI. Over 7 years I grew from team lead to CTO and then Director of Technology at Ozon, managing sorting center systems at scale. Now I channel all of that experience into building products independently — and helping others do the same."
+           data-ru="Я начал с разработки десктопных приложений на C++ — BricsCAD, Renga, MuseScore. Затем 5 лет осваивал iOS-разработку на Swift и SwiftUI. За 7 лет прошёл путь от тимлида до CTO и директора по технологиям в Ozon, управляя системами сортировочных центров. Сейчас я направляю весь этот опыт на создание собственных продуктов — и помогаю другим делать то же самое.">
+          I started writing C++ for desktop applications like BricsCAD, Renga, and MuseScore.
+          Then I spent 5 years mastering iOS development with Swift and SwiftUI.
+          Over 7 years I grew from team lead to CTO and then Director of Technology at Ozon,
+          managing sorting center systems at scale. Now I channel all of that experience into
+          building products independently — and helping others do the same.
+        </p>
+      </div>
+
+      <!-- Strength cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="fade-in-up strength-card bg-surface rounded-xl p-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-5"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg>
+          <h3 class="font-heading text-xl font-semibold mb-3"
+              data-en="Product Thinking" data-ru="Продуктовое мышление">Product Thinking</h3>
+          <p class="text-muted text-sm leading-relaxed"
+             data-en="Engineer + Product Manager in one. I don't just write code — I build products that solve real problems and generate revenue."
+             data-ru="Инженер + продакт-менеджер в одном лице. Я не просто пишу код — я создаю продукты, которые решают реальные проблемы и приносят доход.">
+            Engineer + Product Manager in one. I don't just write code — I build products
+            that solve real problems and generate revenue.
+          </p>
+        </div>
+
+        <div class="fade-in-up strength-card bg-surface rounded-xl p-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-5"><rect width="6" height="14" x="2" y="6" rx="2"/><rect width="6" height="10" x="16" y="10" rx="2"/><path d="M12 2v20"/></svg>
+          <h3 class="font-heading text-xl font-semibold mb-3"
+              data-en="Mobile &amp; Web Mastery" data-ru="Мобильная и веб-разработка">Mobile &amp; Web Mastery</h3>
+          <p class="text-muted text-sm leading-relaxed"
+             data-en="From iOS apps in Swift/SwiftUI to full-stack web — I choose the right tool for the job and ship fast without cutting corners."
+             data-ru="От iOS-приложений на Swift/SwiftUI до полноценного веба — я выбираю правильный инструмент и делаю быстро без компромиссов в качестве.">
+            From iOS apps in Swift/SwiftUI to full-stack web — I choose the right tool
+            for the job and ship fast without cutting corners.
+          </p>
+        </div>
+
+        <div class="fade-in-up strength-card bg-surface rounded-xl p-8">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3 class="font-heading text-xl font-semibold mb-3"
+              data-en="Tech Leadership" data-ru="Технический лидер">Tech Leadership</h3>
+          <p class="text-muted text-sm leading-relaxed"
+             data-en="7 years leading teams from 3 to 50+ engineers. I know how to build teams, set processes, and scale technology that doesn't break."
+             data-ru="7 лет руководства командами от 3 до 50+ инженеров. Я знаю, как строить команды, выстраивать процессы и масштабировать технологии.">
+            7 years leading teams from 3 to 50+ engineers. I know how to build teams,
+            set processes, and scale technology that doesn't break.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="fade-in-up mb-16 text-center">
+        <p class="text-accent text-sm font-medium tracking-widest uppercase mb-4"
+           data-en="Services" data-ru="Услуги">Services</p>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold"
+            data-en="How I Can Help" data-ru="Чем я могу помочь">How I Can Help</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Product Development -->
+        <div class="fade-in-up service-card bg-surface rounded-xl p-8 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-6"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          <h3 class="font-heading text-2xl font-semibold mb-4"
+              data-en="Product Development" data-ru="Разработка продуктов">Product Development</h3>
+          <p class="text-muted leading-relaxed mb-6"
+             data-en="From idea to production. I build mobile apps (iOS/Android), web applications, and MVPs — full cycle, end to end. Fast delivery, production-grade quality."
+             data-ru="От идеи до продакшена. Создаю мобильные приложения (iOS/Android), веб-приложения и MVP — полный цикл. Быстрая доставка, продакшен-качество.">
+            From idea to production. I build mobile apps (iOS/Android), web applications,
+            and MVPs — full cycle, end to end. Fast delivery, production-grade quality.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">iOS / Android</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Web Apps</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">MVP</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Full Cycle</span>
+          </div>
+        </div>
+
+        <!-- Coaching & Mentoring -->
+        <div class="fade-in-up service-card bg-surface rounded-xl p-8 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-6"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <h3 class="font-heading text-2xl font-semibold mb-4"
+              data-en="Coaching &amp; Mentoring" data-ru="Коучинг и менторство">Coaching &amp; Mentoring</h3>
+          <p class="text-muted leading-relaxed mb-6"
+             data-en="1-on-1 and group sessions for software developers and tech leaders. Career growth, technical skills, leadership — with accountability tracking and real results."
+             data-ru="Индивидуальные и групповые сессии для разработчиков и технических лидеров. Карьерный рост, технические навыки, лидерство — с отслеживанием прогресса и реальными результатами.">
+            1-on-1 and group sessions for software developers and tech leaders.
+            Career growth, technical skills, leadership — with accountability tracking and real results.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">1-on-1</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Group Sessions</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Career Growth</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Tracking</span>
+          </div>
+        </div>
+
+        <!-- Tech Consulting -->
+        <div class="fade-in-up service-card bg-surface rounded-xl p-8 cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mb-6"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <h3 class="font-heading text-2xl font-semibold mb-4"
+              data-en="Tech Consulting" data-ru="Техническое консультирование">Tech Consulting</h3>
+          <p class="text-muted leading-relaxed mb-6"
+             data-en="Architecture reviews, tech stack decisions, hiring strategy, team scaling, and process optimization. I help startups and companies build engineering that lasts."
+             data-ru="Ревью архитектуры, выбор стека, стратегия найма, масштабирование команд и оптимизация процессов. Помогаю стартапам и компаниям строить инженерию, которая работает.">
+            Architecture reviews, tech stack decisions, hiring strategy, team scaling, and process
+            optimization. I help startups and companies build engineering that lasts.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Architecture</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Hiring</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Scaling</span>
+            <span class="text-xs px-3 py-1 rounded-full border border-brd text-muted">Process</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT / CTA ========== -->
+  <section id="contact" class="py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="fade-in-up">
+        <div class="gold-line mx-auto mb-8"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6"
+            data-en="Ready to Build Something Great?"
+            data-ru="Готовы создать что-то великое?">
+          Ready to Build Something Great?
+        </h2>
+        <p class="text-muted text-lg mb-12 max-w-xl mx-auto"
+           data-en="Whether you need a product built, a team scaled, or a career accelerated — let's talk. First consultation is free."
+           data-ru="Нужен продукт, масштабирование команды или ускорение карьеры — давайте обсудим. Первая консультация бесплатно.">
+          Whether you need a product built, a team scaled, or a career accelerated — let's talk.
+          First consultation is free.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <!-- Telegram -->
+          <a href="#" id="telegram-link"
+             class="cta-btn inline-flex items-center gap-3 bg-accent hover:bg-accent-hover text-dark font-medium px-8 py-4 rounded-lg text-lg cursor-pointer w-full sm:w-auto justify-center"
+             data-en="Telegram" data-ru="Telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <span>Telegram</span>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="#" id="whatsapp-link"
+             class="cta-btn inline-flex items-center gap-3 border-2 border-accent text-accent hover:bg-accent hover:text-dark font-medium px-8 py-4 rounded-lg text-lg transition-colors duration-200 cursor-pointer w-full sm:w-auto justify-center"
+             data-en="WhatsApp" data-ru="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-muted text-sm">
+      <p>&copy; 2026 Anatolii Osokin</p>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-light transition-colors duration-200 cursor-pointer">LinkedIn</a>
+        <a href="#" class="hover:text-light transition-colors duration-200 cursor-pointer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
