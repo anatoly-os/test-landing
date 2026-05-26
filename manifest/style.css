@@ -1,0 +1,518 @@
+/* ============================================================
+   Путь — общая таблица стилей
+   Книжная, созерцательная эстетика: тёплая бумага, чернила,
+   киноварь как печать. Шрифты: Cormorant (заголовки) +
+   Spectral (текст).
+   ============================================================ */
+
+:root {
+  --paper:        #f3efe5;
+  --paper-raised: #f8f5ee;
+  --paper-sunk:   #ece5d5;
+  --ink:          #221d15;
+  --ink-soft:     #5b5346;
+  --ink-faint:    #908674;
+  --line:         #d9d0bc;
+  --line-soft:    #e5ddcb;
+  --seal:         #a83c2b;
+  --seal-deep:    #8a2e1f;
+
+  --measure: 38rem;
+  --wide:    63rem;
+
+  --serif-display: "Cormorant", Georgia, serif;
+  --serif-text: "Spectral", "Noto Serif SC", "Songti SC", Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 18px; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--serif-text);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.78;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* paper grain + soft vignette ------------------------------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 18%,
+              rgba(0,0,0,0) 55%, rgba(60,46,28,0.10) 100%);
+}
+
+/* ============================================================
+   Layout
+   ============================================================ */
+.wrap { width: 100%; max-width: var(--wide); margin: 0 auto; padding: 0 2rem; }
+.page { position: relative; z-index: 1; }
+
+.measure { max-width: var(--measure); margin-left: auto; margin-right: auto; }
+
+/* ============================================================
+   Masthead / navigation
+   ============================================================ */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(243,239,229,0.86);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.masthead .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.6rem;
+  gap: 1.5rem;
+}
+
+.brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--ink); }
+.seal {
+  width: 2.3rem; height: 2.3rem;
+  border: 1.4px solid var(--seal);
+  border-radius: 3px;
+  display: grid; place-items: center;
+  color: var(--seal);
+  font-family: var(--serif-text);
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background-color .35s ease, color .35s ease;
+}
+.brand:hover .seal { background: var(--seal); color: var(--paper-raised); }
+.brand-name {
+  font-family: var(--serif-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.nav { display: flex; align-items: baseline; gap: 1.7rem; }
+.nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding-bottom: 0.25rem;
+  border-bottom: 1.5px solid transparent;
+  transition: color .25s ease, border-color .25s ease;
+}
+.nav a:hover { color: var(--ink); }
+.nav a.current { color: var(--seal); border-bottom-color: var(--seal); }
+
+/* ============================================================
+   Watermark glyph
+   ============================================================ */
+.watermark {
+  position: absolute;
+  top: -2.5rem; right: -3.5rem;
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 30rem;
+  line-height: 1;
+  color: var(--seal);
+  opacity: 0.045;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   Page head (hero)
+   ============================================================ */
+.head {
+  position: relative;
+  padding: 5.5rem 0 3rem;
+  overflow: hidden;
+}
+.head .measure { position: relative; z-index: 1; }
+
+.breadcrumb {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2.4rem;
+}
+.breadcrumb a { color: var(--ink-faint); text-decoration: none; border-bottom: 1px solid var(--line); }
+.breadcrumb a:hover { color: var(--seal); border-bottom-color: var(--seal); }
+.breadcrumb span.sep { margin: 0 0.55em; opacity: 0.6; }
+
+.kicker {
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--seal);
+  display: flex; align-items: center; gap: 0.85rem;
+  margin-bottom: 1.4rem;
+}
+.kicker::before {
+  content: ""; width: 1.7rem; height: 1.5px;
+  background: var(--seal); display: inline-block;
+}
+
+.title {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.title--mega { font-size: clamp(4.5rem, 16vw, 9rem); }
+.title--page { font-size: clamp(2.5rem, 7vw, 4rem); }
+
+.subtitle {
+  font-family: var(--serif-display);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 0.7rem;
+}
+
+.lead {
+  font-size: 1.18rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+/* page-load reveal ------------------------------------------ */
+.head .measure > * {
+  animation: rise 0.85s cubic-bezier(.2,.7,.2,1) both;
+}
+.head .measure > *:nth-child(1) { animation-delay: .05s; }
+.head .measure > *:nth-child(2) { animation-delay: .14s; }
+.head .measure > *:nth-child(3) { animation-delay: .23s; }
+.head .measure > *:nth-child(4) { animation-delay: .32s; }
+.head .measure > *:nth-child(5) { animation-delay: .41s; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   Prose
+   ============================================================ */
+.prose { padding: 1rem 0 4rem; }
+.prose p,
+.prose ul,
+.prose ol,
+.prose table,
+.prose .callout { font-size: 1.06rem; }
+
+.prose p { margin: 1.25rem 0; }
+
+.prose h2 {
+  font-family: var(--serif-display);
+  font-size: clamp(1.9rem, 4.5vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 3.6rem 0 1.3rem;
+}
+.prose h2::before {
+  content: "";
+  display: block;
+  width: 1.6rem; height: 3px;
+  background: var(--seal);
+  margin-bottom: 1.2rem;
+}
+
+.prose h3 {
+  font-family: var(--serif-text);
+  font-size: 1.16rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 2.4rem 0 0.7rem;
+}
+
+.prose strong { font-weight: 600; color: var(--ink); }
+.prose em { font-style: italic; }
+
+.prose a {
+  color: var(--seal);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168,60,43,0.4);
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.prose a:hover { border-bottom-color: var(--seal); background: rgba(168,60,43,0.07); }
+
+/* lists */
+.prose ul, .prose ol { margin: 1.25rem 0; padding-left: 0; list-style: none; }
+.prose li { margin: 0.55rem 0; padding-left: 1.7rem; position: relative; }
+.prose ul li::before {
+  content: "";
+  position: absolute; left: 0.15rem; top: 0.72em;
+  width: 0.42rem; height: 0.42rem;
+  background: var(--seal);
+  transform: rotate(45deg);
+}
+.prose ol { counter-reset: item; }
+.prose ol li { counter-increment: item; }
+.prose ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute; left: 0; top: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--seal);
+  font-variant-numeric: tabular-nums;
+}
+
+/* divider */
+.divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.9rem;
+  margin: 3.4rem 0;
+}
+.divider::before, .divider::after {
+  content: ""; height: 1px; width: 3.4rem;
+  background: var(--line);
+}
+.divider span {
+  width: 0.46rem; height: 0.46rem;
+  background: var(--seal);
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+
+/* lead paragraph inside prose (epigraph echo) */
+.prose .standfirst {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.12rem;
+}
+
+/* callout — set-apart key passage */
+.callout {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--seal);
+  padding: 1.5rem 1.7rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--ink);
+}
+.callout strong { font-style: normal; }
+
+/* blockquote / opora */
+.prose blockquote {
+  margin: 1.6rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--line);
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Tables
+   ============================================================ */
+.table-frame { margin: 1.8rem 0; overflow-x: auto; }
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.97rem;
+}
+.prose thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--seal);
+  padding: 0.6rem 0.9rem;
+  border-bottom: 2px solid var(--line);
+  white-space: nowrap;
+}
+.prose tbody td {
+  padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.prose tbody tr:last-child td { border-bottom: none; }
+.prose tbody td:first-child { font-weight: 600; color: var(--ink); }
+.prose tbody td:nth-child(2) {
+  color: var(--seal);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Plans grid (on manifesto page)
+   ============================================================ */
+.plans {
+  padding: 3.5rem 0 4rem;
+  border-top: 1px solid var(--line);
+  margin-top: 3.5rem;
+  scroll-margin-top: 5.5rem;
+}
+.plans-intro { margin-bottom: 2.6rem; }
+.plans-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.plan-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  padding: 2rem 1.9rem 1.7rem;
+  position: relative;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1),
+              box-shadow .3s ease, border-color .3s ease;
+}
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px -18px rgba(60,40,20,0.5);
+  border-color: var(--seal);
+}
+.plan-num {
+  font-family: var(--serif-display);
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--seal);
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+.plan-card h3 {
+  font-family: var(--serif-display);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.18;
+  margin-bottom: 0.6rem;
+}
+.plan-card p {
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.plan-go {
+  margin-top: 1.3rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--seal);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.plan-go .arrow { transition: transform .3s ease; }
+.plan-card:hover .plan-go .arrow { transform: translateX(5px); }
+
+/* ============================================================
+   Pager (prev / next on plan pages)
+   ============================================================ */
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 3rem 0 1rem;
+  border-top: 1px solid var(--line);
+  margin-top: 2.5rem;
+}
+.pager a {
+  text-decoration: none;
+  color: var(--ink);
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  transition: border-color .25s ease, background-color .25s ease;
+}
+.pager a:hover { border-color: var(--seal); background: var(--paper-sunk); }
+.pager a.next { text-align: right; }
+.pager .dir {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.pager .pg-title {
+  font-family: var(--serif-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.pager a:hover .pg-title { color: var(--seal); }
+
+/* ============================================================
+   Colophon / footer
+   ============================================================ */
+.colophon {
+  border-top: 1px solid var(--line);
+  margin-top: 3rem;
+  padding: 2.8rem 0 4rem;
+}
+.colophon .measure {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.colophon p {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--ink-faint);
+}
+.colophon .mark {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  color: var(--seal);
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 720px) {
+  html { font-size: 17px; }
+  .wrap { padding: 0 1.25rem; }
+  .masthead .wrap { min-height: 4rem; gap: 1rem; }
+  .brand-name { display: none; }
+  .nav { gap: 1.05rem; }
+  .nav a { font-size: 0.66rem; letter-spacing: 0.12em; }
+  .head { padding: 3.5rem 0 2.2rem; }
+  .watermark { font-size: 18rem; top: -1rem; right: -3rem; }
+  .lead { font-size: 1.08rem; }
+  .plans-grid { grid-template-columns: 1fr; }
+  .pager { grid-template-columns: 1fr; }
+  .pager a.next { text-align: left; }
+  .breadcrumb { margin-bottom: 1.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, .head .measure > * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
