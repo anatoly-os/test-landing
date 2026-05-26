@@ -34,6 +34,8 @@ const ADMIN_CSS = `
   .login-box input { font-size:1.1rem; }
   .login-box .btn { width:100%; text-align:center; margin-top:1rem; }
   .error { color:#8a2e1f; font-size:0.9rem; margin:0.8rem 0; }
+  input.invalid { border-bottom-color:#8a2e1f; }
+  .field-error { color:#8a2e1f; font-size:0.85rem; margin-top:0.4rem; }
   .editor-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; }
   .toolbar { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.6rem; }
   .toolbar button { font-family:var(--serif-text); font-size:0.85rem; padding:0.3rem 0.6rem;
@@ -226,6 +228,7 @@ export function editorView(post) {
 
 <div class="field">
   <input type="text" id="title" placeholder="Заголовок записи" value="${escapeHtml(data.title)}">
+  <p class="field-error" id="title-error" hidden>Необходимо добавить заголовок</p>
 </div>
 
 <div class="editor-actions">
@@ -291,15 +294,39 @@ $("toolbar").addEventListener("click", (e) => {
   md.focus(); schedulePreview();
 });
 
+const titleError = $("title-error");
+function showTitleError(msg){
+  titleError.textContent = msg || "Необходимо добавить заголовок";
+  titleError.hidden = false;
+  title.classList.add("invalid");
+  title.focus();
+}
+function clearTitleError(){
+  titleError.hidden = true;
+  title.classList.remove("invalid");
+}
+title.addEventListener("input", clearTitleError);
+
 async function save(){
+  if (!title.value.trim()){ showTitleError(); setState(""); return; }
   setState("Сохранение…");
-  const r = await fetch(BASE + "/api/posts", {
-    method:"POST", headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({ slug, title: title.value, markdown: md.value, published: $("published").checked })
-  });
-  if(!r.ok){ setState("Ошибка сохранения"); return; }
+  let r;
+  try {
+    r = await fetch(BASE + "/api/posts", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ slug, title: title.value, markdown: md.value, published: $("published").checked })
+    });
+  } catch(e){ setState("Сеть недоступна — попробуйте ещё раз"); return; }
+  if(!r.ok){
+    let msg = "Ошибка сохранения";
+    try { const e = await r.json(); if (e && e.error) msg = e.error; } catch(_){}
+    if (r.status === 400 && /заголов/i.test(msg)){ showTitleError(msg); setState(""); return; }
+    setState(msg);
+    return;
+  }
   const data = await r.json();
   slug = data.slug;
+  clearTitleError();
   setState("Сохранено · " + new Date().toLocaleTimeString("ru-RU"));
   if (history.replaceState) history.replaceState(null,"", BASE + "/admin/edit/" + slug);
 }
