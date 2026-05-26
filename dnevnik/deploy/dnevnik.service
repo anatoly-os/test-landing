@@ -1,0 +1,21 @@
+[Unit]
+Description=Dnevnik — blog engine for osokin.ai
+After=network.target
+
+[Service]
+Type=simple
+User=dnevnik
+Group=dnevnik
+WorkingDirectory=/opt/dnevnik
+ExecStart=__NODE__ /opt/dnevnik/server.js
+Restart=on-failure
+RestartSec=3
+Environment=NODE_ENV=production
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/www/osokin.ai/dnevnik /var/lib/dnevnik
+
+[Install]
+WantedBy=multi-user.target
