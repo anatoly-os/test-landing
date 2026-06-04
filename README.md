@@ -7,6 +7,7 @@ Source for the **osokin.ai** site. Three independent parts live here:
 | `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). |
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
+| `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
 
 ## How production actually works
 
