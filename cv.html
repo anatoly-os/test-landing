@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Анатолий Осокин — CV</title>
+<meta name="description" content="14 лет в IT: от инженера до технического директора. Опыт в Ozon, Muse Group, JackPoker. Действующий инженер — Swift, Python.">
+
+<!-- Open Graph (Facebook, LinkedIn, Telegram, VK и др.) -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="osokin.ai">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://osokin.ai/cv">
+<meta property="og:title" content="Анатолий Осокин — CV">
+<meta property="og:description" content="14 лет в IT: от инженера до технического директора. Опыт в Ozon, Muse Group, JackPoker. Действующий инженер — Swift, Python.">
+<meta property="og:image" content="https://osokin.ai/photo.png">
+<meta property="og:image:alt" content="Анатолий Осокин">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Анатолий Осокин — CV">
+<meta name="twitter:description" content="14 лет в IT: от инженера до технического директора. Опыт в Ozon, Muse Group, JackPoker. Действующий инженер — Swift, Python.">
+<meta name="twitter:image" content="https://osokin.ai/photo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07060b; --bg-subtle:#0d0c14; --surface:#13111c; --surface-hover:#1a1726;
+    --border:#1e1a2e; --border-hover:#2d2640;
+    --purple:#8b5cf6; --purple-bright:#a78bfa; --purple-dim:#6d28d9;
+    --platinum:#e2e0ea; --text:#f0eef5; --text-muted:#8a8698; --text-dim:#5c5775;
+    --font-heading:'Plus Jakarta Sans',sans-serif; --font-body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body); background:var(--bg); color:var(--text);
+       -webkit-font-smoothing:antialiased; overflow-x:hidden; position:relative}
+  h1,h2,h3,h4{font-family:var(--font-heading)}
+
+  /* aurora background */
+  .aurora{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+  .orb{position:absolute; border-radius:50%; filter:blur(100px); animation:float 20s ease-in-out infinite}
+  .orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);top:-10%;left:15%;opacity:.8}
+  .orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,.12),transparent 70%);top:40%;right:-5%;animation-delay:-7s}
+  .orb3{width:450px;height:450px;background:radial-gradient(circle,rgba(168,85,247,.1),transparent 70%);bottom:-5%;left:30%;animation-delay:-13s}
+  @keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(40px,-30px)}66%{transform:translate(-30px,20px)}}
+  .grid-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(rgba(139,92,246,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.04) 1px,transparent 1px);
+    background-size:60px 60px;
+    -webkit-mask-image:radial-gradient(ellipse at center,black 20%,transparent 65%);
+    mask-image:radial-gradient(ellipse at center,black 20%,transparent 65%)}
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px; position:relative; z-index:1}
+
+  .eyebrow{font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; color:var(--purple-bright); font-weight:600; font-family:var(--font-heading)}
+
+  header{padding:96px 0 56px}
+  h1{font-size:clamp(44px,8vw,80px); font-weight:800; line-height:1.02; letter-spacing:-.03em; margin:22px 0 0}
+  .text-gradient{
+    background:linear-gradient(90deg,var(--purple-bright) 0%,#c4b5fd 25%,var(--platinum) 50%,#c4b5fd 75%,var(--purple-bright) 100%);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; animation:shimmer 8s linear infinite}
+  @keyframes shimmer{to{background-position:200% 0}}
+  .role{font-size:clamp(17px,2.4vw,21px); color:var(--text-muted); margin-top:20px; max-width:720px; font-weight:400}
+  .contacts{margin-top:26px; display:flex; flex-wrap:wrap; gap:10px 22px; font-size:14px; color:var(--text-dim)}
+  .contacts a{color:var(--text-muted); text-decoration:none; transition:color .2s}
+  .contacts a:hover{color:var(--purple-bright)}
+
+  .metrics{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:44px 0 8px}
+  .metric{background:rgba(19,17,28,.6); backdrop-filter:blur(16px) saturate(150%);
+          border:1px solid rgba(139,92,246,.08); border-radius:20px; padding:28px 20px; text-align:center}
+  .metric .n{font-family:var(--font-heading); font-size:clamp(28px,4.2vw,44px); font-weight:800; line-height:1; letter-spacing:-.02em}
+  .metric .l{font-size:12.5px; color:var(--text-muted); margin-top:10px}
+
+  section{padding:54px 0}
+  .divider{height:1px;border:none;background:linear-gradient(90deg,transparent,rgba(139,92,246,.3),transparent)}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:30px; flex-wrap:wrap}
+  h2{font-size:clamp(26px,4vw,40px); font-weight:700; letter-spacing:-.02em}
+  .lead{font-size:17px; color:var(--text-muted); max-width:700px}
+
+  .job{background:rgba(19,17,28,.6); backdrop-filter:blur(16px) saturate(150%);
+       border:1px solid rgba(139,92,246,.08); border-radius:20px; padding:26px 28px; margin-bottom:16px;
+       transition:all .4s cubic-bezier(.16,1,.3,1)}
+  .job:hover{border-color:rgba(139,92,246,.2); transform:translateY(-4px);
+             box-shadow:0 0 40px rgba(139,92,246,.1),0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05)}
+  .job-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 20px; align-items:baseline}
+  .job-title{font-family:var(--font-heading); font-size:18px; font-weight:600; line-height:1.3}
+  .job-co{color:var(--purple-bright)}
+  .job-meta{font-size:13px; color:var(--text-dim); white-space:nowrap}
+  .job ul{list-style:none; margin-top:14px; display:flex; flex-direction:column; gap:8px}
+  .job li{position:relative; padding-left:20px; font-size:15px; color:var(--text-muted)}
+  .job li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--purple)}
+  .job li b{color:var(--text); font-weight:600}
+
+  .about{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px}
+  .about-card{background:rgba(19,17,28,.6); backdrop-filter:blur(16px); border:1px solid rgba(139,92,246,.08); border-radius:20px; padding:24px}
+  .about-card h3{font-size:15px; color:var(--purple-bright); font-weight:700; margin-bottom:10px}
+  .about-card p{font-size:14.5px; color:var(--text-muted)}
+
+  .chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
+  .chip{background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:8px 16px; font-size:14px; color:var(--text-muted)}
+  .chip a{color:var(--purple-bright); text-decoration:none}
+  .chip a:hover{text-decoration:underline}
+
+  .edu .deg{font-family:var(--font-heading); color:var(--text); font-weight:600; font-size:16px; margin-top:6px}
+  .edu p.d{color:var(--text-muted); font-size:15px; margin-top:6px}
+
+  footer{padding:44px 0 64px; color:var(--text-dim); font-size:13px; text-align:center; position:relative; z-index:1}
+
+  @media(max-width:680px){
+    .metrics{grid-template-columns:repeat(2,1fr)}
+    .about{grid-template-columns:1fr}
+    .job-meta{white-space:normal}
+    header{padding:64px 0 40px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="aurora"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<div class="grid-overlay"></div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Руководитель разработки · CTO</div>
+    <h1><span class="text-gradient">Анатолий Осокин</span></h1>
+    <div class="role">14 лет в IT: от C++/Swift-инженера до технического директора. Превращаю зону ответственности в предсказуемо работающую систему — процессы, метрики, люди.</div>
+    <div class="contacts">
+      <a href="https://t.me/osokin_ai">Telegram @osokin_ai</a>
+      <a href="mailto:osokingauss@gmail.com">osokingauss@gmail.com</a>
+      <a href="https://osokin.ai">osokin.ai</a>
+      <span>Москва · удалённо · готов к переезду</span>
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="n text-gradient">14</div><div class="l">лет в IT</div></div>
+      <div class="metric"><div class="n text-gradient">28+&nbsp;млрд</div><div class="l">₽ GMV фич в Ozon</div></div>
+      <div class="metric"><div class="n text-gradient">130+</div><div class="l">разработчиков под началом</div></div>
+      <div class="metric"><div class="n text-gradient">3</div><div class="l">приложения в App Store</div></div>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Обо мне</div></div>
+    <p class="lead">Управляю на языке цифр бизнеса — GMV, сроки, стоимость инцидентов и простоев — и остаюсь действующим инженером: пишу на Swift и Python, мои приложения опубликованы в App Store. Ищу роль руководителя отдела или направления разработки (mobile / product engineering) в зрелой продуктовой компании — там, где нужно навести порядок, разогнать поставку и вырастить команду.</p>
+    <div class="about">
+      <div class="about-card"><h3>Управление</h3><p>Руководил отделом разработки мобильного приложения Ozon. Был CTO в iGaming-стартапах. Входил в команду управленцев группы Muse.</p></div>
+      <div class="about-card"><h3>Продукт и технологии</h3><p>Развивал MuseScore и Ultimate Guitar — крупнейшие digital-сервисы для музыкантов. Руководил технологиями логистики сортировочных центров Ozon.</p></div>
+      <div class="about-card"><h3>Инженерия</h3><p>Инженерное образование, физфак НГУ. С 2012 — наукоёмкий CAD-софт. С 2021 — мобильная разработка под iOS.</p></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Опыт</div><h2>Не обещания, а результаты</h2></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Независимая практика</span> — автоматизация для МСБ</div><div class="job-meta">Март 2026 — н.в.</div></div>
+      <ul><li>Парсер объявлений Avito + Telegram-бот для настройки фильтров + авторассылка в VK и TG-каналы</li><li>От идеи до рабочего парсера в продакшене — <b>2 дня</b></li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Озон Фулфиллмент</span> — Директор по технологии и продукту сортировочных центров РФ</div><div class="job-meta">Дек 2025 — Янв 2026</div></div>
+      <ul><li>Внедрил 2 ключевые технологии размещения грузов: принудительное «1 в 1» и FIFO на отгрузке</li><li>За 10 дней очистил <b>7000 м²</b> пола от «потерянных» грузов силами 50+ сотрудников</li><li>Сформировал расписание внедрения новых технологий на все объекты РФ</li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">JackPoker</span> — Технический директор</div><div class="job-meta">Июнь 2025 — Дек 2025</div></div>
+      <ul><li>Качество релизов: с «5 критических багов» до <b>0 критических</b> за 3 месяца</li><li>Внедрил технологию разработки, снизившую зависимость от подрядчика в devops и интеграции</li><li>Провёл итерацию по закупке трафика; направление остановлено на основе собранных данных</li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Ozon Tech</span> — Руководитель отдела разработки мобильного приложения покупателя</div><div class="job-meta">Ноя 2022 — Май 2025</div></div>
+      <ul><li>Главная и личный кабинет: 17+ фич с эффектом <b>10+ млрд ₽ GMV</b> за 1,5 года</li><li>Карточка товара и отзывы: фичи на <b>18+ млрд ₽ GMV</b> за год</li><li>Вырастил мидла, двух синьоров и тимлида себе на замену</li><li>Качество сотрудничества со смежниками: с <b>1.8 до 4.5 из 5</b></li><li>Попадание в сроки: с <b>25% до 80%</b>; стоимость сложного увольнения — в 4 раза ниже</li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Независимый разработчик</span> — iOS-приложения</div><div class="job-meta">Янв 2021 — н.в.</div></div>
+      <ul><li>Cosmetic Bag — каталог косметики, шеринг, AI-подбор ухода; в App Store</li><li>Pitlane — цифровые заказ-наряды авто, AI-распознавание документов; в App Store</li><li>На заказ: Sofy (wellness, цикл за 3 мес), Universum (инвестиции в цели других людей)</li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">POKS</span> — Технический директор (CTO)</div><div class="job-meta">Апр 2020 — Сен 2022</div></div>
+      <ul><li>Покерная платформа с нуля на рынок Бразилии: клубный покер, кэш, турниры, соц-механики</li><li>Рост команды с <b>4 до 16</b> человек</li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Muse Group</span> (MuseScore, Ultimate Guitar) — Директор MuseScore и open source сообщества</div><div class="job-meta">Фев 2018 — Мар 2020</div></div>
+      <ul><li>Принял ответственность за международное сообщество из <b>130+ разработчиков</b></li><li>Цикл релизов: с «раз в 2 года» до «раз в квартал»; выстроил release notes, тесты, локализацию</li><li>Трижды выступал на FOSDEM, организовал съезды разработчиков в Брюсселе</li><li>Собрал команду MuseScore 4 во главе с лид-дизайнером из Microsoft</li><li>В команде управленцев Muse Group: портфель продуктов с выручкой <b>$100M+/год</b></li></ul></div>
+
+    <div class="job"><div class="job-top"><div class="job-title"><span class="job-co">Renga · Цифровые платформы · Bricsys · LEDAS</span> — инженерия и руководство проектами</div><div class="job-meta">2012 — 2018</div></div>
+      <ul><li>Renga: UI-фичи и 2 крупных рефакторинга BIM-системы (C++, Qt)</li><li>Цифровые платформы: руководитель проекта — команда подрядчика, эксплуатация, продукт</li><li>Bricsys: разработка кросс-платформенного CAD BricsCAD; выступал на конференции в BMW Welt, Мюнхен</li><li>LEDAS: разработка фич для Компас 3D в составе плагина LDS</li></ul></div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">App Store</div><h2>Мои приложения</h2></div>
+    <div class="chips">
+      <span class="chip"><a href="https://apps.apple.com/us/app/pitlane-car-service-scanner/id6761056052">Pitlane — Car Service Scanner</a></span>
+      <span class="chip"><a href="https://apps.apple.com/hk/app/personal-skincare-routine-app/id1548025728?l=en-GB">Cosmetic Bag — Skincare</a></span>
+      <span class="chip"><a href="https://apps.apple.com/hk/app/u-niversum/id6479603809?l=en-GB">Universum</a></span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="edu">
+    <div class="sec-head"><div class="eyebrow">Образование</div><h2>НГУ, физфак</h2></div>
+    <p class="deg">Магистр физики · специализация — автоматизация</p>
+    <p class="d">Бакалавр — квантовая оптика (газоанализатор на PPLN-кристалле). Магистратура — моделирование деформации сгиба металла. Новосибирск, 2009–2015.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="sec-head"><div class="eyebrow">Навыки</div></div>
+    <div class="chips">
+      <span class="chip">Управление разработкой</span><span class="chip">Построение и рост команд</span>
+      <span class="chip">Оптимизация процессов</span><span class="chip">Ведение переговоров</span>
+      <span class="chip">Agile</span><span class="chip">Swift / SwiftUI</span><span class="chip">Python</span>
+      <span class="chip">C++ / Qt</span><span class="chip">Telegram Bot API</span><span class="chip">Интеграции LLM</span>
+    </div>
+  </section>
+</div>
+
+<footer>© 2026 Анатолий Осокин · CV</footer>
+</body>
+</html>

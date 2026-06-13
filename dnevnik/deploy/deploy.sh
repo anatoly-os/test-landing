@@ -108,7 +108,8 @@ cp "$APP_DIR/deploy/nginx-dnevnik.conf" /etc/nginx/snippets/dnevnik.conf
 if grep -q "snippets/dnevnik.conf" "$SITE_CONF"; then
   echo "    nginx include already present."
 else
-  BACKUP="${SITE_CONF}.bak.$(date +%s)"
+  mkdir -p /etc/nginx/backups
+  BACKUP="/etc/nginx/backups/$(basename "$SITE_CONF").bak.$(date +%s)"
   cp "$SITE_CONF" "$BACKUP"
   echo "    backed up $SITE_CONF -> $BACKUP"
   # insert the include right after the first 'root ...;' line of the server block
@@ -126,7 +127,7 @@ if nginx -t; then
   echo "    nginx reloaded."
 else
   echo "ERROR: nginx config test failed — restoring backup."
-  LATEST_BAK="$(ls -t ${SITE_CONF}.bak.* 2>/dev/null | head -n1 || true)"
+  LATEST_BAK="$(ls -t /etc/nginx/backups/$(basename "$SITE_CONF").bak.* 2>/dev/null | head -n1 || true)"
   [ -n "$LATEST_BAK" ] && cp "$LATEST_BAK" "$SITE_CONF"
   nginx -t && systemctl reload nginx || true
   exit 1

@@ -8,6 +8,7 @@ Source for the **osokin.ai** site. Three independent parts live here:
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
+| `cv.html`   | `osokin.ai/cv`          | Standalone CV (static, single file at the webroot). Served at the clean URL `/cv` via an nginx `try_files` rule — see "Clean-URL pages" below.|
 
 ## How production actually works
 
@@ -112,8 +113,30 @@ The script checks and aborts with a message if missing.
 **Rollback / uninstall:**
 ```bash
 systemctl disable --now dnevnik
-# restore /etc/nginx/sites-enabled/osokin.ai.bak.* and: nginx -t && systemctl reload nginx
+# restore from /etc/nginx/backups/osokin.ai.bak.* and: nginx -t && systemctl reload nginx
 ```
+
+## Clean-URL standalone pages
+
+Pages like `cv.html` live as single files at the **webroot** and are served at a
+clean URL (no `/`, no `.html`) via an nginx `try_files` rule. The relevant
+location in `/etc/nginx/sites-enabled/osokin.ai`:
+
+```nginx
+# Clean-URL single-page sections: /cv -> /cv.html (no trailing slash, no .html)
+location ~ ^/(cv)$ {
+    try_files /$1.html =404;
+}
+```
+
+To add another such page (say `bio`): drop `bio.html` next to `cv.html` at the
+webroot and extend the regex to `^/(cv|bio)$`. Then `nginx -t && systemctl
+reload nginx`.
+
+This is different from `manifest/`, which is a real directory of inter-linked
+pages with **relative** href links — that one needs the standard trailing-slash
+redirect (`/manifest` → `/manifest/`) to keep those relative links resolving.
+The clean-URL trick is only for single self-contained pages.
 
 ## Conventions & gotchas (read before editing)
 
