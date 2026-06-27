@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Письмо себе через год</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1714;
+    --ink-soft: #5a5550;
+    --ink-muted: #9a9490;
+    --paper: #f7f4ef;
+    --paper-warm: #ede9e2;
+    --line: #d8d2c8;
+    --accent: #8B6F47;
+    --accent-soft: #c4a882;
+    --toggle-w: 120px;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    margin-top: 1rem;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── TOGGLE ── */
+  .toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem auto 0;
+  }
+
+  .toggle {
+    display: flex;
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+    gap: 0;
+    position: relative;
+  }
+
+  .toggle-btn {
+    position: relative;
+    z-index: 1;
+    padding: 7px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 100px;
+    transition: color 0.25s;
+    outline: none;
+  }
+
+  .toggle-btn.active {
+    color: var(--ink);
+  }
+
+  .toggle-pill {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    height: calc(100% - 6px);
+    background: white;
+    border-radius: 100px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), width 0.28s;
+    pointer-events: none;
+  }
+
+  /* ── RULE ── */
+  .rule {
+    width: 48px;
+    height: 1px;
+    background: var(--line);
+    margin: 2.5rem auto 0;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 5rem;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ── QUESTION CARD ── */
+  .question {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 1.25rem;
+    margin-bottom: 2.8rem;
+    align-items: start;
+  }
+
+  .q-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--accent-soft);
+    padding-top: 0.15rem;
+    text-align: right;
+  }
+
+  .q-body {}
+
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+  }
+
+  .q-hint {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0.85rem;
+  }
+
+  .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .line {
+    height: 32px;
+    border-bottom: 1px solid var(--line);
+    width: 100%;
+  }
+
+  /* separator */
+  .sep {
+    text-align: center;
+    color: var(--line);
+    font-size: 16px;
+    letter-spacing: 0.4em;
+    margin: 1rem 0 2.5rem;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 11px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--line);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PRINT ── */
+  .print-btn {
+    display: block;
+    margin: 0 auto 0;
+    padding: 10px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: transparent;
+    border: 1px solid var(--ink-soft);
+    color: var(--ink-soft);
+    cursor: pointer;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .print-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+  @media print {
+    header { padding: 1.5rem 1rem 1rem; }
+    .toggle-wrap, .print-btn, footer { display: none; }
+    body { background: white; }
+    .line { border-bottom-color: #ccc; }
+    .question { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 480px) {
+    .q-text { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Письмо себе через год</p>
+  <h1>Вопросы к <em id="h1-gender">будущему себе</em></h1>
+  <p class="subtitle" id="subtitle">
+    Толя, представь себя через год. Ты пишешь из этого состояния — будущего. Отвечай на вопросы от имени того себя.
+  </p>
+
+  <div class="toggle-wrap">
+    <div class="toggle" id="toggle" role="group" aria-label="Выбор имени">
+      <div class="toggle-pill" id="pill"></div>
+      <button class="toggle-btn active" id="btn-tolya" onclick="setName('tolya')">Толя</button>
+      <button class="toggle-btn" id="btn-lola" onclick="setName('lola')">Лола</button>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+</header>
+
+<main>
+  <div class="section-label">Год прожитый</div>
+
+  <div class="question">
+    <div class="q-num">1</div>
+    <div class="q-body">
+      <div class="q-text" id="q1">Чем я горжусь больше всего за прошедший год?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">2</div>
+    <div class="q-body">
+      <div class="q-text" id="q2">Какой самый сложный выбор мне пришлось сделать?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">3</div>
+    <div class="q-body">
+      <div class="q-text" id="q3">Кто был самым близким человеком, который помог мне со всем справиться в этом году?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+  <div class="section-label">Деньги и дело</div>
+
+  <div class="question">
+    <div class="q-num">4</div>
+    <div class="q-body">
+      <div class="q-text" id="q4">Какая самая крупная сумма за один раз упала на мой счёт?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">5</div>
+    <div class="q-body">
+      <div class="q-text">Сколько денег на моём счёте прямо сейчас?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">6</div>
+    <div class="q-body">
+      <div class="q-text" id="q6">Что я буду делать завтра — какой проект я реализую прямо сейчас?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+  <div class="section-label">Следующий год</div>
+
+  <div class="question">
+    <div class="q-num">7</div>
+    <div class="q-body">
+      <div class="q-text">Чего я хочу достичь за следующий год?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+  <div class="section-label">Счастье и жизнь</div>
+
+  <div class="question">
+    <div class="q-num">8</div>
+    <div class="q-body">
+      <div class="q-text" id="q8">У меня много причин быть счастливым. Поделись пятью из них.</div>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+        <div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">9</div>
+    <div class="q-body">
+      <div class="q-text" id="q9">В твоей жизни много спорта и здорового питания. Что ещё появилось в твоей жизни за прошедший год?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">10</div>
+    <div class="q-body">
+      <div class="q-text" id="q10">Какие три мантры ты повторял себе в течение года?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-num">11</div>
+    <div class="q-body">
+      <div class="q-text" id="q11">Что я полюбил ещё сильнее в себе за прошедший год?</div>
+      <div class="lines"><div class="line"></div><div class="line"></div><div class="line"></div></div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+  <div class="section-label">Момент который останется</div>
+
+  <div class="question">
+    <div class="q-num">12</div>
+    <div class="q-body">
+      <div class="q-text">Опиши тот самый момент прошедшего года, который не хочется забывать никогда.</div>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep">· · ·</div>
+  <div class="section-label">Совет себе</div>
+
+  <div class="question">
+    <div class="q-num">13</div>
+    <div class="q-body">
+      <div class="q-text" id="q13">Из этого состояния — дай совет себе год назад. Что сделать главным для себя в ближайший год? Каким первым шагом ты год назад мог бы приблизить это новое состояние?</div>
+      <div class="q-hint">Говори прямо. Без лишних слов.</div>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 3.5rem; text-align: center;">
+    <button class="print-btn" onclick="window.print()">Распечатать</button>
+  </div>
+</main>
+
+<footer>
+  Запечатать · не вскрывать раньше времени
+</footer>
+
+<script>
+  const questions = {
+    tolya: {
+      h1:  'будущему себе',
+      sub: 'Толя, представь себя через год. Ты пишешь из этого состояния — будущего. Отвечай на вопросы от имени того себя.',
+      q1:  'Чем я горжусь больше всего за прошедший год?',
+      q2:  'Какой самый сложный выбор мне пришлось сделать?',
+      q3:  'Кто был самым близким человеком, который помог мне со всем справиться в этом году?',
+      q4:  'Какая самая крупная сумма за один раз упала на мой счёт?',
+      q6:  'Что я буду делать завтра — какой проект я реализую прямо сейчас?',
+      q8:  'У меня много причин быть счастливым. Поделись пятью из них.',
+      q9:  'В твоей жизни много спорта и здорового питания. Что ещё появилось в твоей жизни за прошедший год?',
+      q10: 'Какие три мантры ты повторял себе в течение года?',
+      q11: 'Что я полюбил ещё сильнее в себе за прошедший год?',
+      q13: 'Из этого состояния — дай совет себе год назад. Что сделать главным для себя в ближайший год? Каким первым шагом ты год назад мог бы приблизить это новое состояние?',
+    },
+    lola: {
+      h1:  'будущей себе',
+      sub: 'Лола, представь себя через год. Ты пишешь из этого состояния — будущего. Отвечай на вопросы от имени той себя.',
+      q1:  'Чем я горжусь больше всего за прошедший год?',
+      q2:  'Какой самый сложный выбор мне пришлось сделать?',
+      q3:  'Кто был самым близким человеком, которая помогла мне со всем справиться в этом году?',
+      q4:  'Какая самая крупная сумма за один раз упала на мой счёт?',
+      q6:  'Что я буду делать завтра — какой проект я реализую прямо сейчас?',
+      q8:  'У меня много причин быть счастливой. Поделись пятью из них.',
+      q9:  'В твоей жизни много спорта и здорового питания. Что ещё появилось в твоей жизни за прошедший год?',
+      q10: 'Какие три мантры ты повторяла себе в течение года?',
+      q11: 'Что я полюбила ещё сильнее в себе за прошедший год?',
+      q13: 'Из этого состояния — дай совет себе год назад. Что сделать главным для себя в ближайший год? Каким первым шагом ты год назад могла бы приблизить это новое состояние?',
+    }
+  };
+
+  let current = 'tolya';
+
+  function setName(name) {
+    current = name;
+    const q = questions[name];
+
+    document.getElementById('h1-gender').textContent = q.h1;
+    document.getElementById('subtitle').textContent = q.sub;
+
+    for (const [id, text] of Object.entries(q)) {
+      if (id === 'h1' || id === 'sub') continue;
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    }
+
+    document.getElementById('btn-tolya').classList.toggle('active', name === 'tolya');
+    document.getElementById('btn-lola').classList.toggle('active', name === 'lola');
+    movePill(name);
+  }
+
+  function movePill(name) {
+    const pill = document.getElementById('pill');
+    const btn = document.getElementById('btn-' + name);
+    pill.style.width = btn.offsetWidth + 'px';
+    pill.style.transform = name === 'lola'
+      ? `translateX(${document.getElementById('btn-tolya').offsetWidth}px)`
+      : 'translateX(0)';
+  }
+
+  window.addEventListener('load', () => movePill('tolya'));
+  window.addEventListener('resize', () => movePill(current));
+</script>
+</body>
+</html>

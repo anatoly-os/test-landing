@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · osokin.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #07060b;
+    --surface: #13111c;
+    --border: #1e1a2e;
+    --purple: #8b5cf6;
+    --purple-bright: #a78bfa;
+    --purple-dim: #6d28d9;
+    --platinum: #e2e0ea;
+    --text: #f0eef5;
+    --text-muted: #8a8698;
+    --text-dim: #5c5775;
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── aurora glow ── */
+  .aurora {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .aurora span {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.7;
+  }
+  .aurora .a1 {
+    width: 540px; height: 540px;
+    top: -160px; left: 50%; transform: translateX(-50%);
+    background: radial-gradient(circle, rgba(139,92,246,0.20), transparent 70%);
+  }
+  .aurora .a2 {
+    width: 420px; height: 420px;
+    bottom: -160px; left: -80px;
+    background: radial-gradient(circle, rgba(59,130,246,0.12), transparent 70%);
+  }
+  .aurora .a3 {
+    width: 420px; height: 420px;
+    bottom: -120px; right: -80px;
+    background: radial-gradient(circle, rgba(236,72,153,0.10), transparent 70%);
+  }
+
+  /* grain */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 460px;
+  }
+
+  .code {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(5rem, 22vw, 9rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--purple-bright), #c4b5fd, var(--platinum));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shift 8s ease-in-out infinite;
+  }
+
+  @keyframes shift {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+
+  .divider {
+    width: 56px;
+    height: 1px;
+    margin: 1.8rem auto;
+    background: linear-gradient(90deg, transparent, var(--purple), transparent);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    max-width: 36ch;
+    margin: 0 auto 2.2rem;
+  }
+
+  .home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 12px 26px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    transition: border-color 0.25s, transform 0.25s, background 0.25s;
+  }
+  .home:hover {
+    border-color: rgba(139,92,246,0.5);
+    background: #1a1726;
+    transform: translateY(-1px);
+  }
+  .home .arrow { transition: transform 0.25s; }
+  .home:hover .arrow { transform: translateX(-3px); }
+
+  .sig {
+    margin-top: 2.6rem;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+</style>
+</head>
+<body>
+  <div class="aurora">
+    <span class="a1"></span><span class="a2"></span><span class="a3"></span>
+  </div>
+
+  <div class="wrap">
+    <div class="code">404</div>
+    <div class="divider"></div>
+    <h1>Вы не должны были здесь оказаться</h1>
+    <p>Этой страницы нет — или её время ещё не пришло. Бывает. Давайте вернёмся туда, где всё на своих местах.</p>
+    <a class="home" href="/"><span class="arrow">←</span> На главную</a>
+    <div class="sig">osokin.ai</div>
+  </div>
+</body>
+</html>
