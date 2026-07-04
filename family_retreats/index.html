@@ -106,15 +106,6 @@ header.top{padding-top:calc(env(safe-area-inset-top,0px) + 10px);}
   backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-block; color:var(--muted); font-weight:600;}
 .pill b{color:var(--accent-2);}
 
-.stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
-.stat-cell{background:var(--pane); border:1px solid var(--pane-line); border-radius:14px;
-  padding:15px 8px 12px; text-align:center; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  box-shadow:0 8px 22px var(--shadow);}
-.stat-cell .v{font-family:var(--display); font-size:32px; font-weight:700; color:var(--accent-2); font-variant-numeric:tabular-nums;}
-.stat-cell .k{font-size:9.5px; letter-spacing:.6px; text-transform:uppercase; color:var(--muted);
-  font-weight:700; margin-top:8px;}
-@media(max-width:440px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
-
 .avatar{width:96px; height:96px; border-radius:50%; display:grid; place-items:center; flex:none;
   font-family:var(--display); font-weight:var(--display-w); font-size:42px; color:#fff;
   text-shadow:0 2px 8px rgba(0,0,0,.35);
@@ -400,12 +391,6 @@ footer .fine{font-size:12px; color:var(--muted); margin-top:8px;}
         </ul>
       </div>
 
-      <div class="stat-grid" style="margin-top:14px">
-        <div class="stat-cell"><div class="v">N</div><div class="k">лет вместе</div></div>
-        <div class="stat-cell"><div class="v">N+</div><div class="k">пар в работе</div></div>
-        <div class="stat-cell"><div class="v">N+</div><div class="k">групп и кругов</div></div>
-        <div class="stat-cell"><div class="v">N+</div><div class="k">часов практики</div></div>
-      </div>
       <hr class="hr-gold">
     </div>
   </section>
