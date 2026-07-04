@@ -8,6 +8,7 @@ Source for the **osokin.ai** site. Three independent parts live here:
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
+| `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, **not linked from anywhere** — direct URL only). Deploy: `bash deploy-family-retreats.sh`.|
 | `cv.html`   | `osokin.ai/cv`          | Standalone CV (static, single file at the webroot). Served at the clean URL `/cv` via an nginx `try_files` rule — see "Clean-URL pages" below.|
 
 ## How production actually works

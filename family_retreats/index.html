@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сонастройка — практика состояния вдвоём</title>
+<meta name="description" content="Мы — пара мастеров-практиков работы с состоянием. Метод guided imagery. Настройка мужского и женского, работа с парами и группами, ассоциация мужско-женских отношений.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F7F2E8">
+<style>
+:root{
+  /* фон — тёплая бумага */
+  --bg-0:#F7F2E8;
+  --bg-1:#FDFBF5;
+
+  /* текст */
+  --txt:#2B2721;
+  --muted:#867D6B;
+
+  --display:'Cormorant', Georgia, serif;
+  --body:'Montserrat', system-ui, sans-serif;
+  --display-w:700; --display-ls:.3px;
+
+  --safe-b: env(safe-area-inset-bottom, 0px);
+}
+
+body{
+  /* акцент — изумруд */
+  --accent:#2E6B54;
+  --accent-2:#265A46;      /* глубже — для текста */
+  --accent-lt:#4A8A6E;
+  --accent-deep:#1C4535;
+  --accent-ink:#FBF8F0;    /* светлый текст НА акценте */
+  --smoke-rgb:46,107,84;
+
+  /* производные от акцента */
+  --line:color-mix(in srgb, var(--accent) 20%, transparent);
+  --pane:rgba(255,255,255,.62);
+  --pane-line:color-mix(in srgb, var(--accent) 24%, transparent);
+  --rim-glow:color-mix(in srgb, var(--accent) 24%, transparent);
+  --shadow:color-mix(in srgb, var(--accent-deep) 10%, transparent);
+  --bg-glow:color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; color:var(--txt); font-family:var(--body);
+  background:radial-gradient(120% 80% at 50% -10%, var(--bg-1), var(--bg-0) 60%), var(--bg-0);
+  -webkit-font-smoothing:antialiased;
+}
+/* бумажная зернистость */
+body::before{content:''; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+#bg-smoke{position:fixed; inset:0; z-index:0; pointer-events:none; opacity:1;}
+main, header.top, footer{position:relative; z-index:1;}
+
+.wrap{max-width:1000px; margin:0 auto; padding:16px;}
+
+/* ── типографика ── */
+.brand{font-family:var(--display); font-weight:var(--display-w); letter-spacing:var(--display-ls);
+  font-size:20px; color:var(--accent-2); display:flex; align-items:center; gap:7px; text-decoration:none;}
+h1.display{font-family:var(--display); font-weight:700; letter-spacing:.3px;
+  font-size:clamp(34px,6vw,64px); color:var(--txt); line-height:1.05; margin:0;}
+h2.display{font-family:var(--display); font-weight:700; letter-spacing:.3px;
+  font-size:clamp(26px,4vw,42px); color:var(--txt); line-height:1.1; margin:0 0 10px;}
+h3.name{font-family:var(--display); font-weight:700; font-size:28px; color:var(--accent-2); margin:0;}
+.eyebrow{font-size:12px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); font-weight:700;}
+.kicker{font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.8px; font-weight:700;}
+.lead{font-size:17px; line-height:1.7; color:var(--txt); max-width:640px;}
+p{line-height:1.7; font-size:15px; color:var(--txt);}
+p.soft{color:var(--muted);}
+
+/* ── шапка ── */
+header.top{padding-top:calc(env(safe-area-inset-top,0px) + 10px);}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+.nav-links{display:flex; gap:2px; flex-wrap:wrap;}
+.nav-links a{color:var(--muted); text-decoration:none; font-size:13px; font-weight:600;
+  padding:8px 11px; border-radius:999px; transition:color .2s;}
+.nav-links a:hover{color:var(--accent-2);}
+@media(max-width:680px){.nav-links{display:none;}}
+
+/* ── компоненты ── */
+.card{background:var(--pane); border:1px solid var(--pane-line); border-radius:16px;
+  padding:18px; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 10px 30px var(--shadow);}
+
+.btn{cursor:pointer; font-family:var(--body); font-weight:600; font-size:14px;
+  border:1px solid var(--pane-line); background:var(--pane); color:var(--txt);
+  border-radius:10px; padding:9px 16px; text-decoration:none; display:inline-block;}
+.btn:active{transform:translateY(1px);}
+.btn.primary{border:none; color:var(--accent-ink);
+  background:linear-gradient(160deg, var(--accent-lt), var(--accent));
+  box-shadow:0 6px 18px var(--rim-glow);}
+.cta-big{width:100%; padding:15px 18px; font-size:16px; font-weight:800; letter-spacing:.4px;
+  color:var(--accent-ink); border:none; border-radius:14px; cursor:pointer;
+  background:linear-gradient(160deg, var(--accent-lt), var(--accent));
+  box-shadow:0 8px 24px var(--rim-glow); text-align:center; text-decoration:none; display:block;}
+.cta-big:active{transform:translateY(1px);}
+
+.pill{background:var(--pane); border:1px solid var(--pane-line); border-radius:999px;
+  padding:6px 12px; font-size:12px; font-variant-numeric:tabular-nums;
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:inline-block; color:var(--muted); font-weight:600;}
+.pill b{color:var(--accent-2);}
+
+.stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:10px;}
+.stat-cell{background:var(--pane); border:1px solid var(--pane-line); border-radius:14px;
+  padding:15px 8px 12px; text-align:center; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 8px 22px var(--shadow);}
+.stat-cell .v{font-family:var(--display); font-size:32px; font-weight:700; color:var(--accent-2); font-variant-numeric:tabular-nums;}
+.stat-cell .k{font-size:9.5px; letter-spacing:.6px; text-transform:uppercase; color:var(--muted);
+  font-weight:700; margin-top:8px;}
+@media(max-width:440px){.stat-grid{grid-template-columns:repeat(2,1fr);}}
+
+.avatar{width:96px; height:96px; border-radius:50%; display:grid; place-items:center; flex:none;
+  font-family:var(--display); font-weight:var(--display-w); font-size:42px; color:#fff;
+  text-shadow:0 2px 8px rgba(0,0,0,.35);
+  background:linear-gradient(160deg, var(--accent-lt), var(--accent-deep));
+  box-shadow:0 0 0 3px var(--bg-0), 0 0 0 5px var(--accent), 0 8px 24px var(--rim-glow);
+  position:relative; overflow:hidden;}
+.avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border-radius:50%;}
+
+/* ── секции ── */
+section{padding:56px 0 8px;}
+.section-head{margin-bottom:22px;}
+.hr-gold{border:none; height:1px; background:linear-gradient(90deg, transparent, var(--line), transparent); margin:40px 0 0;}
+
+/* герой */
+.hero{padding:72px 0 30px; text-align:center;}
+.hero .lead{margin:18px auto 26px;}
+.hero-pills{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:26px;}
+.hero-cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+
+/* фото-плейсхолдеры */
+.photo{position:relative; border-radius:16px; overflow:hidden;
+  border:1px solid var(--pane-line);
+  background:
+    radial-gradient(90% 70% at 50% 20%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 65%),
+    linear-gradient(160deg, #F1EADB, #E7DFCB);
+  display:grid; place-items:center; text-align:center; padding:18px;
+  box-shadow:0 10px 30px var(--shadow);}
+.photo::after{content:''; position:absolute; inset:8px; border:1px solid var(--line); border-radius:10px; pointer-events:none; z-index:2;}
+.photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;}
+.photo .ic{font-family:var(--display); font-size:44px; color:var(--accent); opacity:.85; line-height:1;}
+.photo .cap{margin-top:10px; font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase;
+  color:var(--muted); font-weight:700;}
+.gallery{display:grid; grid-template-columns:1.4fr 2fr; gap:12px;}
+.gallery .photo.tall{aspect-ratio:912/1173;}
+.gallery-side{display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:12px;}
+@media(max-width:680px){
+  .gallery{grid-template-columns:1fr;}
+  .gallery-side{grid-auto-rows:150px;}
+}
+
+/* метод */
+.method{display:grid; grid-template-columns:1.1fr .9fr; gap:14px; align-items:stretch;}
+@media(max-width:680px){.method{grid-template-columns:1fr;}}
+.method-note{display:flex; flex-direction:column; gap:10px; justify-content:center;}
+.method-note .row{display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--line);}
+.method-note .row:first-child{border-top:none;}
+.method-note .row .d{color:var(--accent); font-size:11px; line-height:1.9;}
+.method-note .row p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.6;}
+
+/* о нас — две колонки */
+.duo{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
+@media(max-width:680px){.duo{grid-template-columns:1fr;}}
+.person-head{display:flex; align-items:center; gap:16px; margin-bottom:14px;}
+.exp-list{list-style:none; margin:14px 0 0; padding:0;}
+.exp-list li{position:relative; padding:9px 0 9px 22px; font-size:14px; line-height:1.55;
+  color:var(--txt); border-top:1px solid var(--line);}
+.exp-list li:first-child{border-top:none;}
+.exp-list li::before{content:'◆'; position:absolute; left:2px; top:10px; font-size:9px; color:var(--accent);}
+
+/* практики */
+.practice-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media(max-width:680px){.practice-grid{grid-template-columns:1fr;}}
+.practice .sym{font-family:var(--display); font-size:34px; color:var(--accent); line-height:1;}
+.practice h3{font-family:var(--display); font-weight:700; font-size:23px; margin:12px 0 8px; color:var(--txt);}
+.practice p{margin:0; font-size:14px; color:var(--muted); line-height:1.65;}
+.practice .tag{margin-top:14px;}
+
+/* ассоциация — лестница глубины */
+.assoc{display:grid; grid-template-columns:1fr 1fr; gap:14px; align-items:stretch;}
+@media(max-width:680px){.assoc{grid-template-columns:1fr;}}
+.depth{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; justify-content:center; height:100%;}
+.depth li{position:relative; padding:16px 0 16px 34px; border-top:1px solid var(--line);}
+.depth li:first-child{border-top:none;}
+.depth li::before{content:'◇'; position:absolute; left:4px; top:16px; color:var(--accent); font-size:13px;}
+.depth li:last-child::before{content:'◆';}
+.depth .lvl{font-size:10.5px; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); font-weight:700;}
+.depth .val{font-family:var(--display); font-weight:600; font-size:21px; color:var(--txt); margin-top:2px; line-height:1.3;}
+.depth .val em{color:var(--accent-2); font-style:normal;}
+
+/* миссия */
+.mission{border-radius:16px; padding:clamp(24px,5vw,48px); text-align:center;
+  background:var(--pane); border:1px solid var(--pane-line);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  position:relative; overflow:hidden; box-shadow:0 14px 40px var(--shadow);}
+.mission::before{content:''; position:absolute; inset:0;
+  background:radial-gradient(80% 90% at 50% 0%, var(--bg-glow), transparent 60%); pointer-events:none;}
+.mission > *{position:relative;}
+.mission blockquote{font-family:var(--display); font-weight:600; font-size:clamp(21px,3.4vw,30px);
+  line-height:1.45; color:var(--txt); margin:16px auto 0; max-width:720px;}
+.mission blockquote em{color:var(--accent-2); font-style:normal;}
+
+/* контакты */
+.contact-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:14px; align-items:start;}
+@media(max-width:680px){.contact-grid{grid-template-columns:1fr;}}
+.contact-row{display:flex; justify-content:space-between; gap:10px; padding:11px 0;
+  border-top:1px solid var(--line); font-size:14px;}
+.contact-row:first-of-type{border-top:none;}
+.contact-row .k{color:var(--muted); font-weight:600;}
+.contact-row a{color:var(--accent-2); text-decoration:none; font-weight:600;}
+
+footer{padding:34px 0 calc(26px + var(--safe-b)); text-align:center;}
+footer .fine{font-size:12px; color:var(--muted); margin-top:8px;}
+</style>
+</head>
+<body>
+
+<canvas id="bg-smoke"></canvas>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#">✦ Сонастройка</a>
+    <nav class="nav-links">
+      <a href="#concept">Концепция</a>
+      <a href="#method">Метод</a>
+      <a href="#about">О нас</a>
+      <a href="#practices">Практики</a>
+      <a href="#association">Ассоциация</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a class="btn primary" href="#contact">Записаться</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ГЕРОЙ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Мастера-практики работы с состоянием</div>
+      <h1 class="display">Слышать. Любить.<br>Раскрывать жизнь вдвоём.</h1>
+      <p class="lead">Мы — пара. И пара — наш главный инструмент. Методом guided imagery
+      мы помогаем мужчинам и женщинам вернуться к живому состоянию, настроиться
+      друг на друга и проживать путь и опыт — вместе.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#practices">Выбрать практику</a>
+        <a class="btn" href="#about">Узнать нас ближе</a>
+      </div>
+      <div class="hero-pills">
+        <span class="pill"><b>Работа в паре</b> — фокус метода</span>
+        <span class="pill">Метод — <b>guided imagery</b></span>
+        <span class="pill">Сонастройка</span>
+        <span class="pill">Мужское и женское</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНЦЕПЦИЯ -->
+  <section id="concept">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Концепция</div>
+        <h2 class="display">Состояние — исток всего</h2>
+      </div>
+      <p class="lead">Отношения не строятся из усилий — они раскрываются из состояния.
+      Когда мужчина устойчив в своём мужском, а женщина наполнена в своём женском,
+      между ними возникает сонастройка: способность слышать, чувствовать и любить
+      без борьбы и доказательств.</p>
+      <p class="soft" style="max-width:640px">Мы работаем именно с этим — с тонкой настройкой внутреннего
+      состояния через направляемое воображение. Не с техниками «как правильно»,
+      а с живым источником, из которого рождаются близость, ясность и сила.
+      Мы делаем это вдвоём — потому что настройку пары может передать только пара.</p>
+      <hr class="hr-gold">
+    </div>
+  </section>
+
+  <!-- МЕТОД -->
+  <section id="method">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Метод</div>
+        <h2 class="display">Guided imagery — направляемое воображение</h2>
+      </div>
+      <div class="method">
+        <div class="card">
+          <p style="margin-top:0">В основе всей нашей работы — <b>guided imagery</b>
+          (направляемая образная работа): метод психологической работы,
+          <b>признанный в научном сообществе</b> и десятилетиями применяемый
+          в психотерапии, спорте высоких достижений и медицине.</p>
+          <p>Через направляемое воображение мы обращаемся к глубинным слоям психики —
+          туда, где живут состояния, образы мужского и женского, сценарии отношений.
+          То, что увидено и прожито в образе, меняет состояние — а состояние меняет жизнь.</p>
+          <p class="soft" style="margin-bottom:0">Внутри метода мы используем практики и теории
+          различных школ, работающих с сознанием, — от классической психологии
+          и юнгианской традиции до телесных и созерцательных подходов.</p>
+        </div>
+        <div class="card method-note">
+          <div class="row"><span class="d">◆</span><p><b>Научная основа.</b> Метод изучается и применяется в клинической психологии и психотерапии по всему миру.</p></div>
+          <div class="row"><span class="d">◆</span><p><b>Работа с состоянием.</b> Образ — прямой язык глубинной психики: он минует спор ума и меняет само состояние.</p></div>
+          <div class="row"><span class="d">◆</span><p><b>Синтез школ.</b> Мы соединяем инструменты разных традиций работы с сознанием в единую живую практику.</p></div>
+          <div class="row"><span class="d">◆</span><p><b>Бережность.</b> Процесс ведётся мягко: вы всегда в контакте с собой и с ведущим.</p></div>
+        </div>
+      </div>
+      <hr class="hr-gold">
+    </div>
+  </section>
+
+  <!-- ГАЛЕРЕЯ -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Мы вдвоём</div>
+        <h2 class="display">Наша жизнь — наша практика</h2>
+      </div>
+      <div class="gallery">
+        <div class="photo tall"><img src="photos/1-vmeste.webp" alt="Мы вдвоём" loading="lazy" onerror="this.remove()"><div><div class="ic">✦</div><div class="cap">Фото · мы вдвоём</div></div></div>
+        <div class="gallery-side">
+          <div class="photo"><img src="photos/2-smeh.webp" alt="Смех и лёгкость" loading="lazy" onerror="this.remove()"><div><div class="ic">❦</div><div class="cap">Фото · смех и лёгкость</div></div></div>
+          <div class="photo"><img src="photos/3-puteshestvie.webp" alt="В путешествии" loading="lazy" onerror="this.remove()"><div><div class="ic">✧</div><div class="cap">Фото · в путешествии</div></div></div>
+          <div class="photo"><img src="photos/4-doma.webp" alt="Дома, у огня" loading="lazy" onerror="this.remove()"><div><div class="ic">❧</div><div class="cap">Фото · дома, у огня</div></div></div>
+          <div class="photo"><img src="photos/5-priroda.webp" alt="На природе" loading="lazy" onerror="this.remove()"><div><div class="ic">✦</div><div class="cap">Фото · на природе</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- О НАС -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">О нас</div>
+        <h2 class="display">Двое — и один путь</h2>
+      </div>
+
+      <div class="duo">
+        <!-- ОН -->
+        <div class="card">
+          <div class="person-head">
+            <div class="avatar"><span>О</span><img src="photos/on.png" alt="Он" loading="lazy" onerror="this.remove()"></div>
+            <div>
+              <div class="eyebrow">Он</div>
+              <h3 class="name">Имя Фамилия</h3>
+            </div>
+          </div>
+          <p class="soft">Проводник мужского состояния. Работает с опорой, волей,
+          направлением и тихой внутренней силой — тем, из чего мужчина берёт
+          на себя жизнь и женщину рядом.</p>
+          <ul class="exp-list">
+            <li>Более N лет личной практики работы с состоянием и телом</li>
+            <li>Практик guided imagery: индивидуальная образная работа с мужчинами</li>
+            <li>Ведущий мужских групп и кругов</li>
+            <li>Обучение у мастеров направления (добавить школы и имена)</li>
+          </ul>
+        </div>
+
+        <!-- ОНА -->
+        <div class="card">
+          <div class="person-head">
+            <div class="avatar"><span>О</span><img src="photos/ona.png" alt="Она" loading="lazy" onerror="this.remove()"></div>
+            <div>
+              <div class="eyebrow">Она</div>
+              <h3 class="name">Имя Фамилия</h3>
+            </div>
+          </div>
+          <p class="soft">Проводница женского состояния. Работает с чувствительностью,
+          наполненностью, доверием и текучестью — тем, из чего женщина расцветает
+          и вдохновляет жизнь вокруг себя.</p>
+          <ul class="exp-list">
+            <li>Более N лет практики женских состояний и телесной работы</li>
+            <li>Практик guided imagery: индивидуальная образная работа с женщинами</li>
+            <li>Ведущая женских групп и кругов</li>
+            <li>Обучение у мастеров направления (добавить школы и имена)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- СОВМЕСТНЫЙ ОПЫТ -->
+      <div class="card" style="margin-top:14px">
+        <div class="person-head">
+          <div class="avatar" style="font-size:34px">✦</div>
+          <div>
+            <div class="eyebrow">Вместе</div>
+            <h3 class="name">Наш совместный опыт</h3>
+          </div>
+        </div>
+        <p class="soft">Главное, что мы предъявляем, — не методики, а собственную
+        живую пару. Всё, что мы передаём, прожито нами в отношениях: кризисы
+        и примирения, тишина и страсть, быт и путь.</p>
+        <ul class="exp-list">
+          <li>N лет вместе — как пара, как семья, как рабочий тандем</li>
+          <li>Совместное ведение парных сессий: он держит мужское поле, она — женское</li>
+          <li>Ретриты и выездные программы для пар (добавить географию и даты)</li>
+          <li>Смешанные группы: практика сонастройки мужчин и женщин в общем поле</li>
+        </ul>
+      </div>
+
+      <div class="stat-grid" style="margin-top:14px">
+        <div class="stat-cell"><div class="v">N</div><div class="k">лет вместе</div></div>
+        <div class="stat-cell"><div class="v">N+</div><div class="k">пар в работе</div></div>
+        <div class="stat-cell"><div class="v">N+</div><div class="k">групп и кругов</div></div>
+        <div class="stat-cell"><div class="v">N+</div><div class="k">часов практики</div></div>
+      </div>
+      <hr class="hr-gold">
+    </div>
+  </section>
+
+  <!-- ПРАКТИКИ -->
+  <section id="practices">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Практики</div>
+        <h2 class="display">С чем мы работаем</h2>
+        <p class="soft" style="max-width:640px">Каждая практика ведётся методом guided imagery —
+        через направляемые образы, в личном темпе и с опорой на ваш живой опыт.</p>
+      </div>
+      <div class="practice-grid">
+        <div class="card practice">
+          <div class="sym">♂</div>
+          <h3>Мужское внутри мужчины</h3>
+          <p>Личная практика настройки и активации мужского состояния: опора, воля,
+          направление, спокойная сила. Для мужчин, которые хотят стоять в жизни
+          твёрдо — и быть живыми рядом с женщиной.</p>
+          <div class="tag"><span class="pill">Индивидуально · <b>для мужчин</b></span></div>
+        </div>
+        <div class="card practice">
+          <div class="sym">♀</div>
+          <h3>Женское внутри женщины</h3>
+          <p>Личная практика раскрытия женского состояния: чувствительность,
+          наполненность, доверие, мягкая сила. Для женщин, которые хотят жить
+          из своей природы — а не из напряжения и контроля.</p>
+          <div class="tag"><span class="pill">Индивидуально · <b>для женщин</b></span></div>
+        </div>
+        <div class="card practice">
+          <div class="sym">♀<span style="font-size:22px">♂</span></div>
+          <h3>Мужское внутри женщины</h3>
+          <p>Работа с внутренним мужским в женщине: ясность, границы, воля к действию —
+          так, чтобы внутренний мужчина защищал и поддерживал её женское,
+          а не подменял его жёсткостью.</p>
+          <div class="tag"><span class="pill">Индивидуально · <b>для женщин</b></span></div>
+        </div>
+        <div class="card practice">
+          <div class="sym">♂<span style="font-size:22px">♀</span></div>
+          <h3>Женское внутри мужчины</h3>
+          <p>Работа с внутренним женским в мужчине: чувствование, приятие, творческий
+          поток — так, чтобы сила мужчины стала живой и тёплой, а не броней
+          и дистанцией.</p>
+          <div class="tag"><span class="pill">Индивидуально · <b>для мужчин</b></span></div>
+        </div>
+        <div class="card practice">
+          <div class="sym">❦</div>
+          <h3>Сонастройка пары</h3>
+          <p>Работа вдвоём с парой: восстановление слышания, тепла и потока между
+          мужчиной и женщиной. Мы держим поле вчетвером — и пара заново находит
+          друг друга.</p>
+          <div class="tag"><span class="pill">Парная сессия · <b>фокус метода</b></span></div>
+        </div>
+        <div class="card practice">
+          <div class="sym">✦</div>
+          <h3>Группы и круги</h3>
+          <p>Мужские, женские и смешанные группы: общее поле, живая передача
+          состояния, практика сонастройки в кругу. Ретриты и выездные программы.</p>
+          <div class="tag"><span class="pill">Группа · <b>очно и онлайн</b></span></div>
+        </div>
+      </div>
+      <hr class="hr-gold">
+    </div>
+  </section>
+
+  <!-- АССОЦИАЦИЯ -->
+  <section id="association">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Ассоциация</div>
+        <h2 class="display">Ассоциация мужско-женских отношений</h2>
+      </div>
+      <div class="assoc">
+        <div class="card">
+          <p style="margin-top:0">В рамках нашей миссии мы организуем работу
+          <b>ассоциации мужско-женских отношений</b> — сообщества мастеров,
+          исследующих и практикующих искусство отношений мужчины и женщины.</p>
+          <p>Мы проводим мероприятия для мастеров мужско-женских практик:
+          встречи, конференции, совместные лаборатории и обмен опытом между школами.</p>
+          <p class="soft" style="margin-bottom:0">Так идея становится делом: мы материализуем
+          в нашем мире проявленное взаимодействие мужчины и женщины — и приглашаем
+          в это поле тех, кто ведёт людей по этому пути.</p>
+          <div style="margin-top:18px"><a class="btn primary" href="#contact">Присоединиться к ассоциации</a></div>
+        </div>
+        <div class="card">
+          <ul class="depth">
+            <li>
+              <div class="lvl">Проявленное</div>
+              <div class="val">Взаимодействие <em>мужчины и женщины</em></div>
+            </li>
+            <li>
+              <div class="lvl">Глубже</div>
+              <div class="val">Встреча <em>мужского и женского</em> начала</div>
+            </li>
+            <li>
+              <div class="lvl">Ещё глубже</div>
+              <div class="val">Танец <em>инь и ян</em></div>
+            </li>
+            <li>
+              <div class="lvl">В самой глубине</div>
+              <div class="val">Танец самого бога с собой — <em>ничто и дао</em></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr class="hr-gold">
+    </div>
+  </section>
+
+  <!-- МИССИЯ -->
+  <section id="mission">
+    <div class="wrap">
+      <div class="mission">
+        <div class="kicker">Наша миссия</div>
+        <blockquote>Мы взращиваем культуру <em>здоровых мужско-женских отношений</em>
+        в России — как живой ответ на кризис идей. Когда двое умеют слышать
+        и любить друг друга, вокруг них сама собой собирается жизнь: семья,
+        дело, будущее.</blockquote>
+        <p class="soft" style="max-width:640px; margin:20px auto 0">Мы верим, что обновление начинается
+        не с лозунгов, а с пары — с самой малой и самой прочной единицы культуры.
+        Развитие, культивация и взращивание этой идеи — дело нашей жизни.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Контакты</div>
+        <h2 class="display">Начать с разговора</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="card">
+          <p class="soft" style="margin-top:0">Первый шаг — короткая встреча-знакомство.
+          Мы услышим ваш запрос и предложим формат: личная практика, парная сессия
+          или группа.</p>
+          <div class="contact-row"><span class="k">Telegram</span><a href="#">@username</a></div>
+          <div class="contact-row"><span class="k">WhatsApp</span><a href="#">+7 ··· ··· ·· ··</a></div>
+          <div class="contact-row"><span class="k">Почта</span><a href="mailto:hello@example.ru">hello@example.ru</a></div>
+          <div class="contact-row"><span class="k">География</span><span>Москва · выезд · онлайн</span></div>
+        </div>
+        <div class="card" style="display:flex; flex-direction:column; gap:14px; justify-content:center;">
+          <div class="eyebrow" style="text-align:center">Готовы к встрече?</div>
+          <a class="cta-big" href="#">Оставить заявку</a>
+          <p class="soft" style="margin:0; text-align:center; font-size:13px">Ответим лично — он или она.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#" style="justify-content:center">✦ Сонастройка</a>
+    <div class="fine">Практика состояния вдвоём · метод guided imagery · Россия</div>
+  </div>
+</footer>
+
+<script>
+// «дым»-частицы в цвете акцента, разлетаются от указателя
+const smoke = (function(){
+  const cv = document.getElementById('bg-smoke'), ctx = cv.getContext('2d');
+  let parts = [], raf = null, W = 0, H = 0, pointer = {x:-1e3, y:-1e3};
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const N = reduce ? 0 : 80;
+  const dpr = devicePixelRatio;
+  const rgb = () => getComputedStyle(document.body).getPropertyValue('--smoke-rgb').trim() || '46,107,84';
+  function resize(){ W = cv.width = innerWidth*dpr; H = cv.height = innerHeight*dpr; }
+  function spawn(){ return {x:Math.random()*W, y:H+Math.random()*H*0.3, vx:(Math.random()-.5)*0.2*dpr,
+    vy:-(0.2+Math.random()*0.5)*dpr, r:(40+Math.random()*90)*dpr, a:0, max:0.04+Math.random()*0.07, life:0, ttl:500+Math.random()*500}; }
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    const c = rgb();
+    for(const p of parts){
+      p.life++; const dx=p.x-pointer.x, dy=p.y-pointer.y, d2=dx*dx+dy*dy, R=160*dpr;
+      if(d2 < R*R){ const d=Math.sqrt(d2)||1, f=(1-d/R)*2.2; p.vx+=dx/d*f; p.vy+=dy/d*f; }
+      p.x+=p.vx; p.y+=p.vy; p.vx*=0.96; p.vy=p.vy*0.98 - 0.02*dpr; p.r+=0.25*dpr;
+      p.a = p.life<60 ? p.a+0.002 : p.a-0.0006; p.a=Math.max(0,Math.min(p.max,p.a));
+      if(p.y< -p.r || p.life>p.ttl || (p.a<=0&&p.life>80)) Object.assign(p,spawn());
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      g.addColorStop(0,`rgba(${c},${p.a})`); g.addColorStop(1,`rgba(${c},0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,7); ctx.fill();
+    }
+    raf=requestAnimationFrame(step);
+  }
+  addEventListener('resize',resize);
+  addEventListener('pointermove',e=>{pointer.x=e.clientX*dpr; pointer.y=e.clientY*dpr;});
+  if(N>0){ resize(); parts=Array.from({length:N},spawn); step(); }
+  return { start(){ if(raf||N===0)return; resize(); parts=Array.from({length:N},spawn); step(); },
+           stop(){ if(raf){cancelAnimationFrame(raf); raf=null;} ctx&&ctx.clearRect(0,0,W,H);} };
+})();
+</script>
+</body>
+</html>
