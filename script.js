@@ -203,8 +203,28 @@
     const errorEl = modal.querySelector('[data-error]');
     const tgEcho = modal.querySelector('[data-tg-echo]');
 
+    // Валидация контакта: @ник (мин. 3 символа) ИЛИ телефон +… (10–15 цифр, E.164).
+    function validateContact(raw) {
+      const v = (raw || '').trim();
+      if (!v) return { ok: false, reason: 'Укажите Telegram или телефон для связи.' };
+      if (v[0] === '@') {
+        return /^@[A-Za-z0-9_]{5,32}$/.test(v)
+          ? { ok: true }
+          : { ok: false, reason: 'Ник должен начинаться с @ и содержать минимум 5 символов (латиница, цифры, _).' };
+      }
+      if (v[0] === '+') {
+        const digits = v.replace(/[^\d]/g, '');
+        return /^\+[\d\s()\-]+$/.test(v) && digits.length >= 10 && digits.length <= 15
+          ? { ok: true }
+          : { ok: false, reason: 'Телефон должен начинаться с + и содержать 10–15 цифр.' };
+      }
+      return { ok: false, reason: 'Ник начинается с @, телефон — с +. Укажите один из вариантов.' };
+    }
+
     function syncSubmit() {
-      submit.disabled = !(tgInput.value.trim().length > 1 && consent.checked);
+      const valid = validateContact(tgInput.value).ok;
+      submit.disabled = !(valid && consent.checked);
+      if (valid) errorEl.hidden = true; // как только формат исправлен — прячем ошибку
     }
 
     let currentKey = null;
@@ -253,7 +273,8 @@
 
     function toPayment() {
       const tg = tgInput.value.trim();
-      if (tg.length <= 1) { errorEl.hidden = false; tgInput.focus(); return; }
+      const check = validateContact(tg);
+      if (!check.ok) { errorEl.textContent = check.reason; errorEl.hidden = false; tgInput.focus(); return; }
       errorEl.hidden = true;
       notifyLead(currentKey, tg);
       tgEcho.textContent = tg;
@@ -266,6 +287,11 @@
       btn.addEventListener('click', () => open(btn.dataset.tariff));
     });
     tgInput.addEventListener('input', syncSubmit);
+    tgInput.addEventListener('blur', () => {
+      const v = tgInput.value.trim();
+      const check = validateContact(v);
+      if (v && !check.ok) { errorEl.textContent = check.reason; errorEl.hidden = false; }
+    });
     consent.addEventListener('change', syncSubmit);
     submit.addEventListener('click', toPayment);
     modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));

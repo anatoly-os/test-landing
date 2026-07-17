@@ -787,7 +787,7 @@ body.modal-open { overflow: hidden; }
 }
 
 .buy-error {
-  color: var(--ember-bright);
+  color: #FF6B6B;
   font-size: 0.8rem;
   margin: -0.5rem 0 1rem;
 }
