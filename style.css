@@ -675,6 +675,259 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ═══════════════════════════════════════════════
+   BUY MODAL — оформление и оплата тарифа
+   ═══════════════════════════════════════════════ */
+.buy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.buy-modal[hidden] { display: none; }
+
+.buy-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 6, 8, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.buy-modal__panel {
+  position: relative;
+  width: min(520px, 96vw);
+  max-height: 92dvh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--pane-line);
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  box-shadow:
+    0 0 60px rgba(95, 217, 228, 0.10),
+    0 24px 80px rgba(0, 0, 0, 0.65);
+  animation: modal-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.buy-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.buy-includes {
+  list-style: none;
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(95, 217, 228, 0.04);
+  border: 1px solid rgba(95, 217, 228, 0.10);
+}
+
+.buy-includes li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.buy-includes li + li { margin-top: 0.5rem; }
+
+.buy-includes li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan-glow-strong);
+}
+
+.buy-terms {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  border-left: 2px solid var(--border);
+  padding-left: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+.buy-field { display: block; margin-bottom: 1rem; }
+
+.buy-field > span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.buy-field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.buy-field input::placeholder { color: var(--text-dim); }
+
+.buy-field input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(95, 217, 228, 0.12);
+}
+
+.buy-error {
+  color: var(--ember-bright);
+  font-size: 0.8rem;
+  margin: -0.5rem 0 1rem;
+}
+
+.buy-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.buy-consent input {
+  margin-top: 0.15rem;
+  width: 18px; height: 18px;
+  accent-color: var(--cyan);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.buy-consent a {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.buy-consent a:hover { color: var(--cyan-bright); }
+
+.buy-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.buy-submit:disabled::after { animation: none; }
+
+/* Оплата — QR (инвертированный под тёмную тему) + телефон */
+.buy-qr {
+  display: flex;
+  justify-content: center;
+  padding: 1.1rem;
+  margin: 0 auto 1.25rem;
+  width: fit-content;
+  border-radius: 16px;
+  background: #05090c;
+  border: 1px solid var(--pane-line);
+  box-shadow: inset 0 0 0 1px rgba(95, 217, 228, 0.05);
+}
+
+.buy-qr__img {
+  display: block;
+  width: 240px;
+  height: 240px;
+  /* исходный QR — чёрный на белом; инвертируем под стиль сайта */
+  filter: invert(1);
+}
+
+.buy-phone {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* ═══════════════════════════════════════════════
+   LEGAL PAGES — читаемая проза оферты/политики
+   ═══════════════════════════════════════════════ */
+.legal {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 7rem 1.25rem 5rem;
+}
+
+.legal h1 {
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.legal .legal-meta {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.legal h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--platinum);
+  margin: 2.25rem 0 0.9rem;
+}
+
+.legal p, .legal li {
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-size: 0.97rem;
+}
+
+.legal p { margin-bottom: 0.9rem; }
+
+.legal ul, .legal ol { margin: 0 0 0.9rem 1.25rem; }
+.legal li { margin-bottom: 0.4rem; }
+
+.legal a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+.legal a:hover { color: var(--cyan-bright); }
+
+.legal .legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.legal .legal-back:hover { color: var(--platinum); }
+
+.legal-req {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--pane);
+  border: 1px solid var(--pane-line);
+}
+
+.legal-req dl { display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1.25rem; }
+.legal-req dt { color: var(--text-dim); font-size: 0.9rem; }
+.legal-req dd { color: var(--text); font-size: 0.9rem; }
+
+/* Заметный маркер незаполненного реквизита — не пропустить перед публикацией */
+.fill {
+  background: rgba(255, 158, 74, 0.18);
+  color: var(--ember-bright);
+  padding: 0 0.35em;
+  border-radius: 4px;
+  border: 1px dashed var(--ember-deep);
+}
+
+/* ═══════════════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {

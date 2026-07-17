@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mastering AI — свой сайт с нуля с помощью ИИ | Анатолий Осокин</title>
+  <title>Mastering AI. Part 1 — свой сайт с нуля с помощью ИИ | Анатолий Осокин</title>
   <meta name="description" content="Курс: сделайте свой сайт с нуля с помощью ИИ. 12 уроков по 6 минут — от установки Claude Code до сайта, открытого в браузере. Два проекта: сайт-визитка и мини-интернет-магазин.">
   <meta name="theme-color" content="#060A0D">
   <link rel="stylesheet" href="../style.css">
@@ -77,7 +77,7 @@
       <!-- Overline -->
       <div class="flex items-center justify-center gap-3 mb-4 sm:mb-8">
         <div class="glow-dot"></div>
-        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Курс · Mastering AI</span>
+        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Курс · Mastering AI. Part 1</span>
         <div class="glow-dot glow-dot--ember"></div>
       </div>
 
@@ -313,7 +313,7 @@
                 <span>Методичка с промптами и чек-листами</span>
               </li>
             </ul>
-            <a href="#contact" class="btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Выбрать Лайт</a>
+            <button type="button" class="js-buy btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer" data-tariff="lite">Выбрать Лайт</button>
           </div>
         </div>
 
@@ -342,7 +342,7 @@
                 <span>Разберём именно ваш сайт и ваши затыки</span>
               </li>
             </ul>
-            <a href="#contact" class="btn-primary mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Выбрать Курс + разбор</a>
+            <button type="button" class="js-buy btn-primary mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer" data-tariff="review">Выбрать Курс + разбор</button>
           </div>
         </div>
 
@@ -368,7 +368,7 @@
                 <span>Специальные условия по сопровождению</span>
               </li>
             </ul>
-            <a href="#contact" class="btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Обсудить проект</a>
+            <a href="https://t.me/anatoly_os" target="_blank" rel="noopener" class="btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Обсудить проект</a>
           </div>
         </div>
       </div>
@@ -418,11 +418,86 @@
 
   <!-- ═══════ FOOTER ═══════ -->
   <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
-      <p>&copy; 2026 Анатолий Осокин</p>
-      <a href="../" class="hover:text-light transition-colors duration-200">osokin.ai — сайты, боты и приложения для бизнеса</a>
+    <div class="max-w-6xl mx-auto flex flex-col gap-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
+        <p>&copy; 2026 Анатолий Осокин</p>
+        <a href="../" class="hover:text-light transition-colors duration-200">osokin.ai — сайты, боты и приложения для бизнеса</a>
+      </div>
+      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2 text-dim text-xs border-t border-brd pt-4">
+        <a href="oferta.html" class="hover:text-light transition-colors duration-200">Публичная оферта</a>
+        <a href="privacy.html" class="hover:text-light transition-colors duration-200">Политика конфиденциальности</a>
+        <a href="terms.html" class="hover:text-light transition-colors duration-200">Правила обучения</a>
+      </div>
     </div>
   </footer>
+
+  <!-- ═══════ BUY MODAL ═══════ -->
+  <div id="buy-modal" class="buy-modal" hidden>
+    <div class="buy-modal__backdrop" data-close></div>
+    <div class="buy-modal__panel">
+      <button type="button" class="pdf-modal__close buy-modal__close" data-close aria-label="Закрыть">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <!-- Шаг 1: описание + контакт + согласие -->
+      <div class="buy-step" data-step="form">
+        <span class="text-cyan text-xs font-semibold tracking-widest uppercase">Оформление</span>
+        <h3 class="font-heading text-2xl font-bold mt-2 mb-1" data-tariff-name>Тариф</h3>
+        <div class="price-tag price-tag--ember text-3xl mb-2" data-tariff-price>—</div>
+
+        <ul class="buy-includes" data-tariff-includes></ul>
+
+        <div class="buy-terms">
+          Это информационный продукт. Вы получаете доступ к записям 12 видеоуроков
+          (демонстрация экрана с подробным объяснением, что и как делать). Доступ
+          предоставляется ссылками на закрытые видео на YouTube после оплаты.
+          Условия — в <a href="oferta.html" target="_blank" rel="noopener" class="text-cyan underline">оферте</a>.
+        </div>
+
+        <label class="buy-field">
+          <span>Ваш Telegram — на него пришлю доступ и чек</span>
+          <input type="text" id="buy-tg" placeholder="@username или телефон" autocomplete="off" inputmode="text">
+        </label>
+        <p class="buy-error" data-error hidden>Укажите Telegram, чтобы я мог прислать доступ и чек.</p>
+
+        <label class="buy-consent">
+          <input type="checkbox" id="buy-consent">
+          <span>Оплачивая, я принимаю
+            <a href="oferta.html" target="_blank" rel="noopener">публичную оферту</a>,
+            <a href="privacy.html" target="_blank" rel="noopener">политику конфиденциальности</a> и
+            <a href="terms.html" target="_blank" rel="noopener">правила обучения</a>, и даю согласие на обработку персональных данных.</span>
+        </label>
+
+        <button type="button" class="btn-primary buy-submit w-full px-6 py-3.5 rounded-xl text-base font-semibold cursor-pointer" disabled>Перейти к оплате</button>
+      </div>
+
+      <!-- Шаг 2: оплата по СБП -->
+      <div class="buy-step" data-step="pay" hidden>
+        <span class="text-ember text-xs font-semibold tracking-widest uppercase">Оплата по СБП</span>
+        <h3 class="font-heading text-2xl font-bold mt-2 mb-1">Переведите <span data-tariff-price-inline>—</span></h3>
+        <p class="text-muted text-sm mb-5">Отсканируйте QR или переведите по номеру телефона через СБП.</p>
+
+        <div class="buy-qr">
+          <img src="pay-qr.png" alt="QR-код для оплаты по СБП" class="buy-qr__img">
+        </div>
+
+        <div class="buy-phone">
+          <div class="case-number case-number--ember text-2xl sm:text-3xl">+7&nbsp;999&nbsp;463‑55‑73</div>
+          <div class="text-muted text-sm mt-1">Анатолий О. · Т‑Банк</div>
+        </div>
+
+        <p class="text-muted text-sm mt-6 text-center">
+          После оплаты пришлю чек и доступ к урокам на ваш Telegram:
+          <span class="text-platinum font-medium" data-tg-echo>—</span>
+        </p>
+
+        <a href="https://t.me/anatoly_os" target="_blank" rel="noopener" class="btn-primary w-full mt-6 px-6 py-3.5 rounded-xl text-base font-semibold text-center cursor-pointer inline-flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Я оплатил — написать в Telegram
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script src="../script.js"></script>
 </body>

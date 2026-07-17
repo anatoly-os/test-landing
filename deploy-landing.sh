@@ -20,17 +20,21 @@ echo "script.js  -> ?v=${JS_HASH}"
 STAGE=$(mktemp -d)
 trap 'rm -rf "${STAGE}"' EXIT
 
-# Stage the course dir wholesale, then overwrite its HTML with the
-# versioned copy — so any future non-HTML assets in it deploy too.
+# Stage the course dir wholesale (carries pay-qr.png + legal pages), then
+# rewrite every HTML in place with the versioned asset refs.
 cp -R ./mastering-ai "${STAGE}/mastering-ai"
 
-# Matches both "style.css" and "../style.css" href/src values.
-sed -e "s|style\.css\"|style.css?v=${CSS_HASH}\"|g" \
-    -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" \
-    ./index.html > "${STAGE}/index.html"
-sed -e "s|style\.css\"|style.css?v=${CSS_HASH}\"|g" \
-    -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" \
-    ./mastering-ai/index.html > "${STAGE}/mastering-ai/index.html"
+# Appends ?v=<hash> to style.css / script.js refs. Matches both "style.css"
+# and "../style.css" href/src values, and leaves already-versioned refs alone.
+bust() {
+  sed -e "s|style\.css\"|style.css?v=${CSS_HASH}\"|g" \
+      -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" "$1"
+}
+
+bust ./index.html > "${STAGE}/index.html"
+for f in "${STAGE}"/mastering-ai/*.html; do
+  bust "${f}" > "${f}.tmp" && mv "${f}.tmp" "${f}"
+done
 
 # macOS rsync is openrsync: no --chmod. Files are already 644 locally.
 rsync -rlptv \

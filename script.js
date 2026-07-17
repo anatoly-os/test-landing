@@ -168,4 +168,92 @@
       if (e.key === 'Escape' && !box.hidden) close();
     });
   })();
+
+  // ─── Buy modal (оформление и оплата тарифа курса) ────────────
+  (function () {
+    const modal = document.getElementById('buy-modal');
+    if (!modal) return;
+
+    const TARIFFS = {
+      lite: {
+        name: 'Лайт',
+        price: '4 900 ₽',
+        includes: ['Запись курса — 12 уроков', 'Методичка с промптами и чек-листами'],
+      },
+      review: {
+        name: 'Курс + разбор',
+        price: '14 900 ₽',
+        includes: [
+          'Всё из тарифа Лайт',
+          '45 минут личного разбора со мной — результаты и вопросы',
+          'Разберём именно ваш сайт и ваши затыки',
+        ],
+      },
+    };
+
+    const stepForm = modal.querySelector('[data-step="form"]');
+    const stepPay = modal.querySelector('[data-step="pay"]');
+    const nameEl = modal.querySelector('[data-tariff-name]');
+    const priceEl = modal.querySelector('[data-tariff-price]');
+    const priceInline = modal.querySelector('[data-tariff-price-inline]');
+    const includesEl = modal.querySelector('[data-tariff-includes]');
+    const tgInput = modal.querySelector('#buy-tg');
+    const consent = modal.querySelector('#buy-consent');
+    const submit = modal.querySelector('.buy-submit');
+    const errorEl = modal.querySelector('[data-error]');
+    const tgEcho = modal.querySelector('[data-tg-echo]');
+
+    function syncSubmit() {
+      submit.disabled = !(tgInput.value.trim().length > 1 && consent.checked);
+    }
+
+    function open(key) {
+      const t = TARIFFS[key];
+      if (!t) return;
+      nameEl.textContent = t.name;
+      priceEl.textContent = t.price;
+      priceInline.textContent = t.price;
+      includesEl.innerHTML = '';
+      t.includes.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        includesEl.appendChild(li);
+      });
+      // сброс в шаг 1
+      tgInput.value = '';
+      consent.checked = false;
+      errorEl.hidden = true;
+      submit.disabled = true;
+      stepPay.hidden = true;
+      stepForm.hidden = false;
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+    }
+
+    function toPayment() {
+      const tg = tgInput.value.trim();
+      if (tg.length <= 1) { errorEl.hidden = false; tgInput.focus(); return; }
+      errorEl.hidden = true;
+      tgEcho.textContent = tg;
+      stepForm.hidden = true;
+      stepPay.hidden = false;
+      modal.querySelector('.buy-modal__panel').scrollTop = 0;
+    }
+
+    document.querySelectorAll('.js-buy').forEach(btn => {
+      btn.addEventListener('click', () => open(btn.dataset.tariff));
+    });
+    tgInput.addEventListener('input', syncSubmit);
+    consent.addEventListener('change', syncSubmit);
+    submit.addEventListener('click', toPayment);
+    modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', close));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+  })();
 })();
