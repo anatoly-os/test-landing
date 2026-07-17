@@ -282,6 +282,7 @@ h1, h2, h3, h4 { font-family: var(--font-heading); letter-spacing: 0.3px; }
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+  pointer-events: none; /* декоративная рамка не должна перехватывать клики */
 }
 
 .card-featured:hover {
