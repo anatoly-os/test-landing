@@ -20,9 +20,6 @@ const tls = require('node:tls');
 const PORT = Number(process.env.PORT) || 4332;
 const BOT_TOKEN = process.env.BOT_TOKEN || '';
 const CHAT_ID = process.env.CHAT_ID || '';
-// Сервер в РФ, api.telegram.org напрямую недоступен -> ходим через HTTP-прокси.
-// Формат: http://user:pass@host:port (задаётся в .env, в репозиторий не попадает).
-const PROXY_URL = process.env.PROXY_URL || '';
 const PATHNAME = '/mastering-ai/api/pay-lead';
 const TG_HOST = 'api.telegram.org';
 
@@ -100,61 +97,11 @@ function postDirect(path, payload, resolve) {
   req.end();
 }
 
-// Запрос через HTTP-прокси: CONNECT-туннель -> TLS поверх него -> HTTPS.
-function postViaProxy(path, payload, resolve) {
-  let proxy;
-  try { proxy = new URL(PROXY_URL); } catch { console.error('[pay-bot] некорректный PROXY_URL'); return resolve(false); }
-
-  const headers = {};
-  if (proxy.username) {
-    const creds = `${decodeURIComponent(proxy.username)}:${decodeURIComponent(proxy.password)}`;
-    headers['Proxy-Authorization'] = 'Basic ' + Buffer.from(creds).toString('base64');
-  }
-
-  const connectReq = http.request({
-    host: proxy.hostname,
-    port: Number(proxy.port) || 80,
-    method: 'CONNECT',
-    path: `${TG_HOST}:443`,
-    headers,
-    timeout: 8000,
-  });
-
-  connectReq.on('connect', (res, socket) => {
-    if (res.statusCode !== 200) {
-      console.error('[pay-bot] прокси CONNECT вернул', res.statusCode);
-      socket.destroy();
-      return resolve(false);
-    }
-    const tgReq = https.request(
-      {
-        method: 'POST',
-        hostname: TG_HOST,
-        port: 443,
-        path,
-        headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) },
-        timeout: 8000,
-        agent: false,
-        createConnection: () => tls.connect({ host: TG_HOST, servername: TG_HOST, socket }),
-      },
-      (r) => readTelegramResponse(r, resolve)
-    );
-    tgReq.on('timeout', () => tgReq.destroy(new Error('timeout')));
-    tgReq.on('error', (e) => { console.error('[pay-bot] ошибка запроса к Telegram (proxy):', e.message); resolve(false); });
-    tgReq.write(payload);
-    tgReq.end();
-  });
-  connectReq.on('timeout', () => connectReq.destroy(new Error('proxy timeout')));
-  connectReq.on('error', (e) => { console.error('[pay-bot] ошибка прокси:', e.message); resolve(false); });
-  connectReq.end();
-}
-
 function sendToTelegram(text) {
   return new Promise((resolve) => {
     const payload = JSON.stringify({ chat_id: CHAT_ID, text, disable_web_page_preview: true });
     const path = `/bot${BOT_TOKEN}/sendMessage`;
-    if (PROXY_URL) postViaProxy(path, payload, resolve);
-    else postDirect(path, payload, resolve);
+    postDirect(path, payload, resolve);
   });
 }
 
