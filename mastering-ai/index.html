@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastering AI — свой сайт с нуля с помощью ИИ | Анатолий Осокин</title>
+  <meta name="description" content="Курс: сделайте свой сайт с нуля с помощью ИИ. 12 уроков по 6 минут — от установки Claude Code до сайта, открытого в браузере. Два проекта: сайт-визитка и мини-интернет-магазин.">
+  <meta name="theme-color" content="#060A0D">
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#060A0D',
+            'bg-subtle': '#0B1218',
+            surface: '#0C1319',
+            'surface-hover': '#111B22',
+            brd: '#1C2B33',
+            'brd-hover': '#2E4650',
+            cyan: '#5FD9E4',
+            'cyan-bright': '#A8F0F5',
+            'cyan-dim': '#3FA8B4',
+            ember: '#FF9E4A',
+            'ember-bright': '#FFC38A',
+            'ember-deep': '#D96F1E',
+            light: '#E9F1F2',
+            platinum: '#E9F1F2',
+            muted: '#8CA3AB',
+            dim: '#5A7078',
+          },
+          fontFamily: {
+            heading: ['"Cormorant"', 'Georgia', 'serif'],
+            body: ['"Montserrat"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="font-body bg-bg text-light">
+
+  <!-- ═══════ AMBIENT BACKGROUNDS ═══════ -->
+  <canvas id="bg-smoke" style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1"></canvas>
+  <div class="aurora-bg">
+    <div class="aurora-orb aurora-orb--1"></div>
+    <div class="aurora-orb aurora-orb--2"></div>
+    <div class="aurora-orb aurora-orb--3"></div>
+    <div class="aurora-orb aurora-orb--4"></div>
+  </div>
+  <div class="noise-overlay"></div>
+
+  <!-- ═══════ NAVBAR ═══════ -->
+  <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between h-16 sm:h-20">
+      <a href="../" class="font-heading text-lg font-bold tracking-tight cursor-pointer text-platinum">
+        Анатолий Осокин
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#program" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Программа</a>
+        <a href="#pricing" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Тарифы</a>
+        <a href="../" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Обо мне</a>
+        <a href="#contact" class="btn-primary px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">Записаться</a>
+      </div>
+      <!-- Mobile CTA -->
+      <a href="#contact" class="md:hidden btn-primary px-4 py-2 rounded-lg text-sm font-medium cursor-pointer">Записаться</a>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="relative min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="grid-bg"></div>
+    <div class="hero-glow hero-glow--main"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center pt-14 sm:pt-20">
+      <!-- Overline -->
+      <div class="flex items-center justify-center gap-3 mb-4 sm:mb-8">
+        <div class="glow-dot"></div>
+        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Курс · Mastering AI</span>
+        <div class="glow-dot glow-dot--ember"></div>
+      </div>
+
+      <!-- Main headline -->
+      <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-4 sm:mb-8">
+        Свой сайт с нуля —<br>
+        <span class="text-gradient">с помощью ИИ</span>
+      </h1>
+
+      <!-- Subline -->
+      <p class="text-muted text-base sm:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed font-light">
+        От установки Claude Code до сайта, открытого в браузере.
+        Вы сами сделаете для себя сайт-визитку
+        или мини-интернет-магазин!
+      </p>
+
+      <!-- Key metrics -->
+      <div class="flex flex-row items-center justify-center gap-6 sm:gap-16 mb-6 sm:mb-12">
+        <div class="text-center">
+          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">12</div>
+          <div class="case-label mt-1">уроков</div>
+        </div>
+        <div class="w-px h-8 sm:h-12 bg-brd"></div>
+        <div class="text-center">
+          <div class="case-number case-number--ember whitespace-nowrap text-3xl sm:text-5xl">6 мин</div>
+          <div class="case-label mt-1">урок</div>
+        </div>
+        <div class="w-px h-8 sm:h-12 bg-brd"></div>
+        <div class="text-center">
+          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">2</div>
+          <div class="case-label mt-1">сайта</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="#pricing" class="btn-primary inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold cursor-pointer">
+        <span>Выбрать тариф</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+      <p class="text-dim text-xs mt-6">от 4 900 ₽ · без опыта программирования</p>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-dim">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <!-- ═══════ WHAT YOU GET ═══════ -->
+  <section id="result" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
+    <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mb-8 sm:mb-16">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Результат</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          Что у вас будет <span class="text-gradient">после курса</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="reveal-scale card p-6 flex items-start gap-4">
+          <div class="glow-dot mt-2 shrink-0"></div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Работающий сайт</h4>
+            <p class="text-muted text-sm">Опубликованный в интернете, на вашем домене, по вашему контенту</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale reveal-delay-1 card p-6 flex items-start gap-4">
+          <div class="glow-dot glow-dot--ember mt-2 shrink-0"></div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Навык работы с Claude Code</h4>
+            <p class="text-muted text-sm">Установка, оплата из РФ, принципы работы и «волшебные промпты»</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale reveal-delay-2 card p-6 flex items-start gap-4">
+          <div class="glow-dot mt-2 shrink-0"></div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Самостоятельность</h4>
+            <p class="text-muted text-sm">Сами обновляете сайт и делаете следующие проекты — без подрядчиков</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROGRAM ═══════ -->
+  <section id="program" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
+    <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mb-8 sm:mb-16">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Программа</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          12 уроков <span class="text-gradient">по 6 минут</span>
+        </h2>
+        <p class="text-muted text-lg mt-4 max-w-2xl">
+          Короткие уроки без воды. Посмотрели — повторили — получилось.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">1</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Обзор современных ИИ</h4>
+            <p class="text-muted text-sm">Gemini, Claude Code, OpenAI, DeepSeek — что выбрать для создания сайта и почему</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">2</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Установка Claude Code</h4>
+            <p class="text-muted text-sm">Регистрация, авторизация, интерфейс. Работает на macOS и Windows</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">3</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Оплата из РФ</h4>
+            <p class="text-muted text-sm">Иностранная карта, сервисы оплаты — рабочие способы без лишних рисков</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">4</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Старт проекта</h4>
+            <p class="text-muted text-sm">Папка проекта, принципы работы с Claude Code, стиль общения и «волшебные промпты»</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number case-number--ember text-2xl sm:text-3xl shrink-0 w-10 text-center">5</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Первый сайт с вашим контентом</h4>
+            <p class="text-muted text-sm">Создаём сайт-визитку по вашим материалам. Добавляем скиллы для лучшего дизайна</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">6</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">ФЗ-152 и персональные данные</h4>
+            <p class="text-muted text-sm">Юридические документы и алгоритмы действий — руками Claude Code</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">7</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Страницы и навигация</h4>
+            <p class="text-muted text-sm">Многостраничный сайт, страница 404, правки по скриншотам или по коду</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number case-number--ember text-2xl sm:text-3xl shrink-0 w-10 text-center">8</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Публикация: вариант с VPN</h4>
+            <p class="text-muted text-sm">Покупка домена, Cloudflare — сайт доступен всему миру</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">9</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Публикация: из РФ без VPN</h4>
+            <p class="text-muted text-sm">Домен, Selectel, nginx — и почему я этот путь не рекомендую</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">10</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Обновление сайта</h4>
+            <p class="text-muted text-sm">Как делать красиво и как делать просто. Знакомимся с терминалом</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number text-2xl sm:text-3xl shrink-0 w-10 text-center">11</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Что ещё умеет ИИ</h4>
+            <p class="text-muted text-sm">Другие возможности Claude Code и Claude Chat для вашего дела</p>
+          </div>
+        </div>
+
+        <div class="reveal-scale card p-6 flex items-start gap-5">
+          <div class="case-number case-number--ember text-2xl sm:text-3xl shrink-0 w-10 text-center">12</div>
+          <div>
+            <h4 class="font-heading font-bold mb-1">Дальше — больше</h4>
+            <p class="text-muted text-sm">Как работать со мной над вашим проектом и довести сайт до бизнес-ценности</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════ PRICING ═══════ -->
+  <section id="pricing" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
+    <div class="max-w-6xl mx-auto">
+
+      <div class="reveal mb-8 sm:mb-16">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Тарифы</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          Три способа <span class="text-gradient">пройти курс</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- Лайт -->
+        <div class="reveal-scale card p-8 relative overflow-hidden flex flex-col">
+          <div class="relative flex flex-col grow">
+            <span class="text-muted text-sm font-medium tracking-wider uppercase">Лайт</span>
+            <div class="mt-4 mb-6">
+              <span class="price-tag text-4xl">4 900 &#8381;</span>
+            </div>
+            <ul class="space-y-3 text-muted grow">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Запись курса — 12 уроков</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Методичка с промптами и чек-листами</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Выбрать Лайт</a>
+          </div>
+        </div>
+
+        <!-- Курс + разбор (featured) -->
+        <div class="reveal-scale reveal-delay-1 card card-featured p-8 relative overflow-hidden flex flex-col">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-ember/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative flex flex-col grow">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-muted text-sm font-medium tracking-wider uppercase">Курс + разбор</span>
+              <span class="px-3 py-1 rounded-full bg-ember/10 border border-ember/25 text-ember-bright text-xs font-semibold whitespace-nowrap">Популярный</span>
+            </div>
+            <div class="mt-4 mb-6">
+              <span class="price-tag price-tag--ember text-4xl">14 900 &#8381;</span>
+            </div>
+            <ul class="space-y-3 text-muted grow">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Всё из тарифа Лайт</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>45 минут личного разбора со мной — результаты и вопросы</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Разберём именно ваш сайт и ваши затыки</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn-primary mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Выбрать Курс + разбор</a>
+          </div>
+        </div>
+
+        <!-- Индивидуальный -->
+        <div class="reveal-scale reveal-delay-2 card p-8 relative overflow-hidden flex flex-col">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative flex flex-col grow">
+            <span class="text-muted text-sm font-medium tracking-wider uppercase">Индивидуальный</span>
+            <div class="mt-4 mb-6">
+              <span class="price-tag text-4xl">100 000 &#8381;</span>
+            </div>
+            <ul class="space-y-3 text-muted grow">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Запись курса — 12 уроков</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>20 часов работы со мной над вашим бизнес-проектом</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Специальные условия по сопровождению</span>
+              </li>
+            </ul>
+            <a href="#contact" class="btn-outline mt-8 px-6 py-3 rounded-xl text-sm font-semibold text-center cursor-pointer">Обсудить проект</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACT / CTA ═══════ -->
+  <section id="contact" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="reveal">
+        <div class="shimmer-line mx-auto mb-8"></div>
+
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
+          Через 12 уроков у вас будет<br>
+          <span class="text-gradient">свой сайт в интернете</span>
+        </h2>
+
+        <p class="text-muted text-lg mb-12 max-w-xl mx-auto">
+          Напишите мне «Курс» — пришлю детали, отвечу на вопросы и помогу выбрать тариф.
+        </p>
+
+        <a href="https://t.me/anatoly_os" target="_blank" rel="noopener"
+           class="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl text-lg font-semibold cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          <span>Написать в Telegram</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
+      <p>&copy; 2026 Анатолий Осокин</p>
+      <a href="../" class="hover:text-light transition-colors duration-200">osokin.ai — сайты, боты и приложения для бизнеса</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

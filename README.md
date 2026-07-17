@@ -4,7 +4,9 @@ Source for the **osokin.ai** site. Three independent parts live here:
 
 | Path        | URL                     | What it is                                              |
 |-------------|-------------------------|---------------------------------------------------------|
-| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). |
+| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). Deploy: `bash deploy-landing.sh` (also covers `portfolio/` and `mastering-ai/`). |
+| `portfolio/` | `osokin.ai/portfolio/` | Static assets for the landing's portfolio section (Anima Poker PDF, Emberhold images). |
+| `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI» (static, uses root `style.css`/`script.js`). |
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
@@ -25,7 +27,8 @@ Source for the **osokin.ai** site. Three independent parts live here:
 
 Deploying = getting files onto that VDS:
 
-- **Static parts** (`index.html`, `manifest/`) → `rsync` into the webroot.
+- **Main landing + `portfolio/` + `mastering-ai/`** → `bash deploy-landing.sh`.
+- **Other static parts** (`manifest/`) → `rsync` into the webroot.
   Example (run from the repo root on macOS):
   ```bash
   rsync -rlptv ./manifest/ root@77.105.169.236:/var/www/osokin.ai/manifest/
