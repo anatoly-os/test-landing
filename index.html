@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анатолий Осокин — Разработка цифровых инструментов для бизнеса</title>
-  <meta name="description" content="Создаю цифровые инструменты для бизнеса в 10 раз быстрее и в 4 раза дешевле привычной разработки. Боты, приложения, сайты, автоматизация — под ключ.">
+  <title>Анатолий Осокин — Сайт для вашего бизнеса за 1 день</title>
+  <meta name="description" content="Сделаю сайт за 1 день по вашим материалам — от 10 000 ₽, с оформлением заказов через Telegram. Разработка приложений и веб-сервисов для автоматизации бизнеса — от 150 000 ₽.">
+  <meta name="theme-color" content="#060A0D">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script>
@@ -12,23 +13,26 @@
       theme: {
         extend: {
           colors: {
-            bg: '#07060b',
-            'bg-subtle': '#0d0c14',
-            surface: '#13111c',
-            'surface-hover': '#1a1726',
-            brd: '#1e1a2e',
-            'brd-hover': '#2d2640',
-            purple: '#8b5cf6',
-            'purple-bright': '#a78bfa',
-            'purple-dim': '#6d28d9',
-            platinum: '#e2e0ea',
-            light: '#f0eef5',
-            muted: '#8a8698',
-            dim: '#5c5775',
+            bg: '#060A0D',
+            'bg-subtle': '#0B1218',
+            surface: '#0C1319',
+            'surface-hover': '#111B22',
+            brd: '#1C2B33',
+            'brd-hover': '#2E4650',
+            cyan: '#5FD9E4',
+            'cyan-bright': '#A8F0F5',
+            'cyan-dim': '#3FA8B4',
+            ember: '#FF9E4A',
+            'ember-bright': '#FFC38A',
+            'ember-deep': '#D96F1E',
+            light: '#E9F1F2',
+            platinum: '#E9F1F2',
+            muted: '#8CA3AB',
+            dim: '#5A7078',
           },
           fontFamily: {
-            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
-            body: ['"Inter"', 'sans-serif'],
+            heading: ['"Cormorant"', 'Georgia', 'serif'],
+            body: ['"Montserrat"', 'system-ui', 'sans-serif'],
           }
         }
       }
@@ -38,6 +42,7 @@
 <body class="font-body bg-bg text-light">
 
   <!-- ═══════ AMBIENT BACKGROUNDS ═══════ -->
+  <canvas id="bg-smoke" style="position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1"></canvas>
   <div class="aurora-bg">
     <div class="aurora-orb aurora-orb--1"></div>
     <div class="aurora-orb aurora-orb--2"></div>
@@ -45,7 +50,6 @@
     <div class="aurora-orb aurora-orb--4"></div>
   </div>
   <div class="noise-overlay"></div>
-  <div class="particles"></div>
 
   <!-- ═══════ NAVBAR ═══════ -->
   <nav class="navbar fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8">
@@ -54,9 +58,9 @@
         Анатолий Осокин
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Услуги</a>
-        <a href="#cases" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Кейсы</a>
-        <a href="#pricing" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Стоимость</a>
+        <a href="#offers" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Услуги</a>
+        <a href="#portfolio" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Портфолио</a>
+        <a href="#about" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Обо мне</a>
         <a href="#contact" class="btn-primary px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">Написать</a>
       </div>
       <!-- Mobile CTA -->
@@ -74,46 +78,46 @@
       <!-- Overline -->
       <div class="flex items-center justify-center gap-3 mb-4 sm:mb-8">
         <div class="glow-dot"></div>
-        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Цифровые инструменты для бизнеса</span>
-        <div class="glow-dot"></div>
+        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Сайты · Боты · Приложения</span>
+        <div class="glow-dot glow-dot--ember"></div>
       </div>
 
       <!-- Main headline -->
       <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-4 sm:mb-8">
-        Делаю реальностью<br>
-        <span class="text-gradient">самые смелые желания</span><br>
-        предпринимателей
+        Сайт для вашего бизнеса —<br>
+        <span class="text-gradient">за один день</span>
       </h1>
 
       <!-- Subline -->
       <p class="text-muted text-base sm:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed font-light">
-        Создаю цифровые инструменты, которые раньше стоили месяцы и миллионы.
-        Теперь — дни и сотни тысяч. Под ключ.
+        По вашим материалам — из Telegram-канала, соцсетей, фотографий.
+        С приёмом заказов прямо в Telegram. В соответствии с нормами и законами РФ.
       </p>
 
       <!-- Key metrics -->
       <div class="flex flex-row items-center justify-center gap-6 sm:gap-16 mb-6 sm:mb-12">
         <div class="text-center">
-          <div class="case-number text-3xl sm:text-5xl">10x</div>
-          <div class="case-label mt-1">быстрее</div>
+          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">1 день</div>
+          <div class="case-label mt-1">срок</div>
         </div>
         <div class="w-px h-8 sm:h-12 bg-brd"></div>
         <div class="text-center">
-          <div class="case-number text-3xl sm:text-5xl">4x</div>
-          <div class="case-label mt-1">дешевле</div>
+          <div class="case-number case-number--ember whitespace-nowrap text-3xl sm:text-5xl">10 000 ₽</div>
+          <div class="case-label mt-1">от*</div>
         </div>
         <div class="w-px h-8 sm:h-12 bg-brd"></div>
         <div class="text-center">
-          <div class="case-number text-3xl sm:text-5xl">14</div>
-          <div class="case-label mt-1">лет опыта</div>
+          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">14 лет</div>
+          <div class="case-label mt-1">в IT</div>
         </div>
       </div>
 
       <!-- CTA -->
       <a href="#contact" class="btn-primary inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold cursor-pointer">
-        <span>Обсудить задачу</span>
+        <span>Заказать сайт</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
       </a>
+      <p class="text-dim text-xs mt-6">*стоимость домена не включена</p>
     </div>
 
     <!-- Scroll indicator -->
@@ -122,147 +126,272 @@
     </div>
   </section>
 
-  <!-- ═══════ SERVICES ═══════ -->
-  <section id="services" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
+  <!-- ═══════ OFFERS / PRICING ═══════ -->
+  <section id="offers" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
     <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
     <div class="max-w-6xl mx-auto">
 
       <div class="reveal mb-8 sm:mb-16">
-        <span class="text-purple text-sm font-semibold tracking-widest uppercase">Услуги</span>
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Услуги и стоимость</span>
         <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Что я <span class="text-gradient">создаю</span>
+          Два формата <span class="text-gradient">работы</span>
         </h2>
-        <p class="text-muted text-lg mt-4 max-w-2xl">
-          Любые цифровые инструменты, которые помогают вашему бизнесу зарабатывать больше.
-          Я создаю решения под ключ — вы получаете готовый продукт.
-        </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Service items -->
-        <div class="reveal-scale card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Телеграм-боты</h4>
-            <p class="text-muted text-sm">Автоматизация коммуникаций, уведомлений, отчётов</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Offer 1: Site in 1 day -->
+        <div class="reveal-scale card card-featured p-8 sm:p-10 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-ember/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="glow-dot glow-dot--ember"></div>
+              <span class="text-muted text-sm font-medium tracking-wider uppercase">Сайт за 1 день</span>
+            </div>
+            <div class="mt-4 mb-6">
+              <span class="price-tag price-tag--ember text-4xl sm:text-5xl">от 10 000 &#8381;<sup class="text-xl align-super">*</sup></span>
+            </div>
+            <ul class="space-y-3 text-muted">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>По вашим материалам — тексты и фото из Telegram или соцсетей</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Оформление заказов через Telegram-бота — заявки падают вам в чат</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>В соответствии с нормами и законами РФ</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Готово завтра — вы присылаете материалы, я отдаю работающий сайт</span>
+              </li>
+            </ul>
+            <p class="text-dim text-xs mt-6">*стоимость домена не включена</p>
           </div>
         </div>
 
-        <div class="reveal-scale reveal-delay-1 card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Мобильные приложения</h4>
-            <p class="text-muted text-sm">iOS и Android, от идеи до публикации в сторах</p>
-          </div>
-        </div>
-
-        <div class="reveal-scale reveal-delay-2 card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Веб-приложения и сайты</h4>
-            <p class="text-muted text-sm">Лендинги, дашборды, внутренние системы</p>
-          </div>
-        </div>
-
-        <div class="reveal-scale card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Мини-аппы в Telegram</h4>
-            <p class="text-muted text-sm">Полноценные приложения внутри мессенджера</p>
-          </div>
-        </div>
-
-        <div class="reveal-scale reveal-delay-1 card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Парсеры и скрейперы</h4>
-            <p class="text-muted text-sm">Сбор и обработка данных с любых источников</p>
-          </div>
-        </div>
-
-        <div class="reveal-scale reveal-delay-2 card p-6 flex items-start gap-4">
-          <div class="glow-dot mt-2 shrink-0"></div>
-          <div>
-            <h4 class="font-heading font-bold mb-1">Инструменты автоматизации</h4>
-            <p class="text-muted text-sm">Учёт, координация, напоминалки — всё, что экономит время</p>
+        <!-- Offer 2: Custom development -->
+        <div class="reveal-scale reveal-delay-1 card p-8 sm:p-10 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+          <div class="relative">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="glow-dot"></div>
+              <span class="text-muted text-sm font-medium tracking-wider uppercase">Приложения и веб-сервисы</span>
+            </div>
+            <div class="mt-4 mb-6">
+              <span class="price-tag text-4xl sm:text-5xl">от 150 000 &#8381;</span>
+            </div>
+            <ul class="space-y-3 text-muted">
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Автоматизация бизнеса — боты, парсеры, интеграции, внутренние системы</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Мобильные приложения — от идеи до публикации в сторах</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Веб-сервисы под ключ — от прототипа до продакшена</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
+                <span>Срок: дни и недели, не месяцы</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <div class="reveal mt-8 card p-6 border-purple/20">
+      <div class="reveal mt-8 card p-6 border-cyan/20">
         <p class="text-muted text-center">
-          Это не весь список. Если у вас есть идея, как заработать больше — расскажите мне. Я скажу, сколько это будет стоить и когда будет готово.
+          Опишите задачу — я скажу, сколько это будет стоить и когда будет готово. Первая консультация бесплатно.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ CASES ═══════ -->
-  <section id="cases" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
+  <!-- ═══════ PORTFOLIO ═══════ -->
+  <section id="portfolio" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
     <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
     <div class="max-w-6xl mx-auto">
 
       <div class="reveal mb-8 sm:mb-16">
-        <span class="text-purple text-sm font-semibold tracking-widest uppercase">Кейсы</span>
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Портфолио</span>
         <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
           Не обещания, а <span class="text-gradient">результаты</span>
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Case 1: Avito parser -->
-        <div class="reveal-scale card p-5 sm:p-10">
+
+        <!-- Case 1: Anima Poker -->
+        <div class="reveal-scale card card-featured p-5 sm:p-10">
           <div class="flex items-center gap-3 mb-4 sm:mb-6">
-            <div class="glow-dot"></div>
-            <span class="text-muted text-sm font-medium">Парсер данных</span>
+            <div class="glow-dot glow-dot--ember"></div>
+            <span class="text-muted text-sm font-medium">Живой покерный рум</span>
           </div>
 
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-            Парсер для Авито
+          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
+            Anima Poker
           </h3>
+          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+            Полноценная покерная вселенная: движок, GTO-боты с человеческой логикой,
+            мультитейблинг, турниры. От пустой папки до живого рума — 12 дней и 251 коммит.
+          </p>
 
           <div class="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <div class="case-label mb-1">Было</div>
-              <div class="text-2xl sm:text-3xl font-heading font-bold text-dim line-through decoration-dim/40">80 ч</div>
+              <div class="case-label mb-1">Срок</div>
+              <div class="case-number case-number--ember text-2xl sm:text-3xl">12 дней</div>
             </div>
             <div>
-              <div class="case-label mb-1">Стало</div>
-              <div class="case-number text-2xl sm:text-3xl">8 ч</div>
+              <div class="case-label mb-1">Коммитов</div>
+              <div class="case-number case-number--ember text-2xl sm:text-3xl">251</div>
             </div>
           </div>
 
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple/5 border border-purple/10 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple"><path d="m6 9 6 6 6-6"/></svg>
-            <span class="text-purple-bright text-sm font-medium">В 10 раз быстрее</span>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://animapoker.com" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              animapoker.com
+            </a>
+            <button type="button" class="js-open-pdf btn-outline btn-outline--ember px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+              Презентация
+            </button>
+            <a href="portfolio/anima-poker.pdf" download="Anima_Poker.pdf" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Скачать PDF
+            </a>
           </div>
         </div>
 
-        <!-- Case 2: iOS App -->
+        <!-- Case 2: Pervoistokov -->
         <div class="reveal-scale reveal-delay-1 card p-5 sm:p-10">
           <div class="flex items-center gap-3 mb-4 sm:mb-6">
             <div class="glow-dot"></div>
-            <span class="text-muted text-sm font-medium">Мобильное приложение</span>
+            <span class="text-muted text-sm font-medium">Сайт за 1 день + Telegram-заказы</span>
           </div>
 
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
-            Приложение в App Store
+          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
+            Хлеб Первоистоков
           </h3>
+          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+            Сайт ремесленника-хлебопёка с оформлением заказов через Telegram-бота.
+            Собран за один день по материалам Telegram-канала, в соответствии
+            с нормами и законами РФ.
+          </p>
 
           <div class="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <div class="case-label mb-1">Было</div>
-              <div class="text-2xl sm:text-3xl font-heading font-bold text-dim line-through decoration-dim/40">3 мес</div>
+              <div class="case-label mb-1">Срок</div>
+              <div class="case-number text-2xl sm:text-3xl">1 день</div>
             </div>
             <div>
-              <div class="case-label mb-1">Стало</div>
-              <div class="case-number text-2xl sm:text-3xl">6 дней</div>
+              <div class="case-label mb-1">Заказы</div>
+              <div class="case-number text-2xl sm:text-3xl">в Telegram</div>
             </div>
           </div>
 
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple/5 border border-purple/10 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple"><path d="m6 9 6 6 6-6"/></svg>
-            <span class="text-purple-bright text-sm font-medium">Без дизайнера, переводчика и аналитика</span>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://pervoistokov.uk" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              pervoistokov.uk
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 3: Avito bot -->
+        <div class="reveal-scale card p-5 sm:p-10">
+          <div class="flex items-center gap-3 mb-4 sm:mb-6">
+            <div class="glow-dot glow-dot--ember"></div>
+            <span class="text-muted text-sm font-medium">Автоматизация бизнеса</span>
+          </div>
+
+          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
+            Бот для Авито
+          </h3>
+          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+            Бот наполнил магазин заказчика товарами на 150% — склад заполнен,
+            складывать уже некуда. Разработка заняла неделю, окупилась за месяц.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mb-6">
+            <div>
+              <div class="case-label mb-1">Наполнение магазина</div>
+              <div class="case-number case-number--ember text-2xl sm:text-3xl">+150%</div>
+            </div>
+            <div>
+              <div class="case-label mb-1">Окупаемость</div>
+              <div class="case-number case-number--ember text-2xl sm:text-3xl">1 месяц</div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-ember/5 border border-ember/10 w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+            <span class="text-ember-bright text-sm font-medium">Разработка — 1 неделя</span>
+          </div>
+        </div>
+
+        <!-- Case 4: Lolita -->
+        <div class="reveal-scale reveal-delay-1 card p-5 sm:p-10">
+          <div class="flex items-center gap-3 mb-4 sm:mb-6">
+            <div class="glow-dot"></div>
+            <span class="text-muted text-sm font-medium">Сайт-визитка мастера</span>
+          </div>
+
+          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
+            Лолита Забаштан
+          </h3>
+          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+            Персональный сайт мастера: практики, услуги, запись на консультации.
+            Собран по материалам клиента — быстро и без лишних согласований.
+          </p>
+
+          <div class="flex flex-wrap gap-3">
+            <a href="https://lolitapsy.club" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              lolitapsy.club
+            </a>
+          </div>
+        </div>
+
+        <!-- Case 5: Emberhold — собственная игра -->
+        <div class="reveal-scale card card-featured p-5 sm:p-10 md:col-span-2">
+          <div class="flex items-center gap-3 mb-4 sm:mb-6">
+            <div class="glow-dot glow-dot--ember"></div>
+            <span class="text-muted text-sm font-medium">Собственная игра · в разработке</span>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 class="font-heading text-2xl sm:text-3xl font-bold mb-3">
+                Emberhold
+              </h3>
+              <p class="text-muted text-sm sm:text-base leading-relaxed mb-4">
+                Сессионный диаблоид с глубоким производством и строительством базы.
+                Короткие вылазки во тьму — а лагерь живёт и перерабатывает добычу,
+                пока вы сражаетесь. Мусорного лута не существует: всё распыляется
+                и идёт в кузницу.
+              </p>
+              <p class="font-heading text-lg sm:text-2xl text-platinum mb-6">
+                «Diablo, в который можно играть по 25 минут,<br class="hidden sm:block">
+                и Valheim, в котором можно жить годами»
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1.5 rounded-lg bg-ember/5 border border-ember/10 text-ember-bright text-xs font-medium">Action-RPG</span>
+                <span class="px-3 py-1.5 rounded-lg bg-cyan/5 border border-cyan/10 text-cyan-bright text-xs font-medium">Сессии по 25 минут</span>
+                <span class="px-3 py-1.5 rounded-lg bg-ember/5 border border-ember/10 text-ember-bright text-xs font-medium">Экономика переработки</span>
+                <span class="px-3 py-1.5 rounded-lg bg-cyan/5 border border-cyan/10 text-cyan-bright text-xs font-medium">Соло-разработка + AI</span>
+              </div>
+            </div>
+
+            <button type="button" class="js-lightbox case-shot" data-full="portfolio/emberhold-title.jpg" aria-label="Emberhold — заглавный кадр, открыть крупнее">
+              <img src="portfolio/emberhold-title.jpg" alt="Emberhold — сессионная Action-RPG с обустройством базы" loading="lazy">
+            </button>
           </div>
         </div>
       </div>
@@ -275,7 +404,7 @@
     <div class="max-w-6xl mx-auto">
 
       <div class="reveal mb-8 sm:mb-16">
-        <span class="text-purple text-sm font-semibold tracking-widest uppercase">Обо мне</span>
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Обо мне</span>
         <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
           14 лет в <span class="text-gradient">IT-индустрии</span>
         </h2>
@@ -295,7 +424,7 @@
           <div>
             <div class="flex items-center gap-3 mb-3">
               <div class="glow-dot"></div>
-              <span class="text-purple text-xs font-semibold tracking-widest uppercase">Инженерия</span>
+              <span class="text-cyan text-xs font-semibold tracking-widest uppercase">Инженерия</span>
             </div>
             <p class="text-lg leading-relaxed mb-4">
               Классическое инженерное образование. С 2012 года — в разработке наукоёмкого CAD-софта. С 2021 года — в разработке мобильных приложений. Созданные приложения в AppStore:
@@ -319,8 +448,8 @@
           <!-- Продукт и технологии -->
           <div>
             <div class="flex items-center gap-3 mb-3">
-              <div class="glow-dot"></div>
-              <span class="text-purple text-xs font-semibold tracking-widest uppercase">Продукт и технологии</span>
+              <div class="glow-dot glow-dot--ember"></div>
+              <span class="text-ember text-xs font-semibold tracking-widest uppercase">Продукт и технологии</span>
             </div>
             <p class="text-lg leading-relaxed">
               Развивал крупнейшие в мире digital-сервисы для музыкантов — <span class="text-platinum">MuseScore</span> и <span class="text-platinum">Ultimate Guitar</span>. Руководил департаментом технологий логистики сортировочных центров <span class="text-platinum">Ozon</span>.
@@ -331,77 +460,11 @@
           <div>
             <div class="flex items-center gap-3 mb-3">
               <div class="glow-dot"></div>
-              <span class="text-purple text-xs font-semibold tracking-widest uppercase">Управление</span>
+              <span class="text-cyan text-xs font-semibold tracking-widest uppercase">Управление</span>
             </div>
             <p class="text-lg leading-relaxed">
               Руководил отделом разработки мобильного приложения <span class="text-platinum">Ozon</span>. Был техническим директором в iGaming-стартапах. Руководил группой компаний <span class="text-platinum">Muse</span> в составе команды управленцев.
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ PRICING ═══════ -->
-  <section id="pricing" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-6xl mx-auto">
-
-      <div class="reveal mb-8 sm:mb-16">
-        <span class="text-purple text-sm font-semibold tracking-widest uppercase">Стоимость</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Прозрачные <span class="text-gradient">условия</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Pricing 1 -->
-        <div class="reveal-scale card p-8 sm:p-10 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-purple/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div class="relative">
-            <span class="text-muted text-sm font-medium tracking-wider uppercase">Разработка под ключ</span>
-            <div class="mt-4 mb-6">
-              <span class="price-tag text-4xl sm:text-5xl">от 150 000 &#8381;</span>
-            </div>
-            <ul class="space-y-3 text-muted">
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Готовый продукт — бот, приложение, сайт, парсер</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Срок: дни, не месяцы</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>В 4 раза дешевле привычной разработки</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Pricing 2 -->
-        <div class="reveal-scale reveal-delay-1 card card-featured p-8 sm:p-10 relative overflow-hidden border-purple/20">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-purple/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div class="relative">
-            <span class="text-muted text-sm font-medium tracking-wider uppercase">Обучение команды</span>
-            <div class="mt-4 mb-6">
-              <span class="price-tag text-4xl sm:text-5xl">от 1 000 000 &#8381;</span>
-            </div>
-            <ul class="space-y-3 text-muted">
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Обучение штатных специалистов работе с AI-инструментами</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Сопровождение до результата</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Ваша команда делает то же самое в 10 раз быстрее</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -416,8 +479,8 @@
         <div class="shimmer-line mx-auto mb-8"></div>
 
         <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-          Расскажите, что хотите<br>
-          <span class="text-gradient">сделать для бизнеса</span>
+          Пришлите ссылку на ваш канал —<br>
+          <span class="text-gradient">завтра будет сайт</span>
         </h2>
 
         <p class="text-muted text-lg mb-12 max-w-xl mx-auto">
@@ -437,9 +500,42 @@
   <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
       <p>&copy; 2026 Анатолий Осокин</p>
-      <p>Создание цифровых инструментов для бизнеса</p>
+      <p>Сайты, боты и приложения для бизнеса</p>
     </div>
   </footer>
+
+  <!-- ═══════ PDF MODAL ═══════ -->
+  <div id="pdf-modal" class="pdf-modal" hidden>
+    <div class="pdf-modal__backdrop" data-close></div>
+    <div class="pdf-modal__panel">
+      <div class="pdf-modal__bar">
+        <span class="font-heading font-bold text-platinum">Anima Poker — презентация</span>
+        <div class="flex items-center gap-3">
+          <a href="portfolio/anima-poker.pdf" target="_blank" rel="noopener" class="btn-outline px-3 py-1.5 rounded-lg text-xs hidden sm:inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            В новой вкладке
+          </a>
+          <a href="portfolio/anima-poker.pdf" download="Anima_Poker.pdf" class="btn-outline px-3 py-1.5 rounded-lg text-xs inline-flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Скачать
+          </a>
+          <button type="button" class="pdf-modal__close" data-close aria-label="Закрыть">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        </div>
+      </div>
+      <iframe class="pdf-modal__frame" data-pdf-src="portfolio/anima-poker.pdf" title="Презентация Anima Poker"></iframe>
+    </div>
+  </div>
+
+  <!-- ═══════ IMAGE LIGHTBOX ═══════ -->
+  <div id="img-lightbox" class="img-lightbox" hidden>
+    <div class="img-lightbox__backdrop" data-close></div>
+    <button type="button" class="pdf-modal__close img-lightbox__close" data-close aria-label="Закрыть">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <img class="img-lightbox__img" src="" alt="">
+  </div>
 
   <script src="script.js"></script>
 </body>
