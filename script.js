@@ -207,9 +207,12 @@
       submit.disabled = !(tgInput.value.trim().length > 1 && consent.checked);
     }
 
+    let currentKey = null;
+
     function open(key) {
       const t = TARIFFS[key];
       if (!t) return;
+      currentKey = key;
       nameEl.textContent = t.name;
       priceEl.textContent = t.price;
       priceInline.textContent = t.price;
@@ -235,10 +238,24 @@
       document.body.classList.remove('modal-open');
     }
 
+    function notifyLead(tariff, contact) {
+      // best-effort: заявка в Telegram-группу через серверный релей.
+      // не блокируем показ оплаты — если бэкенд недоступен, просто игнорируем.
+      try {
+        fetch('/mastering-ai/api/pay-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tariff, contact }),
+          keepalive: true,
+        }).catch(() => {});
+      } catch (e) { /* no-op */ }
+    }
+
     function toPayment() {
       const tg = tgInput.value.trim();
       if (tg.length <= 1) { errorEl.hidden = false; tgInput.focus(); return; }
       errorEl.hidden = true;
+      notifyLead(currentKey, tg);
       tgEcho.textContent = tg;
       stepForm.hidden = true;
       stepPay.hidden = false;

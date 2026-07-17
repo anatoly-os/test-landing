@@ -6,7 +6,8 @@ Source for the **osokin.ai** site. Three independent parts live here:
 |-------------|-------------------------|---------------------------------------------------------|
 | `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). Deploy: `bash deploy-landing.sh` (also covers `portfolio/` and `mastering-ai/`). |
 | `portfolio/` | `osokin.ai/portfolio/` | Static assets for the landing's portfolio section (Anima Poker PDF, Emberhold images). |
-| `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI» (static, uses root `style.css`/`script.js`). |
+| `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI. Part 1» (static, uses root `style.css`/`script.js`; incl. offer/privacy/rules pages + SBP-payment modal). |
+| `pay-bot/`  | `osokin.ai/mastering-ai/api/pay-lead` | Tiny zero-dependency Node relay: the course buy modal POSTs the lead (tariff + contact) here, and it forwards a message to a Telegram channel/group. The RF VDS can't reach `api.telegram.org` directly, so the relay tunnels through an HTTP proxy (CONNECT). `BOT_TOKEN`, `CHAT_ID`, `PROXY_URL` live only in `/opt/pay-bot/.env` on the server (never in the repo/frontend); the proxy sees only the CONNECT target, not the TLS-encrypted token/messages. Deploy: `bash pay-bot/deploy/deploy.sh`. |
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
