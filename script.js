@@ -202,6 +202,8 @@
     const submit = modal.querySelector('.buy-submit');
     const errorEl = modal.querySelector('[data-error]');
     const tgEcho = modal.querySelector('[data-tg-echo]');
+    const tgCta = modal.querySelector('[data-tg-cta]');
+    const TG_USER = 'osokin_ai';
 
     // Валидация контакта: @ник (мин. 3 символа) ИЛИ телефон +… (10–15 цифр, E.164).
     function validateContact(raw) {
@@ -278,6 +280,10 @@
       errorEl.hidden = true;
       notifyLead(currentKey, tg);
       tgEcho.textContent = tg;
+      // предзаполненное сообщение в чат после оплаты
+      const price = (TARIFFS[currentKey] && TARIFFS[currentKey].price) || '';
+      const msg = `Привет! Курс «Mastering AI. Part 1» оплачен на сумму ${price}. Жду ссылки на видео!`;
+      tgCta.href = `https://t.me/${TG_USER}?text=${encodeURIComponent(msg)}`;
       stepForm.hidden = true;
       stepPay.hidden = false;
       modal.querySelector('.buy-modal__panel').scrollTop = 0;
