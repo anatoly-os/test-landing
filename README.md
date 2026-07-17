@@ -1,40 +1,45 @@
 # osokin.ai
 
-Source for the **osokin.ai** site. Three independent parts live here:
+Source for the **osokin.ai** site.
 
 | Path        | URL                     | What it is                                              |
 |-------------|-------------------------|---------------------------------------------------------|
-| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). Deploy: `bash deploy-landing.sh` (also covers `portfolio/` and `mastering-ai/`). |
+| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). |
 | `portfolio/` | `osokin.ai/portfolio/` | Static assets for the landing's portfolio section (Anima Poker PDF, Emberhold images). |
 | `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI. Part 1» (static, uses root `style.css`/`script.js`; incl. offer/privacy/rules pages + SBP-payment modal). |
-| `pay-bot/`  | `osokin.ai/mastering-ai/api/pay-lead` | Tiny zero-dependency Node relay: the course buy modal POSTs the lead (tariff + contact) here, and it forwards a message to a Telegram channel/group. The RF VDS can't reach `api.telegram.org` directly, so the relay tunnels through an HTTP proxy (CONNECT). `BOT_TOKEN`, `CHAT_ID`, `PROXY_URL` live only in `/opt/pay-bot/.env` on the server (never in the repo/frontend); the proxy sees only the CONNECT target, not the TLS-encrypted token/messages. Deploy: `bash pay-bot/deploy/deploy.sh`. |
+| `functions/` | `osokin.ai/mastering-ai/api/pay-lead` | Cloudflare Pages Function: the course buy modal POSTs the lead (tariff + contact) here, and it forwards a message to a Telegram channel. Runs on Cloudflare's edge (outside RF), so `api.telegram.org` is reachable directly. Secrets `BOT_TOKEN` / `CHAT_ID` are set in the Pages project (Settings → Variables and Secrets), never in the repo/frontend. |
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
-| `dnevnik/`  | `osokin.ai/dnevnik/`    | "Заметки" — a small markdown blog engine (Node service).|
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
-| `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, **not linked from anywhere** — direct URL only). Deploy: `bash deploy-family-retreats.sh`.|
-| `cv.html`   | `osokin.ai/cv`          | Standalone CV (static, single file at the webroot). Served at the clean URL `/cv` via an nginx `try_files` rule — see "Clean-URL pages" below.|
+| `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, **not linked from anywhere** — direct URL only).|
+| `cv.html`   | `osokin.ai/cv`          | Standalone CV. Pages serves `foo.html` at the clean URL `/foo` automatically (same for `/private1`, `/private2`).|
 
-## How production actually works
+## How production works
 
-**The live site is served by nginx on a VDS.** That is the source of truth.
+**The site is hosted on Cloudflare Pages.** Static bundle + one Pages Function.
 
-- Host: `root@77.105.169.236` (configured in `dnevnik/deploy/deploy.sh`).
-- Webroot: `/var/www/osokin.ai` (nginx `root`).
-- nginx site config: `/etc/nginx/sites-enabled/osokin.ai`.
+```bash
+bash build-pages.sh            # builds dist/ (cache-busted asset refs, no dnevnik)
+npx wrangler pages deploy      # deploys dist/ + functions/ (config: wrangler.jsonc)
+```
 
-> **Gotcha:** `wrangler.jsonc` (Cloudflare) and `CNAME` (GitHub Pages) are
-> leftover artifacts from earlier hosting experiments. They are **not** how the
-> site is served today — ignore them unless you are deliberately migrating.
+One-time setup: `npx wrangler login`, create the Pages project, add the custom
+domain `osokin.ai`, and set the function secrets `BOT_TOKEN` / `CHAT_ID`
+(Settings → Variables and Secrets). `404.html` is picked up as the custom 404
+automatically; clean URLs need no config.
 
-Deploying = getting files onto that VDS:
+### Legacy: the RF VDS (nginx on `77.105.169.236`)
 
-- **Main landing + `portfolio/` + `mastering-ai/`** → `bash deploy-landing.sh`.
-- **Other static parts** (`manifest/`) → `rsync` into the webroot.
-  Example (run from the repo root on macOS):
-  ```bash
-  rsync -rlptv ./manifest/ root@77.105.169.236:/var/www/osokin.ai/manifest/
-  ```
-- **`dnevnik/`** (the blog) → `bash dnevnik/deploy/deploy.sh` (see below).
+The previous production. `deploy-landing.sh`, `deploy-private.sh`,
+`deploy-family-retreats.sh`, `pay-bot/` (Node relay + SSH-tunnel units for the
+RF Telegram block) and `dnevnik/deploy/` target it and are kept for reference.
+`CNAME` is a leftover from a GitHub Pages experiment.
+
+### Retired: dnevnik — the blog engine
+
+`dnevnik/` (single-author markdown blog with an admin editor) is **not deployed
+anymore** — it needed a persistent disk and stayed behind on the VDS era. The
+code and posts remain in the repo; menu links to `/dnevnik/` were removed from
+the manifest pages. The docs below describe it as it was.
 
 ## dnevnik — the blog engine
 

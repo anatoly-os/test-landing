@@ -1,14 +1,8 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "patient-pine-c921",
+  // Cloudflare Pages config: `npx wrangler pages deploy` reads this.
+  // The static bundle is built into dist/ by build-pages.sh; the payment-lead
+  // API lives in functions/ and is bundled automatically.
+  "name": "osokin-ai",
   "compatibility_date": "2026-04-07",
-  "observability": {
-    "enabled": true
-  },
-  "assets": {
-    "directory": "."
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "pages_build_output_dir": "dist"
 }
