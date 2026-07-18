@@ -293,6 +293,37 @@ h1, h2, h3, h4 { font-family: var(--font-heading); letter-spacing: 0.3px; }
     inset 0 1px 0 rgba(255, 243, 224, 0.05);
 }
 
+/* For-sale badge — top-right corner tag on a card */
+.for-sale-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ember-bright);
+  background: rgba(255, 158, 74, 0.10);
+  border: 1px solid rgba(255, 158, 74, 0.35);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  white-space: nowrap;
+}
+
+.for-sale-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember);
+  box-shadow: 0 0 8px var(--ember-glow-strong);
+}
+
 /* ═══════════════════════════════════════════════
    CASE / STAT NUMBERS
    ═══════════════════════════════════════════════ */
