@@ -16,8 +16,18 @@ set -euo pipefail
 
 DIST=dist
 
-CSS_HASH=$(md5 -q style.css | cut -c1-10)
-JS_HASH=$(md5 -q script.js | cut -c1-10)
+# Portable 10-char content hash: md5sum on Linux (Cloudflare build image),
+# md5 -q on macOS. Both are MD5, so the first 10 hex chars match on both.
+hash10() {
+  if command -v md5sum >/dev/null 2>&1; then
+    md5sum "$1" | cut -c1-10
+  else
+    md5 -q "$1" | cut -c1-10
+  fi
+}
+
+CSS_HASH=$(hash10 style.css)
+JS_HASH=$(hash10 script.js)
 echo "style.css  -> ?v=${CSS_HASH}"
 echo "script.js  -> ?v=${JS_HASH}"
 
