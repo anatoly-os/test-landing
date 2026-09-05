@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Аукцион желания — Анатолий Осокин</title>
+<meta name="description" content="Aukцион желания: почему «сделать или не сделать» решает не сила воли, а аукцион нейронных цепей в базальных ганглиях. Обложка книги, тезисы и 11 статей о дофамине, стрессе и мотивации.">
+<meta name="theme-color" content="#0F2D34">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070c0f;
+  --bg-deep:#040608;
+  --surface:#0d1720;
+  --surface-2:#101d29;
+  --border:rgba(66,236,241,0.14);
+  --border-hover:rgba(66,236,241,0.32);
+
+  --cyan:#42ECF1;
+  --cyan-bright:#A6F7F9;
+  --cyan-glow:rgba(66,236,241,0.20);
+
+  --violet:#5C469A;
+  --purple:#884CA7;
+  --purple-bright:#C79BE0;
+  --purple-glow:rgba(136,76,167,0.30);
+
+  --yellow:#F5F0A1;
+  --blue:#115B90;
+
+  --ink:#EAF3F4;
+  --ink-muted:#93AAB0;
+  --ink-dim:#5C767C;
+
+  --font-display:'Orbitron', system-ui, sans-serif;
+  --font-body:'Manrope', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:
+    radial-gradient(120% 60% at 15% -10%, rgba(92,70,154,0.22), transparent 60%),
+    radial-gradient(100% 60% at 100% 0%, rgba(17,91,144,0.20), transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+.measure{max-width:760px;margin:0 auto;}
+
+/* ambient */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.55;animation:float 22s ease-in-out infinite;}
+.orb--1{width:560px;height:560px;background:radial-gradient(circle,rgba(66,236,241,.16),transparent 70%);top:-8%;left:10%;}
+.orb--2{width:520px;height:520px;background:radial-gradient(circle,rgba(136,76,167,.20),transparent 70%);top:20%;right:-8%;animation-delay:-8s;}
+.orb--3{width:600px;height:600px;background:radial-gradient(circle,rgba(17,91,144,.18),transparent 70%);bottom:-15%;left:-8%;animation-delay:-14s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-30px) scale(1.08);}}
+@media (prefers-reduced-motion: reduce){.orb{animation:none;}html{scroll-behavior:auto;}}
+
+section, header, footer, main{position:relative;z-index:1;}
+
+/* nav */
+.topbar{padding:1.4rem 0;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.brand{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:.04em;color:var(--ink-muted);transition:color .25s ease;}
+.brand:hover{color:var(--cyan-bright);}
+.brand-book{font-size:.82rem;color:var(--ink-dim);letter-spacing:.08em;text-transform:uppercase;}
+
+/* hero / cover view */
+.cover-view[hidden], .reader[hidden]{display:none;}
+
+.hero{padding:1.5rem 0 3rem;}
+.hero-grid{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:3rem;align-items:start;}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:2rem;}}
+
+.cover-frame{position:relative;border-radius:18px;overflow:hidden;isolation:isolate;}
+.cover-frame::before{
+  content:'';position:absolute;inset:-2px;z-index:-1;border-radius:20px;
+  background:conic-gradient(from 120deg, var(--cyan), var(--purple), var(--violet), var(--cyan));
+  opacity:.7;animation:spin 12s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion: reduce){.cover-frame::before{animation:none;}}
+.cover-frame img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.55);}
+
+.kicker{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink-muted);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.1rem;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan-glow),0 0 16px var(--cyan-glow);}
+.dot--p{background:var(--purple);box-shadow:0 0 8px var(--purple-glow),0 0 16px var(--purple-glow);}
+
+h1.title{
+  font-family:var(--font-display);font-weight:900;letter-spacing:.01em;
+  font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.04;margin-bottom:.6rem;
+  background:linear-gradient(100deg, var(--cyan-bright) 0%, var(--cyan) 30%, var(--purple-bright) 65%, var(--purple) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink);font-weight:500;margin-bottom:1.4rem;line-height:1.4;}
+.author-line{color:var(--ink-dim);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.8rem;}
+.author-line strong{color:var(--ink-muted);}
+
+.thesis-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
+.thesis-list li{
+  position:relative;padding-left:1.6rem;color:var(--ink-muted);line-height:1.65;font-size:.98rem;
+}
+.thesis-list li::before{
+  content:'';position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:2px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  box-shadow:0 0 10px var(--cyan-glow);
+}
+.thesis-list li strong{color:var(--ink);}
+.thesis-callout{
+  margin-top:1.2rem;padding:1rem 1.2rem;border-radius:12px;
+  background:rgba(245,240,161,0.06);border:1px solid rgba(245,240,161,0.22);
+  color:var(--yellow);font-size:.95rem;line-height:1.6;
+}
+
+.protocol-line{margin-top:1.4rem;color:var(--ink-muted);font-size:.92rem;line-height:1.7;padding-top:1.2rem;border-top:1px solid var(--border);}
+.protocol-line strong{color:var(--ink);}
+
+/* articles list */
+.articles-section{padding:2.5rem 0 4rem;}
+.section-head{margin-bottom:1.8rem;}
+.section-head h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--ink);margin-bottom:.5rem;}
+.section-head p{color:var(--ink-muted);font-size:.95rem;max-width:60ch;}
+
+.a-grid{display:grid;grid-template-columns:1fr;gap:.75rem;}
+.a-card{
+  display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.3rem;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  transition:border-color .25s ease, transform .25s ease, background .25s ease;
+}
+.a-card:hover{border-color:var(--border-hover);background:var(--surface-2);transform:translateX(4px);}
+.a-num{
+  font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--cyan);
+  min-width:2.2rem;text-align:center;
+}
+.a-card-body{flex:1;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.a-card-title{color:var(--ink);font-size:.98rem;line-height:1.4;font-weight:600;}
+.a-card-go{color:var(--ink-dim);font-size:.82rem;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
+.a-card:hover .a-card-go{color:var(--purple-bright);}
+.arrow{transition:transform .25s ease;display:inline-block;}
+.a-card:hover .arrow{transform:translateX(3px);}
+
+/* reader view */
+.reader-inner{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink-dim);font-size:.85rem;margin-bottom:2rem;transition:color .2s ease;}
+.back-link:hover{color:var(--cyan-bright);}
+.arrow-l{display:inline-block;}
+
+.reader-kicker{color:var(--purple-bright);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem;}
+.reader-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.2;margin-bottom:2rem;color:var(--ink);}
+
+.prose p{color:var(--ink-muted);line-height:1.8;font-size:1.02rem;margin-bottom:1.2rem;}
+.prose h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--ink);margin:2.2rem 0 1rem;}
+.prose strong{color:var(--ink);}
+.prose em{color:var(--cyan-bright);font-style:italic;}
+.prose hr{border:none;border-top:1px solid var(--border);margin:2.4rem 0 1.6rem;}
+.prose p:has(strong:only-child){
+  font-family:var(--font-display);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:1rem;
+}
+.prose p:has(> em:only-child){color:var(--ink-dim);}
+
+.reader-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.pager-link{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;border-radius:12px;background:var(--surface);border:1px solid var(--border);max-width:340px;transition:border-color .25s ease,background .25s ease;}
+.pager-link:hover{border-color:var(--border-hover);background:var(--surface-2);}
+.pager-next{margin-left:auto;text-align:right;flex-direction:row-reverse;}
+.pager-label{display:block;color:var(--ink-dim);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem;}
+.pager-title{display:block;color:var(--ink-muted);font-size:.85rem;line-height:1.35;}
+
+footer.colophon{padding:3rem 0;border-top:1px solid var(--border);margin-top:1rem;}
+footer.colophon .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--ink-dim);font-size:.82rem;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--border),var(--purple));border-radius:3px;}
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb--1"></div>
+  <div class="orb orb--2"></div>
+  <div class="orb orb--3"></div>
+</div>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../">Анатолий Осокин</a>
+    <span class="brand-book">Аукцион желания</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="cover-view" id="cover-view">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="cover-frame">
+          <img src="cover.jpg" alt="Обложка книги «Auction of Wanting: How to Want Something Again — and Actually Do It» Анатолия Осокина" width="848" height="1272" loading="eager">
+        </div>
+        <div>
+          <div class="kicker"><span class="dot"></span>Книга · Auction of Wanting<span class="dot dot--p"></span></div>
+          <h1 class="title">Аукцион желания</h1>
+          <p class="subtitle">Как захотеть снова — и на самом деле это сделать</p>
+          <div class="author-line">Автор — <strong>Анатолий Осокин</strong></div>
+
+          <ul class="thesis-list">
+            <li>Решение «делать или не делать» — не победа воли над инстинктом и не спор двух «сознаний» (как утверждает популярный взгляд на «науку» о силе воли), а исход непрерывного, физически реализованного <strong>аукциона конкурирующих нейронных цепей</strong> в базальных ганглиях.</li>
+            <li>Дофаминовая система формирует вес ставок на основе прошлого опыта, что во многом (на решение влияют и другие части системы, например миндалина) определяет, какое именно действие — или бездействие — мы выберем.</li>
+            <li>Работоспособность системы определяется измеримыми физиологическими условиями — <strong>сном, воспалением, хроническим стрессом</strong>.</li>
+            <li>Если система сломана — она выдаёт ответ «я буду лежать» на любые попытки «встать и что-то сделать».</li>
+          </ul>
+
+          <p class="thesis-callout">💡 К счастью, систему можно целенаправленно перенастраивать конкретными, проверенными рычагами, возвращая в состояние «если я хочу, и мне нужно — я сделаю».</p>
+
+          <p class="protocol-line">Более 100 научных источников синтезированы в протокол возвращения себе здорового состояния дофаминовой системы — вместо доказанно вредного «Соберись, тряпка! Возьми себя в руки».</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="articles-section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>11 статей об аукционе желания</h2>
+          <p>От архитектуры мозга к практике: базальные ганглии, дофамин, стресс, сон и рабочие инструменты — WOOP и HRV-биофидбек.</p>
+        </div>
+        <div class="a-grid">
+        <a class="a-card" href="?a=pfk-cena-usiliya" data-a="pfk-cena-usiliya">
+          <span class="a-num">01</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Почему думать о цели физически тяжелее, чем катиться по привычке</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=mindalina" data-a="mindalina">
+          <span class="a-num">02</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=bazalnye-gangli" data-a="bazalnye-gangli">
+          <span class="a-num">03</span>
+          <span class="a-card-body">
+            <span class="a-card-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=dofamin-neiromediator" data-a="dofamin-neiromediator">
+          <span class="a-num">04</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=oshibka-predskazaniya" data-a="oshibka-predskazaniya">
+          <span class="a-num">05</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=vigor-tonicheskiy-dofamin" data-a="vigor-tonicheskiy-dofamin">
+          <span class="a-num">06</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=chto-takoe-hochu" data-a="chto-takoe-hochu">
+          <span class="a-num">07</span>
+          <span class="a-card-body">
+            <span class="a-card-title">«Хочу» — это не чувство. Это выигранный тендер</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=woop" data-a="woop">
+          <span class="a-num">08</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Мечтать о победе — худшее, что можно сделать перед стартом. Вот что работает вместо</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=vospalenie-stress-dofamin" data-a="vospalenie-stress-dofamin">
+          <span class="a-num">09</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Твоя иммунная система может выключить тебе дофамин. Буквально</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=hrv-biofidbek" data-a="hrv-biofidbek">
+          <span class="a-num">10</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Один цифровой график, который показывает, тренируется ли твой тормоз</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+
+        <a class="a-card" href="?a=fragmentaciya-sna" data-a="fragmentaciya-sna">
+          <span class="a-num">11</span>
+          <span class="a-card-body">
+            <span class="a-card-title">Ты спал 8 часов и всё равно разбит — вот что на самом деле фрагментирует сон</span>
+            <span class="a-card-go">Читать <span class="arrow">→</span></span>
+          </span>
+        </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="reader-view">
+
+    <article class="reader" id="reader-pfk-cena-usiliya" data-a="pfk-cena-usiliya" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 01 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Почему думать о цели физически тяжелее, чем катиться по привычке</h1>
+        <div class="prose">
+          <p>Возьми два действия. Первое: рука сама тянется к телефону, когда пришло уведомление. Второе: ты садишься писать отчёт, который откладывал три дня. Субъективно оба — просто «действия». Но с точки зрения мозга это две принципиально разные по стоимости операции, и разница между ними объясняет, почему сила воли ощущается как ресурс, который заканчивается.</p>
+<h2>Проторённая колея против удержания цели</h2>
+<p>Привычное действие — это давно закреплённый, многократно усиленный синаптический путь. Сигнал бежит по нему почти без сопротивления, как вода по руслу, которое сама же вода и промыла.</p>
+<p>Целевое, неавтоматизированное действие устроено иначе. Чтобы удержать в фокусе цель, которой ещё не существует в виде готового моторного навыка («не ешь, у тебя цель на месяц», «садись, допиши отчёт»), префронтальная кора должна активно удерживать это представление во времени — нейроны держат паттерн возбуждённым через рекуррентные петли, постоянно пересчитывая его против отвлекающих сигналов. Это не течёт само. Это нужно толкать каждую секунду.</p>
+<h2>Кто выставляет счётчик</h2>
+<p>Здесь в игру входит структура, о которой реже говорят вне специальной литературы — передняя поясная кора, а точнее её дорсальный отдел (dACC). Влиятельная модель, предложенная Амитаем Шенхавом с коллегами в 2013 году, описывает её работу как вычисление «ожидаемой ценности контроля»: dACC оценивает одновременно потенциальную выгоду от усилия, объём контроля, который для этого нужно приложить, и субъективную цену самого усилия — и на основе этого решает, стоит ли вообще включать дорогой режим целенаправленного поведения.</p>
+<p>Это не метафора для красоты — при повреждении или дисфункции этого узла человек не начинает принимать неверные решения. Он перестаёт мобилизовывать усилие вообще, даже прекрасно понимая, что и как нужно делать. Аукцион идёт, но dACC не выставляет ставку.</p>
+<h2>Осторожность, которую стоит держать в голове</h2>
+<p>Модель Шенхава — не единственная и не окончательно согласованная в науке. Есть конкурирующая точка зрения (её продвигают Мэттью Раштворт и коллеги), рассматривающая ту же зону скорее через призму «стоит ли переключиться на другую задачу», чем через прямой расчёт затрат-выгод. Спор между этими взглядами не закрыт — и это нормальная ситуация для передового края нейронауки, а не повод не доверять модели вовсе.</p>
+<h2>А как же «истощение силы воли»?</h2>
+<p>Стоит отдельно сказать про популярную идею, что сила воли — это буквально мышца, которая устаёт от использования (так называемая модель истощения эго, ego depletion). Она была невероятно влиятельна в психологии два десятилетия. Но в 2016 году масштабная предрегистрированная репликация — 23 независимые лаборатории, больше двух тысяч участников — не нашла эффекта вообще: итоговый размер эффекта оказался статистически неотличим от нуля.</p>
+<p>Это важно не для того, чтобы сказать «значит, усталость от усилия — миф». Скорее наоборот: это показывает, что дорогая цена целенаправленного действия — реальный и куда более интересный феномен, чем «мышца устала». Дело не в исчерпании топлива, а в постоянно пересчитываемой калькуляции dACC: стоит ли конкретно сейчас платить цену за удержание цели, учитывая усталость, стресс, уровень глюкозы и всё остальное, что на эту калькуляцию влияет.</p>
+<h2>Что из этого следует практически</h2>
+<p>Если тяжесть задачи — это не исчерпание ресурса, а результат вычисления «выгода минус цена усилия», то у этого вычисления можно менять входные данные. Дробление цели на маленькие шаги не «обманывает» мозг — оно снижает воспринимаемую цену усилия для конкретного следующего действия, и dACC выставляет более низкий, более проходной счёт. Это не сила воли в народном смысле слова. Это работа с самим механизмом расчёта, который стоит за ощущением «тяжело — не тяжело».</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Shenhav, A., Botvinick, M. M., &amp; Cohen, J. D. (2013). The expected value of control: An integrative theory of anterior cingulate cortex function. <em>Neuron</em>, 79(2), 217–240.</p>
+<p>Hagger, M. S., Chatzisarantis, N. L. D., et al. (2016). A multi-lab pre-registered replication of the ego-depletion effect. <em>Perspectives on Psychological Science</em>, 11(4), 546–573.</p>
+<p>Kurzban, R., Duckworth, A., Kable, J. W., &amp; Myers, J. (2013). An opportunity cost model of subjective effort and task performance. <em>Behavioral and Brain Sciences</em>, 36(6), 661–679.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <span></span>
+          <a class="pager-link pager-next" href="?a=mindalina"><span><span class="pager-label">Следующая</span><span class="pager-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-mindalina" data-a="mindalina" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 02 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</h1>
+        <div class="prose">
+          <p>Прежде чем ты успеешь осознанно подумать «это опасно» или «это неприятно», где-то в глубине мозга уже принято решение — и тело уже отреагировало. За это отвечает миндалина: маленькая парная структура в височных долях, которая давно и не совсем справедливо получила репутацию «центра страха».</p>
+<h2>Почему миндалина оказалась именно в этой роли</h2>
+<p>Дело в редком анатомическом совпадении. У миндалины есть плотные прямые связи одновременно с двумя типами структур: с гипоталамусом и стволом мозга — то есть с телом (пульс, гормоны, готовность бежать или замереть), и с корой и гиппокампом — то есть со входом от органов чувств и с памятью. Ни у одной другой структуры мозга нет такого удобного сочетания «вход + оценка + прямой рычаг на тело» в одном месте. Это не значит, что миндалина «умнее» других структур — она просто оказалась architecturally в правильном месте, чтобы взять на себя функцию быстрой оценки значимости с немедленным телесным ответом.</p>
+<h2>Два пути к одному судье</h2>
+<p>Сигнал может дойти до миндалины двумя разными маршрутами. Быстрый — напрямую от таламуса, минуя кору: грубый, неточный, зато почти мгновенный. Медленный — через кору, с полноценным анализом, что именно происходит. Это и объясняет, почему можно вздрогнуть от тени на полу за долю секунды до того, как осознанно понять, что это просто провод — первый путь уже сработал, второй ещё анализирует.</p>
+<h2>Она не орган одной эмоции</h2>
+<p>Стоит сразу закрыть популярное упрощение: у миндалины нет «своей» эмоции — идея, что страх живёт строго в миндалине, радость строго в прилежащем ядре и так далее, при строгой проверке большими метаанализами не подтверждается. Один и тот же участок миндалины активируется и при страхе, и при удивлении, и даже при сильном положительном возбуждении. Она устроена скорее как детектор значимости и неопределённости вообще, чем как персональный «орган страха». Современный взгляд, в том числе теория конструирования эмоций Лизы Фельдман Барретт, состоит в том, что конкретная эмоция не находится в одном узле, а собирается заново каждый раз из сочетания валентности, возбуждения, интероцепции и уже имеющихся у человека понятий.</p>
+<h2>Как миндалина вмешивается в решения</h2>
+<p>У миндалины есть прямой, синаптический доступ к структуре, которая решает, что делать дальше — вентральному стриатуму (прилежащему ядру) и недавно открытому «хвосту» дорсального стриатума, специализированному именно на угрозе. Её глутаматные волокна физически сходятся с дофаминовыми волокнами в одних и тех же клетках-мишенях — то есть миндалина в буквальном смысле умеет подкидывать вес в мотивационное решение мозга, а не просто «пугать» абстрактно.</p>
+<p>К более взвешенным, целенаправленным контурам принятия решений (там, где человек сознательно планирует и держит цель) у миндалины прямых синапсов нет. Зато есть более медленный и в некотором смысле более опасный рычаг: при хроническом стрессе миндалина физически ослабляет целенаправленный контур и усиливает привычный — то есть решает не «что весит больше в этом раунде», а «какая система вообще будет голосовать» во всех последующих раундах. Это одно из объяснений, почему хронически тревожные или долго живущие в стрессе люди со временем начинают действовать всё более «на автомате», теряя гибкость — не потому что стали хуже соображать, а потому что баланс власти между двумя контурами мозга физически сместился.</p>
+<h2>Практический вывод</h2>
+<p>Миндалину нельзя «уговорить» логическим аргументом напрямую — у неё нет входа для чистой словесной убедительности, только для повторного опыта и его переоценки. Именно поэтому избегание конкретного пугающего действия так устойчиво поддерживает само себя: пока действие не совершено, миндалина не получает данных, что бояться было нечего, и метка угрозы консервируется — иногда на годы. А хронический, нерешаемый стресс работает медленнее и коварнее: он не просто пугает здесь и сейчас, а постепенно перепрошивает саму архитектуру того, какой контур мозга будет главным.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>LeDoux, J. E. (1996/2015). <em>The Emotional Brain</em> / <em>Anxious</em>. Основная модель двух путей к миндалине и её роли в оценке угрозы.</p>
+<p>Janak, P. H., &amp; Tye, K. M. (2015). From circuits to behaviour in the amygdala. <em>Nature</em>, 517(7534), 284–292.</p>
+<p>Barrett, L. F. (2017). <em>How Emotions Are Made: The Secret Life of the Brain</em>. Houghton Mifflin Harcourt.</p>
+<p>Amaral, D. G. (2002). The primate amygdala and the neurobiology of social behavior: implications for understanding social anxiety. <em>Biological Psychiatry</em>, 51(1), 11–17.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=pfk-cena-usiliya"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Почему думать о цели физически тяжелее, чем катиться по привычке</span></span></a>
+          <a class="pager-link pager-next" href="?a=bazalnye-gangli"><span><span class="pager-label">Следующая</span><span class="pager-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-bazalnye-gangli" data-a="bazalnye-gangli" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 03 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</h1>
+        <div class="prose">
+          <p>В любой момент времени твой мозг хочет одновременно несколько взаимоисключающих вещей: доесть, встать, ответить на сообщение, промолчать. Выйти может только одно действие. За то, чтобы в реальность прорывался ровно один согласованный ответ, а не хаос из всех конкурирующих программ сразу, отвечает группа подкорковых структур — базальные ганглии.</p>
+<h2>Почему по умолчанию — тишина</h2>
+<p>Устроено это неочевидно: большинство путей внутри базальных ганглиев тормозные. Система по умолчанию держит движение придавленным. Запуск любого действия — это не «нажать на газ», а снять уже действующий тормоз через цепочку из двух последовательных тормозных реле. Мозг по умолчанию молчалив, и заговорить — это активная, затратная операция растормаживания, а не пассивное состояние.</p>
+<h2>Молоток и две педали</h2>
+<p>Ключевая структура здесь — стриатум (полосатое тело), состоящий из почти однотипных нейронов, каждый из которых интегрирует тысячи входов от коры, таламуса и дофаминовых волокон. Классическая модель (её сформулировал Джонатан Минк ещё в 1996 году) описывает стриатум как систему «фокусированного отбора»: она не генерирует идеи сама, а выбирает одну программу действия среди множества конкурирующих и подавляет все остальные.</p>
+<p>Технически это работает через два разных пути. Прямой путь (через D1-рецепторы дофамина) — «педаль газа», растормаживает выбранное движение. Непрямой путь (через D2-рецепторы) — «педаль тормоза», подавляет конкурентов. Один и тот же выброс дофамина одновременно разгоняет победителя и ослабляет сопротивление остальных — это и есть молекулярный механизм «победитель забирает всё». Без дофамина оба пути буксуют в нейтрали — отсюда скованность и трудности с инициацией движения при болезни Паркинсона, где именно эти нейроны гибнут первыми.</p>
+<h2>Честная оговорка: модель не так проста, как кажется</h2>
+<p>Простая картина «один путь давит на газ, другой на тормоз, они работают по очереди» была основной моделью десятилетиями — но с 2013 года у неё появился серьёзный вызов. Группа Рюи Кошты, используя оптические методы, которые впервые позволили напрямую наблюдать оба пути одновременно у свободно двигающихся животных, обнаружила, что при инициации движения оба пути — и «газ», и «тормоз» — активируются <strong>одновременно</strong>, а не последовательно, как предполагала классическая модель. Это не опровергает саму идею конкуренции и отбора, но показывает, что реальная механика тоньше простой метафоры двух противоположных педалей, и в науке это до сих пор предмет активного уточнения, а не закрытый вопрос.</p>
+<h2>Не просто движение — ещё и мотивация</h2>
+<p>Важно, что стриатум — это не только про моторику. Есть градиент функций от эмоции к движению: вентральный стриатум (прилежащее ядро) отвечает за мотивацию и то, стоит ли вообще шевелиться ради чего-то, дорсомедиальный — за целенаправленный, ещё не автоматизированный план, дорсолатеральный — за давно заученные, не требующие раздумий привычки. По мере того как действие становится привычкой, контроль над ним физически переезжает от первого ко второму — это буквальное, измеримое анатомическое перемещение, а не просто фигура речи про «автоматизм».</p>
+<h2>Что это значит на практике</h2>
+<p>Аукцион в базальных ганглиях не спрашивает, какое решение «правильное» в абстрактном смысле — он взвешивает вес конкурирующих заявок и молотком отсекает всё, кроме одной. Это значит, что изменить исход можно не только логическим убеждением, но и напрямую меняя вес заявок до начала раунда: снижая цену усилия для нужного действия, повышая его конкретность, убирая конкурирующие раздражители из поля зрения. Аргументы работают на уровне коры. Вес заявки в аукционе — совсем другой, куда более физический уровень игры.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Mink, J. W. (1996). The basal ganglia: focused selection and inhibition of competing motor programs. <em>Progress in Neurobiology</em>, 50(4), 381–425.</p>
+<p>Cui, G., Jun, S. B., Jin, X., et al. (2013). Concurrent activation of striatal direct and indirect pathways during action initiation. <em>Nature</em>, 494(7436), 238–242.</p>
+<p>Freeze, B. S., Kravitz, A. V., Hammack, N., Berke, J. D., &amp; Kreitzer, A. C. (2013). Control of basal ganglia output by direct and indirect pathway projection neurons. <em>Journal of Neuroscience</em>, 33(47), 18531–18539.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=mindalina"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</span></span></a>
+          <a class="pager-link pager-next" href="?a=dofamin-neiromediator"><span><span class="pager-label">Следующая</span><span class="pager-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-dofamin-neiromediator" data-a="dofamin-neiromediator" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 04 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</h1>
+        <div class="prose">
+          <p>Если из всего, что говорят про дофамин в интернете, оставить только одно исправление — пусть будет это: дофамин не отвечает за удовольствие. За удовольствие в мозге отвечает отдельная, анатомически другая система (опиоидно-эндоканнабиноидная, «горячие точки» в прилежащем ядре и паллидуме). Дофамин делает нечто более узкое и в некотором смысле более важное для того, что вообще происходит в этой рассылке: он помечает, насколько ценным оказалось действие, и физически записывает эту ценность в структуру синапсов.</p>
+<h2>Молекула простая, работа — сложная</h2>
+<p>Химически дофамин — простой катехоламин, ничего экзотического. Особенным его делает не строение, а то, где и когда он выбрасывается. У дофамина есть четыре разных «трассы» в мозге, и путать их — источник почти всех популярных заблуждений. Мезолимбический путь отвечает за мотивацию и запись ценности — это то, о чём почти всегда идёт речь в разговорах про «дофаминовую систему». Нигростриарный путь запускает и сглаживает движение — при гибели именно этих нейронов возникает болезнь Паркинсона, и это вообще не про «хочу», а про «могу физически начать двигаться». Мезокортикальный путь поддерживает рабочую память префронтальной коры с характерной U-образной зависимостью от дозы — и мало, и слишком много одинаково ухудшают работу. Тубероинфундибулярный путь — чисто гормональный, тормозит пролактин и к мотивации отношения не имеет вовсе.</p>
+<h2>Как дофамин физически записывает вес</h2>
+<p>Момент, когда дофамин выбрасывается одновременно с активностью конкретного синапса, — это не случайное совпадение, а обучающий сигнал. При таком совпадении запускается молекулярный каскад: через дофаминовые D1-рецепторы и систему вторичных посредников синапс либо укрепляется (долговременная потенциация, LTP), либо ослабляется — в зависимости от знака сигнала. Физически это означает рост нового рецепторного оборудования в синапсе и, при повторении, утолщение самого дендритного шипика. То, что субъективно ощущается как «эта штука была ценной, хочу ещё» — на молекулярном уровне буквально новая, укреплённая проводка.</p>
+<p>Окно, в которое это совпадение должно случиться, очень узкое — доли секунды (в науке это называют eligibility trace). Отсюда практическое следствие, которое подтверждено множеством поведенческих экспериментов: немедленная награда закрепляет вес синапса заметно надёжнее, чем отложенная, даже если по объективной ценности они равны.</p>
+<h2>Почему это не «gормон счастья»</h2>
+<p>Если бы дофамин был про удовольствие, то удаление дофаминовых нейронов у экспериментальных животных должно было бы лишать их способности получать удовольствие вообще. Этого не происходит: животные без дофамина перестают инициировать усилие ради награды — не пойдут через комнату за едой — но если еду поднести прямо к ним, гедоническая реакция («вкусно») остаётся нормальной. Это классическая диссоциация между «хочу» и «нравится», подробно описанная в работах Кента Берриджа: дофамин управляет первым, не вторым.</p>
+<h2>Что из этого следует</h2>
+<p>Дофамин — это система разметки ценности и мотивации к действию, работающая через конкретный, изученный молекулярный механизм записи веса в синапс, а не абстрактная «валюта счастья», которую можно бездумно «прокачивать» или «детоксить». Путать четыре разных дофаминовых пути между собой — это как перепутать функцию щитовидной железы с функцией поджелудочной, потому что обе — железы. У каждой трассы своя, отдельная работа.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Wise, R. A. (2004). Dopamine, learning and motivation. <em>Nature Reviews Neuroscience</em>, 5(6), 483–494.</p>
+<p>Berridge, K. C., &amp; Robinson, T. E. (1998). What is the role of dopamine in reward: hedonic impact, reward learning, or incentive salience? <em>Brain Research Reviews</em>, 28(3), 309–369.</p>
+<p>Schultz, W. (1998). Predictive reward signal of dopamine neurons. <em>Journal of Neurophysiology</em>, 80(1), 1–27.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=bazalnye-gangli"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</span></span></a>
+          <a class="pager-link pager-next" href="?a=oshibka-predskazaniya"><span><span class="pager-label">Следующая</span><span class="pager-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-oshibka-predskazaniya" data-a="oshibka-predskazaniya" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 05 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</h1>
+        <div class="prose">
+          <p>Одно из самых воспроизводимых открытий в нейронауке последних тридцати лет звучит контринтуитивно: дофаминовые нейроны почти не реагируют на саму награду. Они реагируют на разницу между тем, что ты ожидал, и тем, что получил.</p>
+<h2>Эксперимент, который изменил всё</h2>
+<p>Классические записи активности дофаминовых нейронов у обезьян, сделанные Вольфрамом Шульцем в 1990-х, показали закономерность, которую сначала приняли за артефакт. Когда награда (капля сока) появлялась неожиданно — дофаминовые нейроны давали яркий всплеск активности. Когда обезьяна уже научилась, что перед соком всегда загорается определённый сигнал, всплеск смещался на сам сигнал, а не на награду — к моменту, когда сок реально появлялся, нейроны уже почти не реагировали, потому что событие стало полностью предсказуемым. А если сигнал прозвучал, но награда не пришла — происходило нечто третье: активность дофаминовых нейронов резко падала ниже базового уровня, ровно в тот момент, когда награда должна была появиться, но не появилась.</p>
+<p>Это и есть сигнал ошибки предсказания награды (reward prediction error, RPE): дофаминовый нейрон каждую миллисекунду вычисляет не «сколько награды», а «на сколько реальность отличается от прогноза», и передаёт именно эту разницу.</p>
+<h2>Почему это не просто красивая находка</h2>
+<p>Дело в том, что этот сигнал идеально совпадает с математической конструкцией из совершенно другой области — обучения с подкреплением (reinforcement learning), где системы учатся методом временных различий (temporal difference learning). Питер Дайан, Рид Монтегю и Вольфрам Шульц показали в 1997 году, что активность дофаминовых нейронов количественно ведёт себя ровно так, как предсказывает эта математическая модель. Это редкий случай в нейронауке, когда абстрактная вычислительная теория и реальная физиология клетки совпали почти идеально — не примерно похоже, а именно количественно, с конкретными числами. Байер и Глимчер в 2005 году уточнили это ещё точнее, показав, что сигнал не просто похож на ошибку предсказания, а является её количественным, линейным отражением.</p>
+<h2>Что это значит для записи весов</h2>
+<p>Именно эта разница, а не абсолютная величина награды, и есть тот сигнал, который физически укрепляет или ослабляет синапсы в системе, о которой шла речь в предыдущей статье. Если событие оказалось лучше ожидаемого — синапс, который к этому привёл, укрепляется. Если хуже — ослабляется. Если ровно как ожидалось — почти ничего не меняется, потому что мозгу нечему учиться: прогноз и так был верным.</p>
+<h2>Почему это объясняет привыкание к хорошему</h2>
+<p>Отсюда прямо следует эффект, знакомый каждому: одно и то же действие со временем перестаёт «радовать» так, как в первый раз — не потому что вкус изменился, а потому что прогноз мозга подтянулся к реальности, и ошибка предсказания стремится к нулю. Дофаминовый отклик даёт не сам факт хорошего события, а именно его неожиданность. Это же объясняет, почему нерегулярное, непредсказуемое подкрепление (переменный график вознаграждения) закрепляет поведение сильнее и устойчивее, чем стабильная, ожидаемая награда каждый раз — ошибка предсказания в первом случае просто не успевает упасть до нуля.</p>
+<h2>Практический вывод</h2>
+<p>Если хочешь, чтобы мозг записал что-то как ценное, важна не столько абсолютная величина результата, сколько момент, в который результат оказался лучше, чем ты рассчитывал. Заниженные ожидания перед маленьким шагом — не самообман, а буквально способ гарантировать положительную ошибку предсказания там, где высокая планка её съедала бы заранее.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Schultz, W., Dayan, P., &amp; Montague, P. R. (1997). A neural substrate of prediction and reward. <em>Science</em>, 275(5306), 1593–1599.</p>
+<p>Bayer, H. M., &amp; Glimcher, P. W. (2005). Midbrain dopamine neurons encode a quantitative reward prediction error signal. <em>Neuron</em>, 47(1), 129–141.</p>
+<p>Schultz, W. (1998). Predictive reward signal of dopamine neurons. <em>Journal of Neurophysiology</em>, 80(1), 1–27.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=dofamin-neiromediator"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span></span></a>
+          <a class="pager-link pager-next" href="?a=vigor-tonicheskiy-dofamin"><span><span class="pager-label">Следующая</span><span class="pager-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-vigor-tonicheskiy-dofamin" data-a="vigor-tonicheskiy-dofamin" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 06 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</h1>
+        <div class="prose">
+          <p>В предыдущей статье речь шла о дофамине, который вспыхивает на миллисекунды в момент ошибки предсказания — это фазовый дофамин, он про выбор конкретного действия. Но есть и второй, гораздо более медленный режим работы той же молекулы — тонический, фоновый уровень, который меняется не за миллисекунды, а за минуты и часы. Именно он объясняет разрыв между «я понимаю, что нужно встать» и реальным «встал и пошёл».</p>
+<h2>Задача, которую фазовый дофамин не решает</h2>
+<p>Вся классическая теория обучения с подкреплением отвечает на вопрос «какое действие выбрать». Она молчит про совершенно другой, не менее важный вопрос: с какой скоростью и энергичностью это действие выполнять. Голодное животное не просто выбирает еду вместо не-еды — оно бежит к еде быстрее. Модель Яэль Нив, Натаниэля Доу, Дафны Джоэл и Питера Дайана, опубликованная в 2007 году, впервые формально описала, откуда берётся этот параметр — vigor, «энергичность» ответа.</p>
+<h2>Логика модели: время тоже стоит денег</h2>
+<p>Идея в следующем: любое промедление имеет свою цену — пока ты медлишь, ты не получаешь награду, которую мог бы получать в среднем за это же время где-то ещё. Эта средняя, фоновая скорость поступления награды в среде и есть тот самый параметр, который, согласно модели, отслеживает тонический уровень дофамина в прилежащем ядре. Чем выше фоновый уровень дофамина — тем «дороже» кажется потерянное время, и тем энергичнее, быстрее мозг стремится действовать. Низкий тонический дофамин, наоборот, сигнализирует: спешить некуда, награды в среде и так мало и редко — экономь силы.</p>
+<p>Это не осталось чисто теоретической конструкцией. Последующие эксперименты подтвердили её поведенчески: скорость реакции людей действительно снижается пропорционально среднему уровню недавно полученной награды, и введение препаратов-предшественников дофамина (леводопы) усиливает этот эффект — то есть повышение доступности дофамина напрямую усиливает влияние среднего вознаграждения на скорость и энергичность ответа.</p>
+<h2>Почему это меняет разговор про мотивацию</h2>
+<p>Из этой модели следует нечто важное для того, как обычно говорят про апатию и «лень». Просевший тонический дофамин — это не отсутствие конкретного желания что-то одно. Это сдвинутая базовая ставка на <strong>всё</strong> сразу: любое действие в принципе кажется менее оправданным по затратам времени, потому что фоновая оценка «сколько вообще сейчас стоит платить усилием за что угодно» занижена. Отсюда специфичный признак: если «не хочу» относится к одному конкретному делу — это, вероятнее всего, вопрос веса именно этой ставки. Если «не хочу» разлито на логически несвязанные области жизни одновременно — это куда больше похоже на просевший тонический уровень, общий множитель, а не адресную проблему с одной задачей.</p>
+<h2>Осторожность</h2>
+<p>Модель Нив и коллег остаётся вычислительной теорией с хорошим, но не исчерпывающим набором подтверждений — вопрос, насколько буквально тонический дофамин в прилежащем ядре у человека отслеживает именно среднюю награду среды, а не что-то смежное, остаётся предметом дальнейших уточнений, а не давно закрытым фактом.</p>
+<h2>Практический вывод</h2>
+<p>Если энергичность — это не постоянная черта характера, а вычисляемый, зависящий от недавнего опыта параметр, то на него можно влиять не уговорами, а тем, что реально меняет фоновую оценку «сколько вокруг вознаграждения»: регулярность мелких завершённых действий, сон, воспаление, хронический стресс — всё то, что снижает или поднимает эту фоновую ставку, а не разговоры о том, что «пора взять себя в руки».</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Niv, Y., Daw, N. D., Joel, D., &amp; Dayan, P. (2007). Tonic dopamine: opportunity costs and the control of response vigor. <em>Psychopharmacology</em>, 191(3), 507–520.</p>
+<p>Salamone, J. D., &amp; Correa, M. (2012). The mysterious motivational functions of mesolimbic dopamine. <em>Neuron</em>, 76(3), 470–485.</p>
+<p>Beierholm, U., Guitart-Masip, M., Economides, M., et al. (2013). Dopamine modulates reward-related vigor. <em>Neuropsychopharmacology</em>, 38(8), 1495–1503.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=oshibka-predskazaniya"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</span></span></a>
+          <a class="pager-link pager-next" href="?a=chto-takoe-hochu"><span><span class="pager-label">Следующая</span><span class="pager-title">«Хочу» — это не чувство. Это выигранный тендер</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-chto-takoe-hochu" data-a="chto-takoe-hochu" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 07 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">«Хочу» — это не чувство. Это выигранный тендер</h1>
+        <div class="prose">
+          <p>Спроси человека, что такое «хочу», и почти любой ответит что-то про внутреннее ощущение, ясное и цельное — как будто внутри есть один голос, который просто сообщает о своём желании. Нейронаука описывает происходящее иначе, и разница принципиальна для того, почему «хочу» иногда есть, а действия — нет.</p>
+<h2>Парламент вместо монарха</h2>
+<p>В мозге нет единого центра желания. Есть множество специализированных систем, каждая из которых постоянно отправляет свои заявки, как лоббисты в парламент: гипоталамус мониторит выживание (сахар, вода, температура), миндалина метит угрозу и ценность на основе прошлого опыта, дофаминовая система назначает вес на основе предсказанной выгоды. Префронтальная кора — не диктатор, отдающий приказы всем остальным, а участник того же самого аукциона, просто с самым длинным горизонтом планирования и, что важно, самый дорогой в вычислительном смысле — и первым слабеющий при усталости и стрессе.</p>
+<p>То, что финиширует в этом аукционе с наибольшим весом, и получает право транслироваться дальше — в базальные ганглии, где решается, какое одно действие в итоге выйдет наружу.</p>
+<h2>Три стадии между импульсом и осознанием</h2>
+<p>Полезно разложить путь от импульса до переживания «я хочу» на три отдельных этапа. Сначала происходит конструирование: префронтальная кора формулирует саму задачу, а дефолт-система мозга достраивает её образным, автобиографическим воображением — это ещё не выигрыш и не проигрыш, просто появление кандидата. Дальше — подача ставки: сконструированная цель поступает в базальные ганглии с весом, который частично определён прошлым обучением (записанными синаптическими весами), частично — текущей сознательной оценкой цены усилия. И только затем — разрешение аукциона: реальная конкуренция с привычными, автоматическими программами действия, масштабируемая тем самым тоническим vigor, о котором шла речь в предыдущей статье.</p>
+<h2>Почему можно «хотеть» и не выигрывать</h2>
+<p>Здесь скрывается объяснение одного из самых частых и мучительных состояний — «хочу, но не делаю». Теория глобального нейронного рабочего пространства (её разрабатывали Бернард Баарс и позже Станислас Деан) описывает отдельный, более низкий порог — порог «воспламенения» (ignition): самоусиливающуюся волну активности, необходимую, чтобы представление вообще стало осознаваемым, попало в общую трансляцию, доступную языку и памяти. Этот порог ниже и качественно отличается от порога, необходимого, чтобы реально выиграть исполнение в аукционе базальных ганглиев.</p>
+<p>Именно поэтому возможен проигравший, но полностью осознанный кандидат: он перепрыгнул порог воспламенения — и поэтому существует как отчётливая мысль «я хочу это сделать» — но не перепрыгнул порог исполнения. Осознание не гарантирует победы.</p>
+<h2>Что тогда такое «ничего не хочу»</h2>
+<p>Если применить эту же логику к состоянию, когда не хочется вообще ничего, возникает важное различие. Это не обязательно означает, что «ни одна ставка не выиграла аукцион» — это была бы просто более тяжёлая версия «хочу, не делаю». Более точное описание: общий множитель vigor просажен настолько, что эффективный вес ни одного кандидата не добирается даже до низкого порога воспламенения — кандидаты физически не успевают стать осознаваемыми желаниями.</p>
+<p>Стоит сказать честно: прямая связь именно vigor с порогом воспламенения — это сборка двух отдельно установленных в науке механизмов, а не единая, напрямую процитированная в одном эксперименте находка. И открытый вопрос, который наука пока не закрывает уверенно ни в одну сторону: возможно, дело не в том, что кандидаты формируются нормально, но не долетают до сознания, а в том, что при просевшем vigor само конструирование в префронтальной коре становится вялым и производит меньше кандидатов вообще.</p>
+<h2>Практический вывод</h2>
+<p>«Хочу» — это репортаж о текущем состоянии внутренней конкуренции, а не гарантия и не команда к действию. Оно может быть абсолютно искренним и при этом честно проигрывать более тяжёлому, привычному конкуренту. Это меняет вопрос с «почему я не хочу на самом деле» на куда более работающий: «что можно сделать с весом заявки, а не с искренностью желания».</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Dehaene, S., &amp; Changeux, J. P. (2011). Experimental and theoretical approaches to conscious processing. <em>Neuron</em>, 70(2), 200–227.</p>
+<p>Baars, B. J. (1988/2005). <em>A Cognitive Theory of Consciousness</em> / Global workspace theory: a rigorous scientific theory of consciousness.</p>
+<p>Niv, Y., Daw, N. D., Joel, D., &amp; Dayan, P. (2007). Tonic dopamine: opportunity costs and the control of response vigor. <em>Psychopharmacology</em>, 191(3), 507–520.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=vigor-tonicheskiy-dofamin"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</span></span></a>
+          <a class="pager-link pager-next" href="?a=woop"><span><span class="pager-label">Следующая</span><span class="pager-title">Мечтать о победе — худшее, что можно сделать перед стартом. Вот что работает вместо</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-woop" data-a="woop" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 08 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Мечтать о победе — худшее, что можно сделать перед стартом. Вот что работает вместо</h1>
+        <div class="prose">
+          <p>Классический совет «представь себя успешным, и это тебя замотивирует» не просто бесполезен. Есть основания думать, что в некоторых ситуациях он буквально снижает шансы на успех — и это не философское рассуждение, а результат серии контролируемых экспериментов Габриэле Эттинген.</p>
+<h2>Эксперимент, который перевернул интуицию</h2>
+<p>В одном из первых исследований Эттинген просила студентов, ищущих работу после выпуска, оценить, насколько ярко и позитивно они представляют себе будущий переход в профессию. Через два года с ними связались снова. Результат оказался обратным ожидаемому: чем более позитивно и ярко студенты воображали успешный переход заранее, тем меньше заявок они в итоге подавали, тем реже их звали на собеседования и тем ниже была итоговая зарплата. Похожая закономерность подтвердилась в разных областях: у людей, желающих похудеть, у пациентов после операции на бедре, у студентов перед экзаменом — везде яркая позитивная фантазия о результате коррелировала с худшим реальным исходом.</p>
+<h2>Почему так происходит</h2>
+<p>Объяснение, которое даёт Эттинген, опирается на то, что мозг частично реагирует на воображаемое так же, как на реальное. Когда система вознаграждения заранее «обналичивает» удовольствие от представленного успеха, падает субъективная срочность и мобилизация, необходимая, чтобы этот успех действительно случился в реальности. Позитивная фантазия о будущем не основана на уже случившемся опыте — в отличие от позитивного ожидания, она строится на потребности, а не на свидетельствах, и именно поэтому она может расслаблять вместо того, чтобы заряжать.</p>
+<h2>Что предлагается вместо этого</h2>
+<p>Решение, которое Эттинген вместе с Питером Голлвитцером сформулировали в протокол WOOP (Wish – Outcome – Obstacle – Plan), устроено иначе: желание и результат представляются так же ярко, как в обычной визуализации — но сразу вслед за этим человек честно представляет конкретное внутреннее препятствие, которое реально стоит на пути. Это называется мысленным контрастированием, и оно создаёт то, чего не даёт голая позитивная фантазия — отрицательную ошибку предсказания, которая не позволяет системе расслабиться раньше времени. Только после этого добавляется план в формате «если возникнет X, то я сделаю Y» — это уже отдельная, хорошо изученная техника имплементационных намерений Питера Гольвитцера.</p>
+<h2>Что говорит независимая проверка</h2>
+<p>Здесь стоит быть честным с цифрами. Независимый систематический обзор и метаанализ по применению мысленного контрастирования в контексте изменения поведения, связанного со здоровьем (Cross &amp; Sheffield, объединивший 11 исследований и более 1300 участников), подтверждает реальный, но скромный эффект — размер эффекта (Hedges&#39; g) около 0,3, что по общепринятым меркам считается малым-средним, а не огромным. Интереснее другое: в этом же обзоре добавление имплементационных намерений (то есть буквы «P» из WOOP, план «если-то») статистически значимо <strong>не усиливало</strong> эффект сверх одного лишь мысленного контрастирования. Это не значит, что план бесполезен — скорее означает, что независимое, отдельное от лаборатории самой Эттинген подтверждение именно добавленной ценности полного четырёхшагового протокола пока скромнее, чем можно подумать по популярным описаниям метода.</p>
+<h2>Практический вывод</h2>
+<p>WOOP — рабочий, экспериментально проверенный инструмент, но не волшебная кнопка и не гарантия результата. Его реальная сила — не в позитивном настрое, а в том, что он специально устроен так, чтобы не дать позитивному настрою обмануть систему мотивации раньше времени. И честная научная позиция здесь — «работает, скромно, механизм понятен», а не «работает всегда и очень сильно».</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Oettingen, G. (2014). <em>Rethinking Positive Thinking: Inside the New Science of Motivation</em>. Current.</p>
+<p>Oettingen, G., Pak, H., &amp; Schnetter, K. (2001). Self-regulation of goal-setting: turning free fantasies about the future into binding goals. <em>Journal of Personality and Social Psychology</em>, 80(5), 736–753.</p>
+<p>Cross, A., &amp; Sheffield, D. (2016). Mental contrasting as a health behaviour change technique: a systematic review and meta-analysis. <em>European Health Psychologist</em>, 18(3).</p>
+<p>Gollwitzer, P. M. (1999). Implementation intentions: strong effects of simple plans. <em>American Psychologist</em>, 54(7), 493–503.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=chto-takoe-hochu"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">«Хочу» — это не чувство. Это выигранный тендер</span></span></a>
+          <a class="pager-link pager-next" href="?a=vospalenie-stress-dofamin"><span><span class="pager-label">Следующая</span><span class="pager-title">Твоя иммунная система может выключить тебе дофамин. Буквально</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-vospalenie-stress-dofamin" data-a="vospalenie-stress-dofamin" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 09 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Твоя иммунная система может выключить тебе дофамин. Буквально</h1>
+        <div class="prose">
+          <p>Стресс и воспаление кажутся разными областями — одно про психику, другое про биологию тела. На деле это две сигнальные системы, настолько тесно сцепленные, что на практике часто работают как единый порочный круг, и именно этот круг — одна из самых прямых, физиологически обоснованных причин, почему хронический стресс убивает мотивацию, а не только настроение.</p>
+<h2>Как стресс перестаёт гасить воспаление</h2>
+<p>В норме кортизол — противовоспалительный гормон: он подавляет активность ключевого воспалительного регулятора NF-κB и производство провоспалительных цитокинов. Но при хроническом, затяжном стрессе развивается устойчивость рецепторов к глюкокортикоидам — модель, подробно описанная в работах Шелдона Коэна и Грегори Миллера. Клетки иммунной системы перестают «слышать» кортизол так же хорошо, как раньше, и он теряет способность сдерживать воспаление. Это подтверждено экспериментально: у хронически стрессированных людей моноциты производят больше провоспалительных цитокинов и при этом хуже поддаются подавлению кортизолом, чем у контрольной группы.</p>
+<h2>Каким образом воспаление бьёт именно по дофамину</h2>
+<p>Провоспалительные цитокины (в первую очередь интерлейкин-6) воздействуют на дофаминовую систему не абстрактно, а через несколько конкретных, изученных молекулярных путей — это подробно систематизировано в обзоре Джулу Фелгер и Майкла Тредуэя. Во-первых, они окисляют тетрагидробиоптерин (BH4) — необходимый кофермент для синтеза самого дофамина, то есть буквально мешают его производству. Во-вторых, они нарушают работу транспортёров дофамина (DAT и VMAT2), от которых зависит, как дофамин перемещается и хранится в клетке. В-третьих, воспаление перенаправляет доступный триптофан на альтернативный, кинурениновый путь метаболизма вместо пути синтеза серотонина — и часть продуктов этого альтернативного пути токсична для нейронов.</p>
+<p>Итоговый, экспериментально измеримый эффект — сниженная реакция прилежащего ядра на награду и просевший vigor: то самое общее «не хочу ничего», о котором шла речь в статье про тонический дофамин, только теперь у него есть конкретный иммунологический механизм, а не просто ярлык «усталость».</p>
+<h2>Почему это важно отличать от обычной грусти</h2>
+<p>Эта картина заслуживает отдельного внимания именно потому, что снаружи она неотличима от лени или обычного упадка настроения — а внутри имеет измеримый биологический след. Один из ключевых, доступных для проверки маркеров здесь — высокочувствительный С-реактивный белок (hs-CRP), стандартный анализ крови, который отражает системное воспаление. И здесь есть важный нюанс из клинических испытаний: положительный эффект прицельных вмешательств (например, омега-3 с высоким содержанием EPA) на мотивационно-когнитивные симптомы депрессии надёжно показан именно у людей с повышенным hs-CRP — то есть у конкретного воспалительного фенотипа, а не «в среднем по больнице». Метаанализы, не разделяющие людей по уровню воспаления, дают куда более противоречивую и слабую картину — и это не недостаток метода, а признак того, что механизм работает адресно, а не универсально.</p>
+<h2>Практический вывод</h2>
+<p>Если «нет сил» и «ничего не хочу» имеют измеримый воспалительный компонент у части людей — это меняет вопрос с «как заставить себя» на «стоит ли для начала посмотреть на анализы». hs-CRP — не экзотика и не дорогое специализированное исследование, это рутинный анализ, доступный в обычной лаборатории, и он способен отличить состояние, требующее в первую очередь разговора с врачом, от состояния, требующего в первую очередь работы с поведением и стрессом.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Felger, J. C., &amp; Treadway, M. T. (2016). Inflammation effects on motivation and motor activity: role of dopamine. <em>Neuropsychopharmacology</em>, 41(6), 1637–1650.</p>
+<p>Miller, A. H., &amp; Raison, C. L. (2016). The role of inflammation in depression: from evolutionary imperative to modern treatment target. <em>Nature Reviews Immunology</em>, 16(1), 22–34.</p>
+<p>Cohen, S., Janicki-Deverts, D., Doyle, W. J., et al. (2012). Chronic stress, glucocorticoid receptor resistance, inflammation, and disease risk. <em>PNAS</em>, 109(16), 5995–5999.</p>
+<p>Mischoulon, D., Dunlop, B. W., Kinkead, B., et al. (2022). Omega-3 fatty acids for major depressive disorder with high inflammation: a randomized dose-finding clinical trial. <em>Journal of Clinical Psychiatry</em>, 83(5), 21m14074.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=woop"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Мечтать о победе — худшее, что можно сделать перед стартом. Вот что работает вместо</span></span></a>
+          <a class="pager-link pager-next" href="?a=hrv-biofidbek"><span><span class="pager-label">Следующая</span><span class="pager-title">Один цифровой график, который показывает, тренируется ли твой тормоз</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-hrv-biofidbek" data-a="hrv-biofidbek" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 10 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Один цифровой график, который показывает, тренируется ли твой тормоз</h1>
+        <div class="prose">
+          <p>У большинства методов работы со стрессом есть общая проблема: невозможно увидеть, работают ли они, кроме как через субъективное «вроде получше». Вариабельность сердечного ритма (ВСР, HRV) — редкое исключение: это измеримый, объективный показатель, отражающий работу той же самой тормозной цепи мозга, которая отвечает за способность удерживать цель под стрессом.</p>
+<h2>Что вообще измеряет ВСР</h2>
+<p>ВСР — это не пульс, а колебания интервалов между последовательными ударами сердца. Здоровое сердце не бьётся метрономом — оно слегка ускоряется на вдохе и замедляется на выдохе, и амплитуда этих колебаний — хороший, неинвазивный отпечаток работы блуждающего нерва и, шире, всей системы саморегуляции.</p>
+<p>Модель нейровисцеральной интеграции, разработанная Джулианом Тайером, объясняет, почему это не просто «сердечная» метрика: медиальная и орбитофронтальная префронтальная кора держит тормозящий контроль над стволовыми и лимбическими структурами (включая миндалину) через каскад, в котором участвует и вагусный контроль сердечного ритма. Грубо говоря, префронтальная кора, которая хорошо тормозит миндалину, и префронтальная кора, которая хорошо тормозит сердечный ритм через вагус, — во многом одна и та же система с разными исполнительными органами на выходе. Поэтому низкая ВСР в покое статистически идёт рука об руку с худшей эмоциональной регуляцией и более реактивной миндалиной — это не совпадение, а два симптома одной и той же ослабленной тормозной цепи.</p>
+<h2>Резонансная частота: не любое медленное дыхание одинаково полезно</h2>
+<p>Есть конкретная частота дыхания — обычно в районе 5,5–6 вдохов в минуту, индивидуальная для каждого человека, — на которой дыхательная волна пульса входит в резонанс с примерно десятисекундным циклом барорефлекса (естественного механизма регуляции давления). На этой частоте амплитуда колебаний пульса вырастает в разы по сравнению с обычным дыханием. Методологию тренировки резонансной частоты подробно описали Пол Лерер и Евгения Васчилло ещё в 2000 году, и именно она лежит в основе современного HRV-биофидбека.</p>
+<p>Прямая нейровизуализация подтверждает, что это не просто субъективное расслабление: контролируемое исследование Кэтрин Насиро и коллег (2023) показало, что ежедневная практика HRV-биофидбека на резонансной частоте в течение пяти недель приводит к измеримому усилению функциональной связности между миндалиной и медиальной префронтальной корой — то есть буквально к укреплению той самой тормозящей цепи, а не только к ощущению «стало спокойнее».</p>
+<h2>Честная оговорка про кортизол</h2>
+<p>Стоит сразу закрыть один соблазнительный, но не вполне подтверждённый вывод. Логично предположить, что если метод тренирует стрессовую регуляцию, он должен снижать и уровень кортизола — но прямая проверка именно этого показывает более скромную картину. В контролируемом исследовании Бринкманн и коллег (2020), которое отдельно измеряло утренний кортизол в слюне у людей, тренировавшихся по HRV-биофидбеку, кортизол действительно значимо снизился — но ровно так же значимо снизился он и в группе, которая вообще не проходила никакого вмешательства и просто ждала своей очереди в списке. Различий между группами не было. Это не отменяет ценность метода для тренировки связности мозга — но означает, что заявление «HRV-биофидбек снижает кортизол» на сегодняшний день не имеет твёрдого прямого подтверждения в контролируемых испытаниях, и честнее говорить именно про связность и вагусный тонус, а не про гормональный эффект.</p>
+<h2>Почему нужна обратная связь в реальном времени</h2>
+<p>Резонансную частоту сложно найти и удержать вслепую — без видимой обратной связи очень легко дышать чуть быстрее или медленнее оптимума и не получить резонансного усиления вообще. Именно поэтому метод называется биофидбеком, а не просто «дыши медленно»: устройство, показывающее кривую пульса в реальном времени, превращает абстрактную инструкцию в конкретный, корректируемый на лету навык.</p>
+<h2>Практический вывод</h2>
+<p>Растущая неделя за неделей амплитуда на графике — редкий случай, когда работу над состоянием можно увидеть глазами, а не только почувствовать. Это не про кортизол и не про мгновенное расслабление — это про измеримую тренировку тормозной цепи мозга, эффект от которой накапливается за недели ежедневной практики, а не за один сеанс.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Lehrer, P. M., Vaschillo, E., &amp; Vaschillo, B. (2000). Resonant frequency biofeedback training to increase cardiac variability: rationale and manual for training. <em>Applied Psychophysiology and Biofeedback</em>, 25(3), 177–191.</p>
+<p>Nashiro, K., Yoo, H. J., Cho, C., et al. (2023). Increasing coordination and responsivity of emotion-related brain regions with a heart rate variability biofeedback randomized trial. <em>Cognitive, Affective, &amp; Behavioral Neuroscience</em>, 23, 66–80.</p>
+<p>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <em>Neuroscience &amp; Biobehavioral Reviews</em>, 36(2), 747–756.</p>
+<p>Brinkmann, A. E., Press, S. A., Helmert, E., et al. (2020). Comparing effectiveness of HRV-biofeedback and mindfulness for workplace stress reduction: a randomized controlled trial. <em>Applied Psychophysiology and Biofeedback</em>, 45(4), 307–322.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=vospalenie-stress-dofamin"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Твоя иммунная система может выключить тебе дофамин. Буквально</span></span></a>
+          <a class="pager-link pager-next" href="?a=fragmentaciya-sna"><span><span class="pager-label">Следующая</span><span class="pager-title">Ты спал 8 часов и всё равно разбит — вот что на самом деле фрагментирует сон</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="reader" id="reader-fragmentaciya-sna" data-a="fragmentaciya-sna" hidden>
+      <div class="reader-inner">
+        <a class="back-link" href="./">
+          <span class="arrow-l">←</span> Все статьи
+        </a>
+        <div class="reader-kicker">Статья 11 из 11 · Аукцион желания</div>
+        <h1 class="reader-title">Ты спал 8 часов и всё равно разбит — вот что на самом деле фрагментирует сон</h1>
+        <div class="prose">
+          <p>Можно провести в постели ровно восемь часов и проснуться таким же уставшим, как лёг. Дело не всегда в количестве сна — часто дело в его непрерывности, а непрерывность сна разрушает конкретный, изученный гормональный механизм, напрямую связанный со стрессом.</p>
+<h2>Гормон стресса, который умеет будить</h2>
+<p>Кортикотропин-рилизинг-гормон (CRH) — один из ключевых сигналов, запускающих стрессовый ответ организма через гипоталамо-гипофизарно-надпочечниковую ось. У CRH есть побочный эффект, о котором редко говорят в популярных текстах про сон: он способен напрямую фрагментировать медленноволновой сон — самую глубокую, восстановительную его фазу.</p>
+<h2>Через какую структуру это происходит</h2>
+<p>Мишень здесь — ретикулярное ядро таламуса (thalamic reticular nucleus, TRN): тонкая оболочка тормозных, ГАМК-ергических нейронов, обёрнутая вокруг самого таламуса, как скорлупа. Работа этого ядра — избирательно фильтровать, какой сенсорный поток сейчас пропускается в кору, а какой приглушается; именно оно отвечает за способность спать, не просыпаясь от каждого звука в квартире. Повышенный уровень CRH нарушает нормальную работу этого фильтра, из-за чего сон чаще прерывается микропробуждениями, даже если человек утром не помнит ни одного из них.</p>
+<h2>Порочный круг, а не разовый сбой</h2>
+<p>Здесь возникает именно порочный круг, а не одноразовая проблема одной бессонной ночи. Фрагментированный сон сам по себе является стрессором для организма и повышает стрессовую реактивность на следующий день. Более высокая стрессовая реактивность означает больше CRH. Больше CRH означает более фрагментированный следующий сон. Круг замыкается сам на себя, и именно поэтому попытка «просто лечь пораньше» часто не помогает: она не размыкает сам механизм, поддерживающий фрагментацию, а лишь добавляет больше часов к уже нарушенной архитектуре сна.</p>
+<h2>Почему это не то же самое, что структурное восстановление</h2>
+<p>Стоит отдельно отметить хорошую новость и одну важную оговорку. Хорошая новость в том, что фрагментация сна через этот механизм в норме обратима быстрее, чем структурные изменения в мозге, вызванные хроническим стрессом — она напрямую следует за снижением самой стрессовой нагрузки, а не требует отдельного долгого периода перестройки тканей.</p>
+<p>Важная оговорка: описанная картина — нарушенный, некачественный, некрепкий сон при формально достаточном количестве часов — внешне неотличима от нескольких состояний, которые требуют не управления стрессом, а визита к врачу. В первую очередь это синдром обструктивного апноэ сна (характерные признаки — храп с остановками дыхания, выраженная дневная сонливость несмотря на достаточную длительность сна) и синдром беспокойных ног (неприятные ощущения в ногах перед засыпанием). Отличить стрессовую фрагментацию от этих состояний по одним лишь ощущениям нельзя — нужна объективная диагностика у специалиста по сну, и попытка решить апноэ управлением стрессом не только не поможет, но и отсрочит нужное лечение.</p>
+<h2>Практический вывод</h2>
+<p>Если сон рвётся на куски даже при достаточной его продолжительности, разумный первый шаг — не увеличивать время в постели, а разбираться с тем, что поддерживает высокий CRH: хронической, нерешаемой стрессовой нагрузкой. И одновременно — исключить апноэ и синдром беспокойных ног, если есть характерные для них признаки, потому что в этом случае никакая работа со стрессом не заменит нужного медицинского вмешательства.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Buckley, T. M., &amp; Schatzberg, A. F. (2005). On the interactions of the hypothalamic-pituitary-adrenal (HPA) axis and sleep: normal HPA axis activity and circadian rhythm, exemplary sleep disorders. <em>Journal of Clinical Endocrinology &amp; Metabolism</em>, 90(5), 3106–3114.</p>
+<p>Steiger, A. (2002). Sleep and the hypothalamo-pituitary-adrenocortical system. <em>Sleep Medicine Reviews</em>, 6(2), 125–138.</p>
+<p>Han, F., Caron, A. M., et al. Работы по роли CRH и ретикулярного ядра таламуса в фрагментации медленноволнового сна — уточняется при финальной вёрстке по первоисточникам, указанным в списке литературы книги.</p>
+
+        </div>
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="?a=hrv-biofidbek"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Один цифровой график, который показывает, тренируется ли твой тормоз</span></span></a>
+          <a class="pager-link pager-next" href="./"><span><span class="pager-label">Готово</span><span class="pager-title">Ко всем статьям</span></span><span class="arrow">→</span></a>
+        </nav>
+      </div>
+    </article>
+  </div>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span>Аукцион желания — Анатолий Осокин</span>
+    <a href="../">← На главную osokin.ai</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var slugs = ["pfk-cena-usiliya","mindalina","bazalnye-gangli","dofamin-neiromediator","oshibka-predskazaniya","vigor-tonicheskiy-dofamin","chto-takoe-hochu","woop","vospalenie-stress-dofamin","hrv-biofidbek","fragmentaciya-sna"];
+  var cover = document.getElementById('cover-view');
+  var readers = document.querySelectorAll('.reader');
+  function show(){
+    var params = new URLSearchParams(location.search);
+    var a = params.get('a');
+    var idx = slugs.indexOf(a);
+    if(idx === -1){
+      cover.hidden = false;
+      readers.forEach(function(r){ r.hidden = true; });
+      document.title = 'Аукцион желания — Анатолий Осокин';
+      window.scrollTo(0,0);
+      return;
+    }
+    cover.hidden = true;
+    readers.forEach(function(r){ r.hidden = (r.getAttribute('data-a') !== a); });
+    var active = document.getElementById('reader-' + a);
+    if(active){
+      var h1 = active.querySelector('.reader-title');
+      if(h1) document.title = h1.textContent + ' — Аукцион желания';
+    }
+    window.scrollTo(0,0);
+  }
+  show();
+})();
+</script>
+
+</body>
+</html>
