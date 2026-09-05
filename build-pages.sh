@@ -38,7 +38,7 @@ mkdir -p "${DIST}"
 cp style.css script.js photo.png "${DIST}/"
 
 # Directories (self-contained)
-cp -R portfolio manifest profiling family_retreats mastering-ai "${DIST}/"
+cp -R portfolio manifest profiling family_retreats mastering-ai actuallydoit "${DIST}/"
 
 # HTML that needs cache-busted asset refs is staged via bust();
 # already-copied HTML inside dirs is rewritten in place below.
