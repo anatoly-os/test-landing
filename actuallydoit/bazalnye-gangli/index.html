@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>У тебя в голове есть молоток аукциониста — и он бьёт только один раз — Хотеть и Делать</title>
+<meta name="description" content="В любой момент времени твой мозг хочет одновременно несколько взаимоисключающих вещей: доесть, встать, ответить на сообщение, промолчать. Выйти может только одно…">
+<meta name="theme-color" content="#0F2D34">
+<link rel="canonical" href="https://osokin.ai/actuallydoit/bazalnye-gangli/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="У тебя в голове есть молоток аукциониста — и он бьёт только один раз — Хотеть и Делать">
+<meta property="og:description" content="В любой момент времени твой мозг хочет одновременно несколько взаимоисключающих вещей: доесть, встать, ответить на сообщение, промолчать. Выйти может только одно…">
+<meta property="og:image" content="https://osokin.ai/actuallydoit/cover.jpg">
+<meta property="og:url" content="https://osokin.ai/actuallydoit/bazalnye-gangli/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070c0f;
+  --bg-deep:#040608;
+  --surface:#0d1720;
+  --surface-2:#101d29;
+  --border:rgba(66,236,241,0.14);
+  --border-hover:rgba(66,236,241,0.32);
+
+  --cyan:#42ECF1;
+  --cyan-bright:#A6F7F9;
+  --cyan-glow:rgba(66,236,241,0.20);
+
+  --violet:#5C469A;
+  --purple:#884CA7;
+  --purple-bright:#C79BE0;
+  --purple-glow:rgba(136,76,167,0.30);
+
+  --yellow:#F5F0A1;
+  --blue:#115B90;
+
+  --ink:#EAF3F4;
+  --ink-muted:#93AAB0;
+  --ink-dim:#5C767C;
+
+  --font-display:'Orbitron', system-ui, sans-serif;
+  --font-body:'Manrope', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:
+    radial-gradient(120% 60% at 15% -10%, rgba(92,70,154,0.22), transparent 60%),
+    radial-gradient(100% 60% at 100% 0%, rgba(17,91,144,0.20), transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+.measure{max-width:760px;margin:0 auto;}
+
+/* ambient */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(110px);opacity:.55;animation:float 22s ease-in-out infinite;}
+.orb--1{width:560px;height:560px;background:radial-gradient(circle,rgba(66,236,241,.16),transparent 70%);top:-8%;left:10%;}
+.orb--2{width:520px;height:520px;background:radial-gradient(circle,rgba(136,76,167,.20),transparent 70%);top:20%;right:-8%;animation-delay:-8s;}
+.orb--3{width:600px;height:600px;background:radial-gradient(circle,rgba(17,91,144,.18),transparent 70%);bottom:-15%;left:-8%;animation-delay:-14s;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(40px,-30px) scale(1.08);}}
+@media (prefers-reduced-motion: reduce){.orb{animation:none;}html{scroll-behavior:auto;}}
+
+section, header, footer, main{position:relative;z-index:1;}
+
+/* nav */
+.topbar{padding:1.4rem 0;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.brand{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:.04em;color:var(--ink-muted);transition:color .25s ease;}
+.brand:hover{color:var(--cyan-bright);}
+.brand-book{font-size:.82rem;color:var(--ink-dim);letter-spacing:.08em;text-transform:uppercase;}
+
+/* hero / cover view */
+.hero{padding:1.5rem 0 3rem;}
+.hero-grid{display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:3rem;align-items:start;}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:2rem;}}
+
+.cover-frame{position:relative;border-radius:18px;overflow:hidden;isolation:isolate;}
+.cover-frame::before{
+  content:'';position:absolute;inset:-2px;z-index:-1;border-radius:20px;
+  background:conic-gradient(from 120deg, var(--cyan), var(--purple), var(--violet), var(--cyan));
+  opacity:.7;animation:spin 12s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion: reduce){.cover-frame::before{animation:none;}}
+.cover-frame img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.55);}
+
+.kicker{display:inline-flex;align-items:center;gap:.55rem;color:var(--ink-muted);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.1rem;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan-glow),0 0 16px var(--cyan-glow);}
+.dot--p{background:var(--purple);box-shadow:0 0 8px var(--purple-glow),0 0 16px var(--purple-glow);}
+
+h1.title{
+  font-family:var(--font-display);font-weight:900;letter-spacing:.01em;
+  font-size:clamp(2.1rem,5.2vw,3.4rem);line-height:1.04;margin-bottom:.6rem;
+  background:linear-gradient(100deg, var(--cyan-bright) 0%, var(--cyan) 30%, var(--purple-bright) 65%, var(--purple) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.subtitle{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--ink);font-weight:500;margin-bottom:1.4rem;line-height:1.4;}
+.author-line{color:var(--ink-dim);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:1.8rem;}
+.author-line strong{color:var(--ink-muted);}
+
+.thesis-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
+.thesis-list li{
+  position:relative;padding-left:1.6rem;color:var(--ink-muted);line-height:1.65;font-size:.98rem;
+}
+.thesis-list li::before{
+  content:'';position:absolute;left:0;top:.5em;width:8px;height:8px;border-radius:2px;
+  background:linear-gradient(135deg,var(--cyan),var(--purple));
+  box-shadow:0 0 10px var(--cyan-glow);
+}
+.thesis-list li strong{color:var(--ink);}
+.thesis-callout{
+  margin-top:1.2rem;padding:1rem 1.2rem;border-radius:12px;
+  background:rgba(245,240,161,0.06);border:1px solid rgba(245,240,161,0.22);
+  color:var(--yellow);font-size:.95rem;line-height:1.6;
+}
+
+.protocol-line{margin-top:1.4rem;color:var(--ink-muted);font-size:.92rem;line-height:1.7;padding-top:1.2rem;border-top:1px solid var(--border);}
+.protocol-line strong{color:var(--ink);}
+
+/* articles list */
+.articles-section{padding:2.5rem 0 4rem;}
+.section-head{margin-bottom:1.8rem;}
+.section-head h2{font-family:var(--font-display);font-weight:800;font-size:clamp(1.4rem,3vw,1.9rem);color:var(--ink);margin-bottom:.5rem;}
+.section-head p{color:var(--ink-muted);font-size:.95rem;max-width:60ch;}
+
+.a-grid{display:grid;grid-template-columns:1fr;gap:.75rem;}
+.a-card{
+  display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.3rem;border-radius:14px;
+  background:var(--surface);border:1px solid var(--border);
+  transition:border-color .25s ease, transform .25s ease, background .25s ease;
+}
+.a-card:hover{border-color:var(--border-hover);background:var(--surface-2);transform:translateX(4px);}
+.a-num{
+  font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--cyan);
+  min-width:2.2rem;text-align:center;
+}
+.a-card-body{flex:1;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.a-card-title{color:var(--ink);font-size:.98rem;line-height:1.4;font-weight:600;}
+.a-card-go{color:var(--ink-dim);font-size:.82rem;white-space:nowrap;display:flex;align-items:center;gap:.35rem;}
+.a-card:hover .a-card-go{color:var(--purple-bright);}
+.arrow{transition:transform .25s ease;display:inline-block;}
+.a-card:hover .arrow{transform:translateX(3px);}
+
+/* reader view */
+.reader-inner{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--ink-dim);font-size:.85rem;margin-bottom:2rem;transition:color .2s ease;}
+.back-link:hover{color:var(--cyan-bright);}
+.arrow-l{display:inline-block;}
+
+.reader-kicker{color:var(--purple-bright);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem;}
+.reader-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.2;margin-bottom:2rem;color:var(--ink);}
+
+.prose p{color:var(--ink-muted);line-height:1.8;font-size:1.02rem;margin-bottom:1.2rem;}
+.prose h2{font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:var(--ink);margin:2.2rem 0 1rem;}
+.prose strong{color:var(--ink);}
+.prose em{color:var(--cyan-bright);font-style:italic;}
+.prose hr{border:none;border-top:1px solid var(--border);margin:2.4rem 0 1.6rem;}
+.prose p:has(strong:only-child){
+  font-family:var(--font-display);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:1rem;
+}
+.prose p:has(> em:only-child){color:var(--ink-dim);}
+
+.reader-pager{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.pager-link{display:flex;align-items:center;gap:.7rem;padding:.9rem 1.1rem;border-radius:12px;background:var(--surface);border:1px solid var(--border);max-width:340px;transition:border-color .25s ease,background .25s ease;}
+.pager-link:hover{border-color:var(--border-hover);background:var(--surface-2);}
+.pager-next{margin-left:auto;text-align:right;flex-direction:row-reverse;}
+.pager-label{display:block;color:var(--ink-dim);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem;}
+.pager-title{display:block;color:var(--ink-muted);font-size:.85rem;line-height:1.35;}
+
+footer.colophon{padding:3rem 0;border-top:1px solid var(--border);margin-top:1rem;}
+footer.colophon .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--ink-dim);font-size:.82rem;}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--border),var(--purple));border-radius:3px;}
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="orb orb--1"></div>
+  <div class="orb orb--2"></div>
+  <div class="orb orb--3"></div>
+</div>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../../">Анатолий Осокин</a>
+    <span class="brand-book">Хотеть и Делать</span>
+  </div>
+</header>
+
+<main>
+  <article class="reader">
+    <div class="reader-inner">
+      <a class="back-link" href="../">
+        <span class="arrow-l">←</span> Все статьи
+      </a>
+      <div class="reader-kicker">Статья 03 из 12 · Хотеть и Делать</div>
+      <h1 class="reader-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</h1>
+      <div class="prose">
+        <p>В любой момент времени твой мозг хочет одновременно несколько взаимоисключающих вещей: доесть, встать, ответить на сообщение, промолчать. Выйти может только одно действие. За то, чтобы в реальность прорывался ровно один согласованный ответ, а не хаос из всех конкурирующих программ сразу, отвечает группа подкорковых структур — базальные ганглии.</p>
+<h2>Почему по умолчанию — тишина</h2>
+<p>Устроено это неочевидно: большинство путей внутри базальных ганглиев тормозные. Система по умолчанию держит движение придавленным. Запуск любого действия — это не «нажать на газ», а снять уже действующий тормоз через цепочку из двух последовательных тормозных реле. Мозг по умолчанию молчалив, и заговорить — это активная, затратная операция растормаживания, а не пассивное состояние.</p>
+<h2>Молоток и две педали</h2>
+<p>Ключевая структура здесь — стриатум (полосатое тело), состоящий из почти однотипных нейронов, каждый из которых интегрирует тысячи входов от коры, таламуса и дофаминовых волокон. Классическая модель (её сформулировал Джонатан Минк ещё в 1996 году) описывает стриатум как систему «фокусированного отбора»: она не генерирует идеи сама, а выбирает одну программу действия среди множества конкурирующих и подавляет все остальные.</p>
+<p>Технически это работает через два разных пути. Прямой путь (через D1-рецепторы дофамина) — «педаль газа», растормаживает выбранное движение. Непрямой путь (через D2-рецепторы) — «педаль тормоза», подавляет конкурентов. Один и тот же выброс дофамина одновременно разгоняет победителя и ослабляет сопротивление остальных — это и есть молекулярный механизм «победитель забирает всё». Без дофамина оба пути буксуют в нейтрали — отсюда скованность и трудности с инициацией движения при болезни Паркинсона, где именно эти нейроны гибнут первыми.</p>
+<h2>Честная оговорка: модель не так проста, как кажется</h2>
+<p>Простая картина «один путь давит на газ, другой на тормоз, они работают по очереди» была основной моделью десятилетиями — но с 2013 года у неё появился серьёзный вызов. Группа Рюи Кошты, используя оптические методы, которые впервые позволили напрямую наблюдать оба пути одновременно у свободно двигающихся животных, обнаружила, что при инициации движения оба пути — и «газ», и «тормоз» — активируются <strong>одновременно</strong>, а не последовательно, как предполагала классическая модель. Это не опровергает саму идею конкуренции и отбора, но показывает, что реальная механика тоньше простой метафоры двух противоположных педалей, и в науке это до сих пор предмет активного уточнения, а не закрытый вопрос.</p>
+<h2>Не просто движение — ещё и мотивация</h2>
+<p>Важно, что стриатум — это не только про моторику. Есть градиент функций от эмоции к движению: вентральный стриатум (прилежащее ядро) отвечает за мотивацию и то, стоит ли вообще шевелиться ради чего-то, дорсомедиальный — за целенаправленный, ещё не автоматизированный план, дорсолатеральный — за давно заученные, не требующие раздумий привычки. По мере того как действие становится привычкой, контроль над ним физически переезжает от первого ко второму — это буквальное, измеримое анатомическое перемещение, а не просто фигура речи про «автоматизм».</p>
+<h2>Что это значит на практике</h2>
+<p>Аукцион в базальных ганглиях не спрашивает, какое решение «правильное» в абстрактном смысле — он взвешивает вес конкурирующих заявок и молотком отсекает всё, кроме одной. Это значит, что изменить исход можно не только логическим убеждением, но и напрямую меняя вес заявок до начала раунда: снижая цену усилия для нужного действия, повышая его конкретность, убирая конкурирующие раздражители из поля зрения. Аргументы работают на уровне коры. Вес заявки в аукционе — совсем другой, куда более физический уровень игры.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Mink, J. W. (1996). The basal ganglia: focused selection and inhibition of competing motor programs. <em>Progress in Neurobiology</em>, 50(4), 381–425.</p>
+<p>Cui, G., Jun, S. B., Jin, X., et al. (2013). Concurrent activation of striatal direct and indirect pathways during action initiation. <em>Nature</em>, 494(7436), 238–242.</p>
+<p>Freeze, B. S., Kravitz, A. V., Hammack, N., Berke, J. D., &amp; Kreitzer, A. C. (2013). Control of basal ganglia output by direct and indirect pathway projection neurons. <em>Journal of Neuroscience</em>, 33(47), 18531–18539.</p>
+
+      </div>
+      
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="../mindalina/"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</span></span></a>
+          <a class="pager-link pager-next" href="../dofamin-neiromediator/"><span><span class="pager-label">Следующая</span><span class="pager-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span></span><span class="arrow">→</span></a>
+        </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <span>Хотеть и Делать — Анатолий Осокин</span>
+    <a href="../../">← На главную osokin.ai</a>
+  </div>
+</footer>
+
+</body>
+</html>

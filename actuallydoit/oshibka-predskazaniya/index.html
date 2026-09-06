@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Хотеть и Делать — Анатолий Осокин</title>
-<meta name="description" content="Хотеть и Делать: почему «сделать или не сделать» решает не сила воли, а аукцион нейронных цепей в базальных ганглиях. Обложка книги, тезисы и 12 статей о дофамине, стрессе, сне и мотивации.">
+<title>Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе — Хотеть и Делать</title>
+<meta name="description" content="Одно из самых воспроизводимых открытий в нейронауке последних тридцати лет звучит контринтуитивно: дофаминовые нейроны почти не реагируют на саму награду. Они…">
 <meta name="theme-color" content="#0F2D34">
-<link rel="canonical" href="https://osokin.ai/actuallydoit/">
-<meta property="og:type" content="book">
-<meta property="og:title" content="Хотеть и Делать — Анатолий Осокин">
-<meta property="og:description" content="Хотеть и Делать: почему «сделать или не сделать» решает не сила воли, а аукцион нейронных цепей в базальных ганглиях. Обложка книги, тезисы и 12 статей о дофамине, стрессе, сне и мотивации.">
+<link rel="canonical" href="https://osokin.ai/actuallydoit/oshibka-predskazaniya/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе — Хотеть и Делать">
+<meta property="og:description" content="Одно из самых воспроизводимых открытий в нейронауке последних тридцати лет звучит контринтуитивно: дофаминовые нейроны почти не реагируют на саму награду. Они…">
 <meta property="og:image" content="https://osokin.ai/actuallydoit/cover.jpg">
-<meta property="og:url" content="https://osokin.ai/actuallydoit/">
+<meta property="og:url" content="https://osokin.ai/actuallydoit/oshibka-predskazaniya/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,150 +194,52 @@ footer.colophon .wrap{display:flex;align-items:center;justify-content:space-betw
 
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="../">Анатолий Осокин</a>
+    <a class="brand" href="../../">Анатолий Осокин</a>
     <span class="brand-book">Хотеть и Делать</span>
   </div>
 </header>
 
 <main>
+  <article class="reader">
+    <div class="reader-inner">
+      <a class="back-link" href="../">
+        <span class="arrow-l">←</span> Все статьи
+      </a>
+      <div class="reader-kicker">Статья 05 из 12 · Хотеть и Делать</div>
+      <h1 class="reader-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</h1>
+      <div class="prose">
+        <p>Одно из самых воспроизводимых открытий в нейронауке последних тридцати лет звучит контринтуитивно: дофаминовые нейроны почти не реагируют на саму награду. Они реагируют на разницу между тем, что ты ожидал, и тем, что получил.</p>
+<h2>Эксперимент, который изменил всё</h2>
+<p>Классические записи активности дофаминовых нейронов у обезьян, сделанные Вольфрамом Шульцем в 1990-х, показали закономерность, которую сначала приняли за артефакт. Когда награда (капля сока) появлялась неожиданно — дофаминовые нейроны давали яркий всплеск активности. Когда обезьяна уже научилась, что перед соком всегда загорается определённый сигнал, всплеск смещался на сам сигнал, а не на награду — к моменту, когда сок реально появлялся, нейроны уже почти не реагировали, потому что событие стало полностью предсказуемым. А если сигнал прозвучал, но награда не пришла — происходило нечто третье: активность дофаминовых нейронов резко падала ниже базового уровня, ровно в тот момент, когда награда должна была появиться, но не появилась.</p>
+<p>Это и есть сигнал ошибки предсказания награды (reward prediction error, RPE): дофаминовый нейрон каждую миллисекунду вычисляет не «сколько награды», а «на сколько реальность отличается от прогноза», и передаёт именно эту разницу.</p>
+<h2>Почему это не просто красивая находка</h2>
+<p>Дело в том, что этот сигнал идеально совпадает с математической конструкцией из совершенно другой области — обучения с подкреплением (reinforcement learning), где системы учатся методом временных различий (temporal difference learning). Питер Дайан, Рид Монтегю и Вольфрам Шульц показали в 1997 году, что активность дофаминовых нейронов количественно ведёт себя ровно так, как предсказывает эта математическая модель. Это редкий случай в нейронауке, когда абстрактная вычислительная теория и реальная физиология клетки совпали почти идеально — не примерно похоже, а именно количественно, с конкретными числами. Байер и Глимчер в 2005 году уточнили это ещё точнее, показав, что сигнал не просто похож на ошибку предсказания, а является её количественным, линейным отражением.</p>
+<h2>Что это значит для записи весов</h2>
+<p>Именно эта разница, а не абсолютная величина награды, и есть тот сигнал, который физически укрепляет или ослабляет синапсы в системе, о которой шла речь в предыдущей статье. Если событие оказалось лучше ожидаемого — синапс, который к этому привёл, укрепляется. Если хуже — ослабляется. Если ровно как ожидалось — почти ничего не меняется, потому что мозгу нечему учиться: прогноз и так был верным.</p>
+<h2>Почему это объясняет привыкание к хорошему</h2>
+<p>Отсюда прямо следует эффект, знакомый каждому: одно и то же действие со временем перестаёт «радовать» так, как в первый раз — не потому что вкус изменился, а потому что прогноз мозга подтянулся к реальности, и ошибка предсказания стремится к нулю. Дофаминовый отклик даёт не сам факт хорошего события, а именно его неожиданность. Это же объясняет, почему нерегулярное, непредсказуемое подкрепление (переменный график вознаграждения) закрепляет поведение сильнее и устойчивее, чем стабильная, ожидаемая награда каждый раз — ошибка предсказания в первом случае просто не успевает упасть до нуля.</p>
+<h2>Практический вывод</h2>
+<p>Если хочешь, чтобы мозг записал что-то как ценное, важна не столько абсолютная величина результата, сколько момент, в который результат оказался лучше, чем ты рассчитывал. Заниженные ожидания перед маленьким шагом — не самообман, а буквально способ гарантировать положительную ошибку предсказания там, где высокая планка её съедала бы заранее.</p>
+<hr>
+<p><strong>Источники</strong></p>
+<p>Schultz, W., Dayan, P., &amp; Montague, P. R. (1997). A neural substrate of prediction and reward. <em>Science</em>, 275(5306), 1593–1599.</p>
+<p>Bayer, H. M., &amp; Glimcher, P. W. (2005). Midbrain dopamine neurons encode a quantitative reward prediction error signal. <em>Neuron</em>, 47(1), 129–141.</p>
+<p>Schultz, W. (1998). Predictive reward signal of dopamine neurons. <em>Journal of Neurophysiology</em>, 80(1), 1–27.</p>
 
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="cover-frame">
-        <img src="cover.jpg" alt="Обложка книги «Auction of Wanting: How to Want Something Again — and Actually Do It» Анатолия Осокина" width="848" height="1272" loading="eager">
       </div>
-      <div>
-        <div class="kicker"><span class="dot"></span>Книга · Хотеть и Делать<span class="dot dot--p"></span></div>
-        <h1 class="title">Хотеть и Делать</h1>
-        <p class="subtitle">Как захотеть снова — и на самом деле это сделать</p>
-        <div class="author-line">Автор — <strong>Анатолий Осокин</strong></div>
-
-        <ul class="thesis-list">
-          <li>Решение «делать или не делать» — не победа воли над инстинктом и не спор двух «сознаний» (как утверждает популярный взгляд на «науку» о силе воли), а исход непрерывного, физически реализованного <strong>аукциона конкурирующих нейронных цепей</strong> в базальных ганглиях.</li>
-          <li>Дофаминовая система формирует вес ставок на основе прошлого опыта, что во многом (на решение влияют и другие части системы, например миндалина) определяет, какое именно действие — или бездействие — мы выберем.</li>
-          <li>Работоспособность системы определяется измеримыми физиологическими условиями — <strong>сном, воспалением, хроническим стрессом</strong>.</li>
-          <li>Если система сломана — она выдаёт ответ «я буду лежать» на любые попытки «встать и что-то сделать».</li>
-        </ul>
-
-        <p class="thesis-callout">💡 К счастью, систему можно целенаправленно перенастраивать конкретными, проверенными рычагами, возвращая в состояние «если я хочу, и мне нужно — я сделаю».</p>
-
-        <p class="protocol-line">Более 100 научных источников синтезированы в протокол возвращения себе здорового состояния дофаминовой системы — вместо доказанно вредного «Соберись, тряпка! Возьми себя в руки».</p>
-      </div>
+      
+        <nav class="reader-pager">
+          <a class="pager-link pager-prev" href="../dofamin-neiromediator/"><span class="arrow-l">←</span><span><span class="pager-label">Предыдущая</span><span class="pager-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span></span></a>
+          <a class="pager-link pager-next" href="../vigor-tonicheskiy-dofamin/"><span><span class="pager-label">Следующая</span><span class="pager-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</span></span><span class="arrow">→</span></a>
+        </nav>
     </div>
-  </section>
-
-  <section class="articles-section">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>12 статей о том, как хотеть и делать</h2>
-        <p>От архитектуры мозга к практике: базальные ганглии, дофамин, стресс, сон и рабочие инструменты — WOOP, HRV-биофидбек и техники против бессонницы.</p>
-      </div>
-      <div class="a-grid">
-        <a class="a-card" href="pfk-cena-usiliya/">
-          <span class="a-num">01</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Почему думать о цели физически тяжелее, чем катиться по привычке</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="mindalina/">
-          <span class="a-num">02</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Судья, который решает за миллисекунды — и не умеет отменять приговор</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="bazalnye-gangli/">
-          <span class="a-num">03</span>
-          <span class="a-card-body">
-            <span class="a-card-title">У тебя в голове есть молоток аукциониста — и он бьёт только один раз</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="dofamin-neiromediator/">
-          <span class="a-num">04</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Дофамин — не «гормон счастья». Это чернила, которыми мозг пишет цену</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="oshibka-predskazaniya/">
-          <span class="a-num">05</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Мозг не реагирует на награду. Он реагирует на то, что ты ошибся в прогнозе</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="vigor-tonicheskiy-dofamin/">
-          <span class="a-num">06</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Есть два разных дофамина — и один из них решает, встанешь ли ты с дивана</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="chto-takoe-hochu/">
-          <span class="a-num">07</span>
-          <span class="a-card-body">
-            <span class="a-card-title">«Хочу» — это не чувство. Это выигранный тендер</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="woop/">
-          <span class="a-num">08</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Мечтать о победе — худшее, что можно сделать перед стартом. Вот что работает вместо</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="vospalenie-stress-dofamin/">
-          <span class="a-num">09</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Твоя иммунная система может выключить тебе дофамин. Буквально</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="hrv-biofidbek/">
-          <span class="a-num">10</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Один цифровой график, который показывает, тренируется ли твой тормоз</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="fragmentaciya-sna/">
-          <span class="a-num">11</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Ты спал 8 часов и всё равно разбит — вот что на самом деле фрагментирует сон</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-
-        <a class="a-card" href="golosa-v-golove/">
-          <span class="a-num">12</span>
-          <span class="a-card-body">
-            <span class="a-card-title">Три способа выключить голос в голове, которые проверяли не на словах, а в лаборатории сна</span>
-            <span class="a-card-go">Читать <span class="arrow">→</span></span>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-
+  </article>
 </main>
 
 <footer class="colophon">
   <div class="wrap">
     <span>Хотеть и Делать — Анатолий Осокин</span>
-    <a href="../">← На главную osokin.ai</a>
+    <a href="../../">← На главную osokin.ai</a>
   </div>
 </footer>
 
