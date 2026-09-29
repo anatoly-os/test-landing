@@ -4,13 +4,13 @@ Source for the **osokin.ai** site.
 
 | Path        | URL                     | What it is                                              |
 |-------------|-------------------------|---------------------------------------------------------|
-| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static). |
+| `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static): what I help with → current projects → bio carousel → cooperation/contacts (rate from 10 000 ₽/h). Bio slide photos: put a file in `bio/` and set `data-photo="bio/…"` on the slide's `.bio-media` (add `bio` to the `cp -R` list in `build-pages.sh`). |
 | `portfolio/` | `osokin.ai/portfolio/` | Static assets for the landing's portfolio section (Anima Poker PDF, Emberhold images). |
 | `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI. Part 1» (static, uses root `style.css`/`script.js`; incl. offer/privacy/rules pages + SBP-payment modal). |
 | `functions/` | `osokin.ai/mastering-ai/api/pay-lead` | Cloudflare Pages Function: the course buy modal POSTs the lead (tariff + contact) here, and it forwards a message to a Telegram channel. Runs on Cloudflare's edge (outside RF), so `api.telegram.org` is reachable directly. Secrets `BOT_TOKEN` / `CHAT_ID` are set in the Pages project (Settings → Variables and Secrets), never in the repo/frontend. |
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
-| `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, **not linked from anywhere** — direct URL only).|
+| `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, linked from the main landing's «Отношения» block).|
 | `cv.html`   | `osokin.ai/cv`          | Standalone CV. Pages serves `foo.html` at the clean URL `/foo` automatically (same for `/private1`, `/private2`).|
 
 ## How production works

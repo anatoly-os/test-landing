@@ -169,6 +169,86 @@
     });
   })();
 
+  // ─── Bio carousel (биография на главной) ─────────────────────
+  (function () {
+    const root = document.querySelector('[data-carousel]');
+    if (!root) return;
+    const track = root.querySelector('.bio-track');
+    const slides = Array.from(track.children);
+    const nav = root.querySelector('.bio-nav');
+    const count = root.querySelector('.bio-count');
+    const prev = root.querySelector('.bio-arrow[data-dir="-1"]');
+    const next = root.querySelector('.bio-arrow[data-dir="1"]');
+    let current = 0;
+
+    // фото по data-photo="bio/…jpg" ложится поверх плейсхолдера
+    root.querySelectorAll('.bio-media[data-photo]').forEach(media => {
+      const img = document.createElement('img');
+      img.className = 'bio-media__photo';
+      img.src = media.dataset.photo;
+      img.alt = media.dataset.alt || '';
+      img.loading = 'lazy';
+      media.appendChild(img);
+    });
+
+    const tabs = slides.map((slide, i) => {
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.className = 'bio-tab';
+      tab.setAttribute('role', 'tab');
+      tab.textContent = slide.dataset.year;
+      tab.addEventListener('click', () => go(i));
+      nav.appendChild(tab);
+      return tab;
+    });
+
+    function setActive(i) {
+      current = i;
+      slides.forEach((s, j) => s.classList.toggle('is-active', j === i));
+      tabs.forEach((t, j) => t.setAttribute('aria-selected', j === i ? 'true' : 'false'));
+      count.textContent = `${String(i + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      // активная вкладка года — в видимой зоне ленты (без прокрутки страницы)
+      const tab = tabs[i];
+      const left = tab.offsetLeft - nav.offsetLeft - (nav.clientWidth - tab.offsetWidth) / 2;
+      nav.scrollTo({ left, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    }
+
+    function go(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft });
+      setActive(i);
+    }
+
+    // активный слайд = тот, чей левый край ближе всего к началу ленты
+    let raf = null;
+    track.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        const x = track.scrollLeft;
+        let best = 0, bestD = Infinity;
+        slides.forEach((s, j) => {
+          const d = Math.abs(s.offsetLeft - track.offsetLeft - x);
+          if (d < bestD) { bestD = d; best = j; }
+        });
+        // у правого края последний слайд может не доехать до начала
+        if (x + track.clientWidth >= track.scrollWidth - 2) best = slides.length - 1;
+        if (best !== current) setActive(best);
+      });
+    }, { passive: true });
+
+    prev.addEventListener('click', () => go(current - 1));
+    next.addEventListener('click', () => go(current + 1));
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+    });
+
+    setActive(0);
+  })();
+
   // ─── Buy modal (оформление и оплата тарифа курса) ────────────
   (function () {
     const modal = document.getElementById('buy-modal');

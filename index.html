@@ -3,8 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анатолий Осокин — Сайт для вашего бизнеса за 1 день</title>
-  <meta name="description" content="Сделаю сайт за 1 день по вашим материалам — от 10 000 ₽, с оформлением заказов через Telegram. Разработка приложений и веб-сервисов для автоматизации бизнеса — от 150 000 ₽.">
+  <title>Анатолий Осокин — энергия без выгорания, IT-проекты, ФудСити</title>
+  <meta name="description" content="Анатолий Осокин: протокол Dopamine Reboot, разработка сайтов, ботов и приложений, экскурсии и доставка продуктов с ФудСити, ассоциация мужско-женских отношений. 14 лет в IT, ex-Ozon. Работа — от 10 000 ₽ в час.">
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://osokin.ai/">
+  <meta property="og:title" content="Анатолий Осокин — с чем я могу помочь">
+  <meta property="og:description" content="Энергия без выгорания, сайты и боты для бизнеса, ФудСити, отношения в паре. 14 лет в IT, ex-Ozon. От 10 000 ₽ в час.">
+  <meta property="og:image" content="https://osokin.ai/photo.png">
   <meta name="theme-color" content="#060A0D">
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
@@ -58,10 +64,9 @@
         Анатолий Осокин
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#offers" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Услуги</a>
-        <a href="#portfolio" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Портфолио</a>
-        <a href="mastering-ai/" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Курс</a>
-        <a href="#about" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Обо мне</a>
+        <a href="#help" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">С чем помогу</a>
+        <a href="#projects" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Проекты</a>
+        <a href="#path" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Путь</a>
         <a href="#contact" class="btn-primary px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">Написать</a>
       </div>
       <!-- Mobile CTA -->
@@ -70,464 +75,541 @@
   </nav>
 
   <!-- ═══════ HERO ═══════ -->
-  <section class="relative min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <!-- Background effects -->
+  <section class="relative flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-24">
     <div class="grid-bg"></div>
     <div class="hero-glow hero-glow--main"></div>
 
-    <div class="relative z-10 max-w-4xl mx-auto text-center pt-14 sm:pt-20">
-      <!-- Overline -->
-      <div class="flex items-center justify-center gap-3 mb-4 sm:mb-8">
-        <div class="glow-dot"></div>
-        <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Сайты · Боты · Приложения</span>
-        <div class="glow-dot glow-dot--ember"></div>
-      </div>
-
-      <!-- Main headline -->
-      <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight mb-4 sm:mb-8">
-        Сайт для вашего бизнеса —<br>
-        <span class="text-gradient">за один день</span>
-      </h1>
-
-      <!-- Subline -->
-      <p class="text-muted text-base sm:text-xl max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed font-light">
-        По вашим материалам — из Telegram-канала, соцсетей, фотографий.
-        С приёмом заказов прямо в Telegram. В соответствии с нормами и законами РФ.
-      </p>
-
-      <!-- Key metrics -->
-      <div class="flex flex-row items-center justify-center gap-6 sm:gap-16 mb-6 sm:mb-12">
-        <div class="text-center">
-          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">1 день</div>
-          <div class="case-label mt-1">срок</div>
-        </div>
-        <div class="w-px h-8 sm:h-12 bg-brd"></div>
-        <div class="text-center">
-          <div class="case-number case-number--ember whitespace-nowrap text-3xl sm:text-5xl">10 000 ₽</div>
-          <div class="case-label mt-1">от*</div>
-        </div>
-        <div class="w-px h-8 sm:h-12 bg-brd"></div>
-        <div class="text-center">
-          <div class="case-number whitespace-nowrap text-3xl sm:text-5xl">14 лет</div>
-          <div class="case-label mt-1">в IT</div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <a href="#contact" class="btn-primary inline-flex items-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-semibold cursor-pointer">
-        <span>Заказать сайт</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-      </a>
-      <p class="text-dim text-xs mt-6">*стоимость домена не включена</p>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-dim">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="animate-bounce"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-  </section>
-
-  <!-- ═══════ OFFERS / PRICING ═══════ -->
-  <section id="offers" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-6xl mx-auto">
-
-      <div class="reveal mb-8 sm:mb-16">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Услуги и стоимость</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Два формата <span class="text-gradient">работы</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Offer 1: Site in 1 day -->
-        <div class="reveal-scale card card-featured p-8 sm:p-10 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-ember/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div class="relative">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="glow-dot glow-dot--ember"></div>
-              <span class="text-muted text-sm font-medium tracking-wider uppercase">Сайт за 1 день</span>
-            </div>
-            <div class="mt-4 mb-6">
-              <span class="price-tag price-tag--ember text-4xl sm:text-5xl">от 10 000 &#8381;<sup class="text-xl align-super">*</sup></span>
-            </div>
-            <ul class="space-y-3 text-muted">
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>По вашим материалам — тексты и фото из Telegram или соцсетей</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Оформление заказов через Telegram-бота — заявки падают вам в чат</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>В соответствии с нормами и законами РФ</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Готово завтра — вы присылаете материалы, я отдаю работающий сайт</span>
-              </li>
-            </ul>
-            <p class="text-dim text-xs mt-6">*стоимость домена не включена</p>
-          </div>
-        </div>
-
-        <!-- Offer 2: Custom development -->
-        <div class="reveal-scale reveal-delay-1 card p-8 sm:p-10 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-          <div class="relative">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="glow-dot"></div>
-              <span class="text-muted text-sm font-medium tracking-wider uppercase">Приложения и веб-сервисы</span>
-            </div>
-            <div class="mt-4 mb-6">
-              <span class="price-tag text-4xl sm:text-5xl">от 150 000 &#8381;</span>
-            </div>
-            <ul class="space-y-3 text-muted">
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Автоматизация бизнеса — боты, парсеры, интеграции, внутренние системы</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Мобильные приложения — от идеи до публикации в сторах</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Веб-сервисы под ключ — от прототипа до продакшена</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan mt-0.5 shrink-0"><path d="M20 6 9 17l-5-5"/></svg>
-                <span>Срок: дни и недели, не месяцы</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal mt-8 card p-6 border-cyan/20">
-        <p class="text-muted text-center">
-          Опишите задачу — я скажу, сколько это будет стоить и когда будет готово. Первая консультация бесплатно.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ PORTFOLIO ═══════ -->
-  <section id="portfolio" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8 relative">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-6xl mx-auto">
-
-      <div class="reveal mb-8 sm:mb-16">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Портфолио</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Не обещания, а <span class="text-gradient">результаты</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <!-- Case 1: Anima Poker -->
-        <div class="reveal-scale card card-featured p-5 sm:p-10">
-          <span class="for-sale-badge">Продаётся</span>
-          <div class="flex items-center gap-3 mb-4 sm:mb-6">
-            <div class="glow-dot glow-dot--ember"></div>
-            <span class="text-muted text-sm font-medium">Живой покерный рум</span>
-          </div>
-
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
-            Anima Poker
-          </h3>
-          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
-            Полноценная покерная вселенная: движок, GTO-боты с человеческой логикой,
-            мультитейблинг, турниры.
-          </p>
-
-          <div class="grid grid-cols-2 gap-6 mb-6">
-            <div>
-              <div class="case-label mb-1">Срок</div>
-              <div class="case-number case-number--ember text-2xl sm:text-3xl">12 дней</div>
-            </div>
-            <div>
-              <div class="case-label mb-1">Коммитов</div>
-              <div class="case-number case-number--ember text-2xl sm:text-3xl">251</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <a href="https://animapoker.com" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              animapoker.com
-            </a>
-            <button type="button" class="js-open-pdf btn-outline btn-outline--ember px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-              Презентация
-            </button>
-            <a href="portfolio/anima-poker.pdf" download="Anima_Poker.pdf" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Скачать PDF
-            </a>
-          </div>
-        </div>
-
-        <!-- Case 2: Pervoistokov -->
-        <div class="reveal-scale reveal-delay-1 card p-5 sm:p-10">
-          <div class="flex items-center gap-3 mb-4 sm:mb-6">
+    <div class="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+      <div class="lg:col-span-3">
+        <div class="flex items-center gap-4 mb-6">
+          <img src="photo.png" alt="" class="hero-avatar lg:hidden" width="64" height="64">
+          <div class="flex items-center gap-3">
             <div class="glow-dot"></div>
-            <span class="text-muted text-sm font-medium">Сайт за 1 день + Telegram-заказы</span>
-          </div>
-
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
-            Хлеб Первоистоков
-          </h3>
-          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
-            Сайт ремесленника-хлебопёка с оформлением заказов через Telegram-бота.
-            Собран за один день по материалам Telegram-канала, в соответствии
-            с нормами и законами РФ.
-          </p>
-
-          <div class="grid grid-cols-2 gap-6 mb-6">
-            <div>
-              <div class="case-label mb-1">Срок</div>
-              <div class="case-number text-2xl sm:text-3xl">1 день</div>
-            </div>
-            <div>
-              <div class="case-label mb-1">Заказы</div>
-              <div class="case-number text-2xl sm:text-3xl">в Telegram</div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            <a href="https://pervoistokov.uk" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              pervoistokov.uk
-            </a>
+            <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">14 лет в IT · ex-Ozon · нейронаука</span>
           </div>
         </div>
 
-        <!-- Case 3: Avito bot -->
-        <div class="reveal-scale card p-5 sm:p-10">
-          <div class="flex items-center gap-3 mb-4 sm:mb-6">
-            <div class="glow-dot glow-dot--ember"></div>
-            <span class="text-muted text-sm font-medium">Автоматизация бизнеса</span>
-          </div>
+        <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">
+          Помогаю людям и бизнесу<br>
+          <span class="text-gradient">не только хотеть, но и делать</span>
+        </h1>
 
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
-            Бот для Авито
-          </h3>
-          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
-            Бот наполнил магазин заказчика товарами на 150% — склад заполнен,
-            складывать уже некуда. Разработка заняла неделю, окупилась за месяц.
-          </p>
-
-          <div class="grid grid-cols-2 gap-6 mb-6">
-            <div>
-              <div class="case-label mb-1">Наполнение магазина</div>
-              <div class="case-number case-number--ember text-2xl sm:text-3xl">+150%</div>
-            </div>
-            <div>
-              <div class="case-label mb-1">Окупаемость</div>
-              <div class="case-number case-number--ember text-2xl sm:text-3xl">1 месяц</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-2 px-4 py-2 rounded-lg bg-ember/5 border border-ember/10 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-ember"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-            <span class="text-ember-bright text-sm font-medium">Разработка — 1 неделя</span>
-          </div>
-        </div>
-
-        <!-- Case 4: Lolita -->
-        <div class="reveal-scale reveal-delay-1 card p-5 sm:p-10">
-          <div class="flex items-center gap-3 mb-4 sm:mb-6">
-            <div class="glow-dot"></div>
-            <span class="text-muted text-sm font-medium">Сайт-визитка мастера</span>
-          </div>
-
-          <h3 class="font-heading text-xl sm:text-2xl font-bold mb-3">
-            Лолита Забаштан
-          </h3>
-          <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
-            Персональный сайт мастера: практики, услуги, запись на консультации.
-            Собран по материалам клиента — быстро и без лишних согласований.
-          </p>
-
-          <div class="flex flex-wrap gap-3">
-            <a href="https://lolitapsy.club" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              lolitapsy.club
-            </a>
-          </div>
-        </div>
-
-        <!-- Case 5: Emberhold — собственная игра -->
-        <div class="reveal-scale card card-featured p-5 sm:p-10 md:col-span-2">
-          <div class="flex items-center gap-3 mb-4 sm:mb-6">
-            <div class="glow-dot glow-dot--ember"></div>
-            <span class="text-muted text-sm font-medium">Собственная игра · в разработке</span>
-          </div>
-
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 class="font-heading text-2xl sm:text-3xl font-bold mb-3">
-                Emberhold
-              </h3>
-              <p class="text-muted text-sm sm:text-base leading-relaxed mb-4">
-                Сессионный диаблоид с глубоким производством и строительством базы.
-                Короткие вылазки во тьму — а лагерь живёт и перерабатывает добычу,
-                пока вы сражаетесь. Мусорного лута не существует: всё распыляется
-                и идёт в кузницу.
-              </p>
-              <p class="font-heading text-lg sm:text-2xl text-platinum mb-6">
-                «Diablo, в который можно играть по 25 минут,<br class="hidden sm:block">
-                и Valheim, в котором можно жить годами»
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1.5 rounded-lg bg-ember/5 border border-ember/10 text-ember-bright text-xs font-medium">Action-RPG</span>
-                <span class="px-3 py-1.5 rounded-lg bg-cyan/5 border border-cyan/10 text-cyan-bright text-xs font-medium">Сессии по 25 минут</span>
-                <span class="px-3 py-1.5 rounded-lg bg-ember/5 border border-ember/10 text-ember-bright text-xs font-medium">Экономика переработки</span>
-                <span class="px-3 py-1.5 rounded-lg bg-cyan/5 border border-cyan/10 text-cyan-bright text-xs font-medium">Соло-разработка + AI</span>
-              </div>
-            </div>
-
-            <button type="button" class="js-lightbox case-shot" data-full="portfolio/emberhold-title.jpg" aria-label="Emberhold — заглавный кадр, открыть крупнее">
-              <img src="portfolio/emberhold-title.jpg" alt="Emberhold — сессионная Action-RPG с обустройством базы" loading="lazy">
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ COURSE TEASER ═══════ -->
-  <section id="course" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-6xl mx-auto">
-      <div class="reveal card card-featured p-8 sm:p-12 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-ember/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-          <div class="lg:col-span-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="glow-dot glow-dot--ember"></div>
-              <span class="text-muted text-sm font-medium tracking-wider uppercase">Курс · Mastering AI. Part 1</span>
-            </div>
-            <h2 class="font-heading text-2xl sm:text-4xl font-bold mb-4">
-              Хотите сами? Научу делать сайты <span class="text-gradient">с помощью ИИ</span>
-            </h2>
-            <p class="text-muted text-base sm:text-lg leading-relaxed">
-              12 уроков по 6 минут: от установки Claude Code до сайта, открытого в браузере.
-              Два проекта по вашему контенту — сайт-визитка и мини-интернет-магазин.
-            </p>
-          </div>
-          <div class="flex flex-col items-start lg:items-center gap-4">
-            <div class="text-center">
-              <div class="case-number case-number--ember text-4xl sm:text-5xl">от 4 900 ₽</div>
-            </div>
-            <a href="mastering-ai/" class="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-xl text-base font-semibold cursor-pointer">
-              <span>Программа курса</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ ABOUT ═══════ -->
-  <section id="about" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-6xl mx-auto">
-
-      <div class="reveal mb-8 sm:mb-16">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Обо мне</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          14 лет в <span class="text-gradient">IT-индустрии</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-        <!-- Photo -->
-        <div class="reveal-scale lg:col-span-2">
-          <div class="photo-container bg-surface rounded-2xl overflow-hidden">
-            <img src="photo.png" alt="Анатолий Осокин" class="w-full h-auto block">
-          </div>
-        </div>
-
-        <!-- Bio -->
-        <div class="reveal lg:col-span-3 space-y-8">
-          <!-- Инженерия -->
-          <div>
-            <div class="flex items-center gap-3 mb-3">
-              <div class="glow-dot"></div>
-              <span class="text-cyan text-xs font-semibold tracking-widest uppercase">Инженерия</span>
-            </div>
-            <p class="text-lg leading-relaxed mb-4">
-              Классическое инженерное образование. С 2012 года — в разработке наукоёмкого CAD-софта. С 2021 года — в разработке мобильных приложений. Созданные приложения в AppStore:
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <a href="https://apps.apple.com/hk/app/u-niversum/id6479603809?l=en-GB" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Universum
-              </a>
-              <a href="https://apps.apple.com/us/app/pitlane-car-service-scanner/id6761056052" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Pitlane
-              </a>
-              <a href="https://apps.apple.com/hk/app/personal-skincare-routine-app/id1548025728?l=en-GB" target="_blank" rel="noopener" class="btn-outline px-4 py-2 rounded-lg text-sm inline-flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Skincare Analyzer
-              </a>
-            </div>
-          </div>
-
-          <!-- Продукт и технологии -->
-          <div>
-            <div class="flex items-center gap-3 mb-3">
-              <div class="glow-dot glow-dot--ember"></div>
-              <span class="text-ember text-xs font-semibold tracking-widest uppercase">Продукт и технологии</span>
-            </div>
-            <p class="text-lg leading-relaxed">
-              Развивал крупнейшие в мире digital-сервисы для музыкантов — <span class="text-platinum">MuseScore</span> и <span class="text-platinum">Ultimate Guitar</span>. Руководил департаментом технологий логистики сортировочных центров <span class="text-platinum">Ozon</span>.
-            </p>
-          </div>
-
-          <!-- Управление -->
-          <div>
-            <div class="flex items-center gap-3 mb-3">
-              <div class="glow-dot"></div>
-              <span class="text-cyan text-xs font-semibold tracking-widest uppercase">Управление</span>
-            </div>
-            <p class="text-lg leading-relaxed">
-              Руководил отделом разработки мобильного приложения <span class="text-platinum">Ozon</span>. Был техническим директором в iGaming-стартапах. Руководил группой компаний <span class="text-platinum">Muse</span> в составе команды управленцев.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ CONTACT / CTA ═══════ -->
-  <section id="contact" class="py-12 sm:py-32 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-24"></div>
-    <div class="max-w-3xl mx-auto text-center">
-      <div class="reveal">
-        <div class="shimmer-line mx-auto mb-8"></div>
-
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-          Пришлите ссылку на ваш канал —<br>
-          <span class="text-gradient">завтра будет сайт</span>
-        </h2>
-
-        <p class="text-muted text-lg mb-12 max-w-xl mx-auto">
-          Опишите задачу — я скажу, сколько времени и денег это займёт. Первая консультация бесплатно.
+        <p class="text-muted text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
+          Возвращаю энергию без тревоги и выгорания, делаю сайты, ботов и приложения,
+          вожу на ФудСити и привожу оттуда продукты, работаю с отношениями в паре.
+          За плечами — путь от физфака и C++ до директора по технологиям в Ozon.
         </p>
 
-        <a href="https://t.me/osokin_ai" id="telegram-link" target="_blank" rel="noopener"
-           class="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-xl text-lg font-semibold cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          <span>Написать в Telegram</span>
+        <!-- Quick directions -->
+        <div class="flex flex-wrap gap-2 mb-8">
+          <a href="#energy" class="dir-chip"><span class="dir-chip__dot"></span>Энергия и мотивация</a>
+          <a href="#tech" class="dir-chip"><span class="dir-chip__dot"></span>Сайты, боты, приложения</a>
+          <a href="#food" class="dir-chip dir-chip--ember"><span class="dir-chip__dot"></span>ФудСити</a>
+          <a href="#relations" class="dir-chip dir-chip--ember"><span class="dir-chip__dot"></span>Отношения в паре</a>
+          <a href="#games" class="dir-chip"><span class="dir-chip__dot"></span>Игры</a>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+          <a href="https://t.me/osokin_ai" target="_blank" rel="noopener" class="btn-primary inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl text-base font-semibold cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <span>Написать в Telegram</span>
+          </a>
+          <div class="rate-pill">
+            <span class="text-dim text-xs uppercase tracking-widest">Работа со мной</span>
+            <span class="case-number case-number--ember text-2xl sm:text-3xl whitespace-nowrap">от 10 000 ₽ / час</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden lg:block lg:col-span-2">
+        <div class="photo-container bg-surface rounded-2xl overflow-hidden">
+          <img src="photo.png" alt="Анатолий Осокин" class="w-full h-auto block">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ HELP: С ЧЕМ ОБРАТИТЬСЯ ═══════ -->
+  <section id="help" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-8 sm:mb-12">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">С чем помогу</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          С какими вопросами <span class="text-gradient">ко мне обращаются</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <a href="#energy" class="reveal-scale card help-tile p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Нет сил, тревога, выгорание</h3>
+          <p class="text-muted text-sm leading-relaxed">Протокол Dopamine Reboot на основе нейронауки: вернуть энергичное состояние, когда «надо» снова превращается в «сделал».</p>
+          <span class="help-tile__more">Dopamine Reboot, AI Tracker, статьи →</span>
         </a>
+
+        <a href="#tech" class="reveal-scale reveal-delay-1 card help-tile p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Нужен сайт, бот или приложение</h3>
+          <p class="text-muted text-sm leading-relaxed">Боты для бизнеса, сайты, iOS-приложения, техническое развитие проекта — или совет по IT-продукту и команде от бывшего CTO.</p>
+          <span class="help-tile__more">Разработка и курс →</span>
+        </a>
+
+        <a href="#food" class="reveal-scale reveal-delay-2 card help-tile help-tile--ember p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Свежие продукты дешевле</h3>
+          <p class="text-muted text-sm leading-relaxed">Экскурсии по ФудСити в Москве — как устроен рынок и как торговаться. Или доставка оттуда по подписке, каждую неделю.</p>
+          <span class="help-tile__more">Экскурсии и доставка →</span>
+        </a>
+
+        <a href="#relations" class="reveal-scale card help-tile help-tile--ember p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Отношения в паре</h3>
+          <p class="text-muted text-sm leading-relaxed">Ассоциация мужско-женских отношений: мужское и женское состояние, сонастройка пары, группы и ретриты.</p>
+          <span class="help-tile__more">Ассоциация →</span>
+        </a>
+
+        <a href="#games" class="reveal-scale reveal-delay-1 card help-tile p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Поиграть</h3>
+          <p class="text-muted text-sm leading-relaxed">Покер с друзьями в Anima Poker — и собственные игры: action-RPG Emberhold и экономическая стратегия Island Colony.</p>
+          <span class="help-tile__more">Игры →</span>
+        </a>
+
+        <a href="#contact" class="reveal-scale reveal-delay-2 card card-featured help-tile p-6 sm:p-8">
+          <div class="help-tile__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Другой вопрос</h3>
+          <p class="text-muted text-sm leading-relaxed">Опишите задачу в Telegram — скажу, смогу ли помочь и сколько часов это займёт.</p>
+          <span class="help-tile__more help-tile__more--ember">от 10 000 ₽ / час →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROJECTS ═══════ -->
+  <section id="projects" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-10 sm:mb-14">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Проекты</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          Чем я занимаюсь <span class="text-gradient">сейчас</span>
+        </h2>
+      </div>
+
+      <!-- ── Group: Energy ── -->
+      <div id="energy" class="project-group">
+        <div class="reveal group-head">
+          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div>
+            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Энергия и мотивация</h3>
+            <p class="text-muted text-sm sm:text-base">Исследую жизнь с точки зрения нейронауки — и превращаю это в практику.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <article class="reveal-scale card card-featured project md:col-span-2">
+            <div class="project__meta"><span>Бот · протокол · групповое и персональное ведение</span></div>
+            <h4 class="project__title">Dopamine Reboot</h4>
+            <p class="project__text">Протокол возвращения энергичного состояния без хронической тревоги, стресса и выгорания. Более 100 научных источников — в конкретные, проверенные рычаги вместо «соберись и возьми себя в руки».</p>
+            <div class="project__links">
+              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20Dopamine%20Reboot" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Хочу в протокол</a>
+              <a href="actuallydoit/" class="btn-outline link-btn">13 статей, на которых он стоит</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-1 card project">
+            <div class="project__meta"><span>Книга · канал</span></div>
+            <h4 class="project__title">Хотеть и Делать</h4>
+            <p class="project__text">Почему «сделать или не сделать» решает не сила воли, а аукцион нейронных цепей. Статьи о дофамине, стрессе, сне и любви.</p>
+            <div class="project__links">
+              <a href="actuallydoit/" class="btn-outline link-btn">osokin.ai/actuallydoit</a>
+              <a href="https://t.me/want_auction" target="_blank" rel="noopener" class="btn-outline link-btn">@want_auction</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale card project md:col-span-3">
+            <div class="project__meta"><span>Таск-трекер · life-трекер · ИИ</span></div>
+            <h4 class="project__title">AI Tracker</h4>
+            <p class="project__text">Трекер задач и жизни с постоянной помощью ИИ: помогает не прокрастинировать, находить повторяющиеся паттерны избегания и проводить саморефлексию.</p>
+            <div class="project__links">
+              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%BF%D1%80%D0%BE%D0%B1%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20AI%20Tracker" target="_blank" rel="noopener" class="btn-outline link-btn">Хочу попробовать</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ── Group: Tech ── -->
+      <div id="tech" class="project-group">
+        <div class="reveal group-head">
+          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div>
+            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Разработка</h3>
+            <p class="text-muted text-sm sm:text-base">Боты, сайты и приложения — и техническое развитие чужих проектов.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <article class="reveal-scale card card-featured project">
+            <div class="project__meta"><span>Боты для бизнеса</span></div>
+            <h4 class="project__title">Бот для Авито</h4>
+            <p class="project__text">Принёс заказчику переполненный склад — товары складывать уже некуда. Окупился за 2 месяца.</p>
+            <div class="project__stats">
+              <div><div class="case-label">Окупаемость</div><div class="case-number case-number--ember text-2xl">2 мес</div></div>
+              <div><div class="case-label">Склад</div><div class="case-number case-number--ember text-2xl">полон</div></div>
+            </div>
+            <div class="project__links">
+              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D0%B1%D0%BE%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Обсудить бота</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-1 card project">
+            <div class="project__meta"><span>iOS-приложение</span></div>
+            <h4 class="project__title">Pitlane</h4>
+            <p class="project__text">Цифровая история обслуживания автомобиля: заказ-наряды в телефоне, распознавание документов с ИИ.</p>
+            <div class="project__links">
+              <a href="https://pitlane.uk" target="_blank" rel="noopener" class="btn-outline link-btn ext">pitlane.uk</a>
+              <a href="https://apps.apple.com/us/app/pitlane-car-service-scanner/id6761056052" target="_blank" rel="noopener" class="btn-outline link-btn ext">App Store</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-2 card project">
+            <div class="project__meta"><span>Техническое развитие</span></div>
+            <h4 class="project__title">Love In DNA</h4>
+            <p class="project__text">Веду техническое развитие проекта.</p>
+            <div class="project__links">
+              <a href="https://loveindna.com" target="_blank" rel="noopener" class="btn-outline link-btn ext">loveindna.com</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale card project">
+            <div class="project__meta"><span>Техническое развитие</span></div>
+            <h4 class="project__title">Хлеб Первоистоков</h4>
+            <p class="project__text">Сайт ремесленника-хлебопёка с приёмом заказов через Telegram-бота.</p>
+            <div class="project__links">
+              <a href="https://pervoistokov.uk" target="_blank" rel="noopener" class="btn-outline link-btn ext">pervoistokov.uk</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-1 card project">
+            <div class="project__meta"><span>Сайт и исходный код</span></div>
+            <h4 class="project__title">Лолита Забаштан</h4>
+            <p class="project__text">Персональный сайт мастера: практики, услуги, запись на консультации. Исходный код и поддержка — на мне.</p>
+            <div class="project__links">
+              <a href="https://lolitapsy.pro" target="_blank" rel="noopener" class="btn-outline link-btn ext">lolitapsy.pro</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-2 card project">
+            <div class="project__meta"><span>Курс</span><span class="status">в разработке</span></div>
+            <h4 class="project__title">Свой сайт с ИИ за 1 день</h4>
+            <p class="project__text">Курс для тех, кто хочет сам: от установки Claude Code до своего сайта, открытого в браузере.</p>
+            <div class="project__links">
+              <a href="mastering-ai/" class="btn-outline link-btn">Черновик курса</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ── Group: Food ── -->
+      <div id="food" class="project-group">
+        <div class="reveal group-head group-head--ember">
+          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
+          <div>
+            <h3 class="font-heading text-2xl sm:text-3xl font-bold">ФудСити</h3>
+            <p class="text-muted text-sm sm:text-base">Крупнейший продовольственный рынок Москвы — с проводником или с доставкой до двери.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <article class="reveal-scale card card-featured project">
+            <div class="project__meta"><span>Экскурсия · Москва</span></div>
+            <h4 class="project__title">Экскурсии на ФудСити</h4>
+            <p class="project__text">Рассказываю, что есть на рынке и как он устроен, где лучшие цены, на что обращать внимание и как торговаться.</p>
+            <div class="project__stats">
+              <div><div class="case-label">Экономия в первую поездку</div><div class="case-number case-number--ember text-2xl sm:text-3xl">до 5 000 ₽*</div></div>
+            </div>
+            <div class="project__links">
+              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BD%D0%B0%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%A4%D1%83%D0%B4%D0%A1%D0%B8%D1%82%D0%B8" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Записаться на экскурсию</a>
+            </div>
+            <p class="text-dim text-xs mt-4">*зависит от объёма покупок</p>
+          </article>
+
+          <article class="reveal-scale reveal-delay-1 card project">
+            <div class="project__meta"><span>Подписка · еженедельно</span></div>
+            <h4 class="project__title">Доставка с ФудСити</h4>
+            <p class="project__text">Свежие продукты по оптовым ценам с еженедельной доставкой до двери — по подписке.</p>
+            <div class="project__links">
+              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0%20%D1%81%20%D0%A4%D1%83%D0%B4%D0%A1%D0%B8%D1%82%D0%B8" target="_blank" rel="noopener" class="btn-outline link-btn">Оформить подписку</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ── Group: Relations ── -->
+      <div id="relations" class="project-group">
+        <div class="reveal group-head group-head--ember">
+          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
+          <div>
+            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Отношения</h3>
+            <p class="text-muted text-sm sm:text-base">Работа с состоянием — вместе с Ольгой Забаштан.</p>
+          </div>
+        </div>
+
+        <article class="reveal-scale card card-featured project">
+          <div class="project__meta"><span>Индивидуально · пары · группы · ретриты</span></div>
+          <h4 class="project__title">Ассоциация мужско-женских отношений</h4>
+          <p class="project__text max-w-3xl">Настройка мужского и женского состояния, сонастройка пары, мужские, женские и смешанные круги. Метод — guided imagery, направляемое воображение.</p>
+          <div class="project__links">
+            <a href="family_retreats/" class="btn-outline btn-outline--ember link-btn">Сонастройка — подробнее</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- ── Group: Games ── -->
+      <div id="games" class="project-group">
+        <div class="reveal group-head">
+          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div>
+          <div>
+            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Игры</h3>
+            <p class="text-muted text-sm sm:text-base">Соло-разработка с ИИ — от покерного движка до экономических стратегий.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <article class="reveal-scale card project">
+            <div class="project__meta"><span>Покер с друзьями</span></div>
+            <h4 class="project__title">Anima Poker</h4>
+            <p class="project__text">Пространство для игры в покер с друзьями: свой стол, турниры, мультитейблинг — и боты с человеческой логикой, если не хватает игроков.</p>
+            <div class="project__links">
+              <a href="https://animapoker.com" target="_blank" rel="noopener" class="btn-outline link-btn ext">animapoker.com</a>
+            </div>
+          </article>
+
+          <article class="reveal-scale reveal-delay-1 card project">
+            <div class="project__meta"><span>Экономическая стратегия · iOS</span></div>
+            <h4 class="project__title">Island Colony</h4>
+            <p class="project__text">Ремейк старой доброй Sakhalin Colony — экономическая стратегия для iPhone.</p>
+          </article>
+
+          <article class="reveal-scale card card-featured project md:col-span-2">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+              <div>
+                <div class="project__meta"><span>Action-RPG</span><span class="status">в разработке</span></div>
+                <h4 class="project__title">Emberhold</h4>
+                <p class="project__text">Сессионный диаблоид с глубоким производством и строительством базы. Короткие вылазки во тьму — а лагерь живёт и перерабатывает добычу, пока вы сражаетесь.</p>
+                <p class="font-heading text-lg sm:text-xl text-platinum">«Diablo, в который можно играть по 25 минут, и Valheim, в котором можно жить годами»</p>
+              </div>
+              <button type="button" class="js-lightbox case-shot" data-full="portfolio/emberhold-title.jpg" aria-label="Emberhold — заглавный кадр, открыть крупнее">
+                <img src="portfolio/emberhold-title.jpg" alt="Emberhold — сессионная Action-RPG с обустройством базы" loading="lazy">
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PATH: БИОГРАФИЯ-КАРУСЕЛЬ ═══════ -->
+  <!--
+    Фото в слайд: положите файл в bio/ и добавьте к .bio-media атрибут
+    data-photo="bio/имя.jpg" — картинка ляжет поверх плейсхолдера.
+  -->
+  <section id="path" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+    <div class="max-w-6xl mx-auto">
+      <div class="reveal mb-8 sm:mb-12">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Путь</span>
+        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
+          Откуда <span class="text-gradient">мой опыт</span>
+        </h2>
+      </div>
+
+      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
+        <div class="card metric"><div class="case-number text-3xl sm:text-4xl">14 лет</div><div class="case-label mt-2">в IT</div></div>
+        <div class="card metric"><div class="case-number case-number--ember text-3xl sm:text-4xl">28+ млрд ₽</div><div class="case-label mt-2">GMV фич в Ozon</div></div>
+        <div class="card metric"><div class="case-number text-3xl sm:text-4xl">130+</div><div class="case-label mt-2">разработчиков под началом</div></div>
+        <div class="card metric"><div class="case-number case-number--ember text-3xl sm:text-4xl">100+</div><div class="case-label mt-2">научных источников в протоколе</div></div>
+      </div>
+
+      <div class="bio reveal" data-carousel>
+        <div class="bio-nav" role="tablist" aria-label="Годы"></div>
+
+        <div class="bio-track" tabindex="0" aria-roledescription="карусель" aria-label="Биография">
+          <article class="bio-slide" data-year="2009">
+            <div class="bio-media"><span class="bio-media__year">2009</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2009 — 2015 · Новосибирск</div>
+              <h3 class="bio-title">Физфак НГУ</h3>
+              <p class="bio-text">Магистр физики. Бакалавриат — квантовая оптика и газоанализатор на PPLN-кристалле, магистратура — моделирование деформации металла. Отсюда привычка: сначала модель, потом решение.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2012">
+            <div class="bio-media bio-media--ember"><span class="bio-media__year">2012</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" x2="12" y1="22.08" y2="12"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2012 — 2018 · инженер и руководитель проектов</div>
+              <h3 class="bio-title">Наукоёмкий CAD</h3>
+              <p class="bio-text">LEDAS, Bricsys, Renga: C++ и Qt, кросс-платформенный BricsCAD, BIM-система и два её крупных рефакторинга. Выступал на конференции в BMW Welt, Мюнхен.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2018">
+            <div class="bio-media"><span class="bio-media__year">2018</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2018 — 2020 · Muse Group</div>
+              <h3 class="bio-title">Директор MuseScore</h3>
+              <p class="bio-text">Отвечал за open-source сообщество из 130+ разработчиков: релизы — с «раз в 2 года» до «раз в квартал». Трижды выступал на FOSDEM. В команде управленцев группы с портфелем $100M+ в год.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2020">
+            <div class="bio-media bio-media--ember"><span class="bio-media__year">2020</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 12l8 10 8-10z"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2020 — 2022 · POKS</div>
+              <h3 class="bio-title">CTO покерной платформы</h3>
+              <p class="bio-text">Платформа с нуля для рынка Бразилии: клубный покер, кэш, турниры, социальные механики. Команда выросла с 4 до 16 человек.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2021">
+            <div class="bio-media"><span class="bio-media__year">2021</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2021 — сейчас · независимый разработчик</div>
+              <h3 class="bio-title">iOS-приложения</h3>
+              <p class="bio-text">Swift и SwiftUI. Свои приложения в App Store — Pitlane и Cosmetic Bag; на заказ — Universum и Sofy.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2022">
+            <div class="bio-media bio-media--ember"><span class="bio-media__year">2022</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2022 — 2025 · Ozon Tech</div>
+              <h3 class="bio-title">Мобильное приложение Ozon</h3>
+              <p class="bio-text">Руководил отделом разработки приложения покупателя: главная, личный кабинет, карточка товара — фичи на 28+ млрд ₽ GMV. Попадание в сроки — с 25% до 80%. Вырастил тимлида себе на замену.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2025">
+            <div class="bio-media"><span class="bio-media__year">2025</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16h6"/><path d="M19 13v6"/><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><path d="m7.5 4.27 9 5.15"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" x2="12" y1="22" y2="12"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">2025 — 2026 · JackPoker, Ozon Фулфилмент</div>
+              <h3 class="bio-title">CTO и директор по технологиям</h3>
+              <p class="bio-text">В JackPoker — с пяти критических багов в релизах до нуля за 3 месяца. В сортировочных центрах Ozon — новые технологии размещения грузов и 7 000 м² пола, расчищенные за 10 дней.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="7+ лет">
+            <div class="bio-media bio-media--ember"><span class="bio-media__year">7+ лет</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a5 5 0 0 1 0 10 5 5 0 0 0 0 10"/><circle cx="12" cy="7" r=".5"/><circle cx="12" cy="17" r=".5"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">Параллельно с IT</div>
+              <h3 class="bio-title">Практика состояния</h3>
+              <p class="bio-text">Более 7 лет личной практики работы с состоянием и телом. С 2023 года — обучение у мастеров Дао и в академии PSY PRO, практика направленной визуализации.</p>
+            </div>
+          </article>
+
+          <article class="bio-slide" data-year="2026">
+            <div class="bio-media"><span class="bio-media__year">2026</span><svg class="bio-media__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
+            <div class="bio-body">
+              <div class="bio-period">Сейчас</div>
+              <h3 class="bio-title">Своё дело</h3>
+              <p class="bio-text">Нейронаука мотивации и протокол Dopamine Reboot, разработка с ИИ, ФудСити, работа с парами. Всё, что выше, — теперь в одних руках.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="bio-controls">
+          <button type="button" class="bio-arrow" data-dir="-1" aria-label="Предыдущий слайд">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <span class="bio-count" aria-live="polite"></span>
+          <button type="button" class="bio-arrow" data-dir="1" aria-label="Следующий слайд">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="reveal mt-10 sm:mt-14">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="glow-dot glow-dot--ember"></div>
+          <span class="text-ember text-xs font-semibold tracking-widest uppercase">Знания и навыки</span>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="skill">Управление разработкой</span>
+          <span class="skill">Построение и рост команд</span>
+          <span class="skill">Продукт на языке GMV</span>
+          <span class="skill">Оптимизация процессов</span>
+          <span class="skill">Переговоры</span>
+          <span class="skill">Swift / SwiftUI</span>
+          <span class="skill">Python</span>
+          <span class="skill">C++ / Qt</span>
+          <span class="skill">Telegram-боты</span>
+          <span class="skill">Интеграции LLM</span>
+          <span class="skill">Нейронаука мотивации</span>
+          <span class="skill">Guided imagery</span>
+        </div>
+        <a href="cv" class="inline-flex items-center gap-2 mt-6 text-cyan hover:text-cyan-bright text-sm font-medium transition-colors">
+          Полное резюме
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACT / СОТРУДНИЧЕСТВО ═══════ -->
+  <section id="contact" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+    <div class="max-w-5xl mx-auto">
+      <div class="reveal card card-featured p-6 sm:p-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-ember/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="relative grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+          <div class="lg:col-span-3">
+            <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Сотрудничество</span>
+            <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">
+              Давайте <span class="text-gradient">поработаем вместе</span>
+            </h2>
+            <p class="text-muted text-base sm:text-lg leading-relaxed mb-6">
+              Персональное ведение, консультации, разработка, разбор вашего проекта или команды.
+              Напишите, с чем пришли, — отвечу, чем могу помочь и сколько часов это займёт.
+            </p>
+            <div class="mb-2">
+              <span class="price-tag price-tag--ember text-4xl sm:text-5xl">от 10 000 &#8381;</span>
+              <span class="text-muted text-lg ml-1">/ час</span>
+            </div>
+            <p class="text-dim text-sm">Доставка с ФудСити, экскурсии и курс — по своим ценам, уточняйте в Telegram.</p>
+          </div>
+
+          <div class="lg:col-span-2 space-y-3">
+            <a href="https://t.me/osokin_ai" id="telegram-link" target="_blank" rel="noopener" class="btn-primary w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl text-base font-semibold cursor-pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+              <span>Написать в Telegram</span>
+            </a>
+            <a href="https://t.me/osokin_ai" target="_blank" rel="noopener" class="contact-row">
+              <span class="contact-row__label">Telegram</span><span class="contact-row__value">@osokin_ai</span>
+            </a>
+            <a href="mailto:osokingauss@gmail.com" class="contact-row">
+              <span class="contact-row__label">Почта</span><span class="contact-row__value">osokingauss@gmail.com</span>
+            </a>
+            <a href="https://t.me/want_auction" target="_blank" rel="noopener" class="contact-row">
+              <span class="contact-row__label">Канал</span><span class="contact-row__value">@want_auction</span>
+            </a>
+            <a href="cv" class="contact-row">
+              <span class="contact-row__label">Резюме</span><span class="contact-row__value">osokin.ai/cv</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -536,33 +618,9 @@
   <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
       <p>&copy; 2026 Анатолий Осокин</p>
-      <p>Сайты, боты и приложения для бизнеса</p>
+      <p>Энергия · Разработка · ФудСити · Отношения · Игры</p>
     </div>
   </footer>
-
-  <!-- ═══════ PDF MODAL ═══════ -->
-  <div id="pdf-modal" class="pdf-modal" hidden>
-    <div class="pdf-modal__backdrop" data-close></div>
-    <div class="pdf-modal__panel">
-      <div class="pdf-modal__bar">
-        <span class="font-heading font-bold text-platinum">Anima Poker — презентация</span>
-        <div class="flex items-center gap-3">
-          <a href="portfolio/anima-poker.pdf" target="_blank" rel="noopener" class="btn-outline px-3 py-1.5 rounded-lg text-xs hidden sm:inline-flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            В новой вкладке
-          </a>
-          <a href="portfolio/anima-poker.pdf" download="Anima_Poker.pdf" class="btn-outline px-3 py-1.5 rounded-lg text-xs inline-flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Скачать
-          </a>
-          <button type="button" class="pdf-modal__close" data-close aria-label="Закрыть">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          </button>
-        </div>
-      </div>
-      <iframe class="pdf-modal__frame" data-pdf-src="portfolio/anima-poker.pdf" title="Презентация Anima Poker"></iframe>
-    </div>
-  </div>
 
   <!-- ═══════ IMAGE LIGHTBOX ═══════ -->
   <div id="img-lightbox" class="img-lightbox" hidden>
