@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анатолий Осокин — энергия без выгорания, IT-проекты, здоровое питание</title>
-  <meta name="description" content="Анатолий Осокин: протокол Dopamine Reboot, разработка сайтов, ботов и приложений, здоровое питание — экскурсии на ФудСити и доставка свежих продуктов, ассоциация мужско-женских отношений. 14 лет в IT, ex-Ozon. Работа — от 10 000 ₽ в час.">
+  <title>Анатолий Осокин — разработка, аудит продуктов, нейронаука</title>
+  <meta name="description" content="Анатолий Осокин: разработка сайтов, ботов и iOS-приложений, аудит продуктов, протокол Dopamine Reboot, отношения и здоровое питание. 14 лет в IT, ex-Ozon. От 10 000 ₽ в час, первый час бесплатно.">
   <meta property="og:type" content="profile">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:url" content="https://osokin.ai/">
   <meta property="og:title" content="Анатолий Осокин — с чем я могу помочь">
-  <meta property="og:description" content="Энергия без выгорания, сайты и боты для бизнеса, здоровое питание, отношения в паре. 14 лет в IT, ex-Ozon. От 10 000 ₽ в час.">
+  <meta property="og:description" content="Разработка и аудит продуктов, нейронаука мотивации, гармоничная жизнь. 14 лет в IT, ex-Ozon. От 10 000 ₽ в час, первый час бесплатно.">
   <meta property="og:image" content="https://osokin.ai/photo.png">
   <meta name="theme-color" content="#060A0D">
   <link rel="stylesheet" href="style.css">
@@ -44,6 +44,55 @@
       }
     }
   </script>
+
+  <style>
+    /* стили, которые нужны только главной */
+    .ten { display: grid; gap: 0; border-top: 1px solid var(--border); }
+    .ten__row { display: grid; grid-template-columns: 1fr; gap: 2px 1.5rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    @media (min-width: 640px) { .ten__row { grid-template-columns: 8.5rem 9rem 1fr; align-items: baseline; } }
+    .ten__years { font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+    .ten__role { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; color: var(--ember-bright); }
+    .ten__row:nth-child(odd) .ten__role { color: var(--cyan-bright); }
+    .ten__what { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+    .ten__row--now .ten__years, .ten__row--now .ten__what { color: var(--platinum); }
+
+    .direction { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; scroll-margin-top: 6rem; }
+    .direction:hover { transform: none; }
+    @media (min-width: 1024px) { .direction { grid-template-columns: 5fr 6fr; gap: 3rem; padding: 2.5rem; } }
+    .direction + .direction { margin-top: 1.25rem; }
+    .direction__eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); }
+    .direction--ember .direction__eyebrow { color: var(--ember); }
+    .direction__q { font-family: var(--font-heading); font-size: clamp(1.7rem, 3.2vw, 2.3rem); font-weight: 700; line-height: 1.12; margin: 0.6rem 0 0.9rem; }
+    .direction__text { color: var(--text-muted); line-height: 1.7; margin-bottom: 1.4rem; }
+    .direction__cta { display: inline-flex; padding: 0.6rem 1.1rem; border-radius: 10px; font-size: 0.9rem; font-weight: 600; }
+    .direction__rows { display: flex; flex-direction: column; border-top: 1px solid var(--border); }
+    @media (min-width: 1024px) { .direction__rows { border-top: 0; } }
+
+    .d-row { display: flex; align-items: center; gap: 1rem; width: 100%; text-align: left; padding: 0.95rem 0.25rem; border: 0; border-bottom: 1px solid var(--border); background: none; color: inherit; font: inherit; cursor: pointer; transition: background 0.2s ease, padding 0.2s ease; }
+    .d-row:hover { background: rgba(95, 217, 228, 0.05); padding-left: 0.75rem; padding-right: 0.75rem; }
+    .d-row--static { cursor: default; }
+    .d-row--static:hover { background: none; padding-left: 0.25rem; padding-right: 0.25rem; }
+    .d-row__main { flex: 1; min-width: 0; }
+    .d-row__name { font-weight: 600; color: var(--platinum); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.6rem; }
+    .d-row__meta { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+    .d-row__line { font-size: 0.88rem; color: var(--text-muted); margin-top: 2px; }
+    .d-row__arrow { color: var(--cyan); font-size: 1rem; flex-shrink: 0; }
+    .direction--ember .d-row__arrow { color: var(--ember); }
+    .d-row__thumb { width: 72px; height: 44px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0; }
+    .d-group { display: flex; align-items: baseline; gap: 1rem; margin: 3.5rem 0 1.25rem; }
+    @media (min-width: 640px) { .d-group { margin-top: 4.5rem; gap: 1.5rem; } }
+    .d-group__num { font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1; color: var(--ember); text-shadow: 0 0 24px var(--ember-glow-strong); }
+    .d-group__title { font-family: var(--font-heading); font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.1; }
+    .d-group__sub { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem; }
+    .d-rows__label { display: flex; align-items: center; gap: 0.6rem; padding: 0.9rem 0.25rem 0.75rem; font-family: var(--font-heading); font-size: 1.45rem; font-weight: 700; line-height: 1.1; color: var(--ember); border-bottom: 1px solid rgba(255, 158, 74, 0.3); }
+    @media (min-width: 1024px) { .d-rows__label { padding-top: 0; } }
+    .d-row--featured { position: relative; margin: 0.6rem -0.85rem; width: calc(100% + 1.7rem); padding: 1rem 1.1rem; border: 1px solid transparent; border-radius: 14px;
+      background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(135deg, #FFE3A3, #E0A94A 45%, #B8862F 70%, #FFD58A) border-box;
+      box-shadow: 0 0 24px rgba(224, 169, 74, 0.22); }
+    .d-row--featured:hover { padding-left: 1.1rem; padding-right: 1.1rem; background: linear-gradient(var(--surface-hover), var(--surface-hover)) padding-box, linear-gradient(135deg, #FFE3A3, #E0A94A 45%, #B8862F 70%, #FFD58A) border-box; box-shadow: 0 0 32px rgba(224, 169, 74, 0.35); }
+    .d-row--featured .d-row__name { color: #FFE3A3; }
+    .rate-star { position: relative; top: -0.3em; margin-left: 0.04em; font-size: 0.6em; line-height: 0; }
+  </style>
 </head>
 <body class="font-body bg-bg text-light">
 
@@ -64,8 +113,8 @@
         Анатолий Осокин
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="#help" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">С чем помогу</a>
-        <a href="#projects" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Проекты</a>
+        <a href="#help" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Чем помогу</a>
+        <a href="#now" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Коротко обо мне</a>
         <a href="#path" class="text-muted hover:text-light transition-colors duration-200 text-sm cursor-pointer">Путь</a>
         <a href="#contact" class="btn-primary px-5 py-2 rounded-lg text-sm font-medium cursor-pointer">Написать</a>
       </div>
@@ -74,8 +123,8 @@
     </div>
   </nav>
 
-  <!-- ═══════ HERO ═══════ -->
-  <section class="relative flex items-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-24">
+  <!-- ═══════ HERO: приглашение первой строкой (идея julian.com) ═══════ -->
+  <section class="relative px-4 sm:px-6 lg:px-8 overflow-hidden pt-28 sm:pt-36 pb-10 sm:pb-20">
     <div class="grid-bg"></div>
     <div class="hero-glow hero-glow--main"></div>
 
@@ -85,29 +134,20 @@
           <img src="photo.png" alt="" class="hero-avatar lg:hidden" width="64" height="64">
           <div class="flex items-center gap-3">
             <div class="glow-dot"></div>
-            <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">14 лет в IT · ex-Ozon · нейронаука</span>
+            <span class="text-muted text-xs sm:text-sm tracking-widest uppercase font-medium">Инженерия · управление · нейронаука</span>
           </div>
         </div>
 
         <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight mb-6">
-          Помогаю людям и бизнесу<br>
-          <span class="text-gradient">не только хотеть, но и делать</span>
+          Выгорели, запускаете продукт или хотите более гармоничную жизнь?<br>
+          <span class="text-gradient">Мне есть, чем поделиться.</span>
         </h1>
 
         <p class="text-muted text-base sm:text-lg max-w-2xl mb-8 leading-relaxed">
-          Возвращаю энергию без тревоги и выгорания, делаю сайты, ботов и приложения,
-          помогаю перейти на здоровое питание без переплат, работаю с отношениями в паре.
-          За плечами — путь от физфака и C++ до директора по технологиям в Ozon.
+          Я прошёл путь от физфака и программирования до директора по технологиям в Ozon, а теперь делаю своё:
+          разработка и аудит продуктов, нейронаука мотивации, гармоничная жизнь.
+          Если не уверены, что ваш вопрос — по моей части, всё равно напишите.
         </p>
-
-        <!-- Quick directions -->
-        <div class="flex flex-wrap gap-2 mb-8">
-          <a href="#energy" class="dir-chip"><span class="dir-chip__dot"></span>Энергия и мотивация</a>
-          <a href="#tech" class="dir-chip"><span class="dir-chip__dot"></span>Сайты, боты, приложения</a>
-          <a href="#food" class="dir-chip dir-chip--ember"><span class="dir-chip__dot"></span>Здоровое питание</a>
-          <a href="#relations" class="dir-chip dir-chip--ember"><span class="dir-chip__dot"></span>Отношения в паре</a>
-          <a href="#games" class="dir-chip"><span class="dir-chip__dot"></span>Игры</a>
-        </div>
 
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
           <a href="https://t.me/osokin_ai" target="_blank" rel="noopener" class="btn-primary inline-flex items-center justify-center gap-3 px-7 py-4 rounded-xl text-base font-semibold cursor-pointer">
@@ -115,8 +155,9 @@
             <span>Написать в Telegram</span>
           </a>
           <div class="rate-pill">
-            <span class="text-dim text-xs uppercase tracking-widest">Работа со мной</span>
-            <span class="case-number case-number--ember text-2xl sm:text-3xl whitespace-nowrap">от 10 000 ₽ / час</span>
+            <span class="text-dim text-xs uppercase tracking-widest">Отвечаю каждому</span>
+            <span class="case-number case-number--ember text-3xl sm:text-4xl whitespace-nowrap">от 10 000<span class="rate-star">*</span> ₽ / час</span>
+            <span class="text-dim text-xs">*первый час бесплатно</span>
           </div>
         </div>
       </div>
@@ -129,296 +170,125 @@
     </div>
   </section>
 
-  <!-- ═══════ HELP: С ЧЕМ ОБРАТИТЬСЯ ═══════ -->
-  <section id="help" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+  <!-- ═══════ Я ЗА 10 СЕКУНД (идея sive.rs) ═══════ -->
+  <section id="now" class="pb-12 sm:pb-20 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
-      <div class="reveal mb-8 sm:mb-12">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">С чем помогу</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          С какими вопросами <span class="text-gradient">ко мне обращаются</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <a href="#energy" class="reveal-scale card help-tile p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Нет сил, тревога, выгорание</h3>
-          <p class="text-muted text-sm leading-relaxed">Протокол Dopamine Reboot на основе нейронауки: вернуть энергичное состояние, когда «надо» снова превращается в «сделал».</p>
-          <span class="help-tile__more">Dopamine Reboot, AI Tracker, статьи →</span>
-        </a>
-
-        <a href="#tech" class="reveal-scale reveal-delay-1 card help-tile p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Нужен сайт, бот или приложение</h3>
-          <p class="text-muted text-sm leading-relaxed">Боты для бизнеса, сайты, iOS-приложения, техническое развитие проекта — или совет по IT-продукту и команде от бывшего CTO.</p>
-          <span class="help-tile__more">Разработка и курс →</span>
-        </a>
-
-        <a href="#food" class="reveal-scale reveal-delay-2 card help-tile help-tile--ember p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Свежие продукты дешевле</h3>
-          <p class="text-muted text-sm leading-relaxed">Экскурсии по ФудСити в Москве — как устроен рынок и как торговаться. Или доставка оттуда по подписке, каждую неделю.</p>
-          <span class="help-tile__more">Экскурсии и доставка →</span>
-        </a>
-
-        <a href="#relations" class="reveal-scale card help-tile help-tile--ember p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Отношения в паре</h3>
-          <p class="text-muted text-sm leading-relaxed">Ассоциация мужско-женских отношений: мужское и женское состояние, сонастройка пары, группы и ретриты.</p>
-          <span class="help-tile__more">Ассоциация →</span>
-        </a>
-
-        <a href="#games" class="reveal-scale reveal-delay-1 card help-tile p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Поиграть</h3>
-          <p class="text-muted text-sm leading-relaxed">Покер с друзьями в Anima Poker — и собственные игры: action-RPG Emberhold и экономическая стратегия Island Colony.</p>
-          <span class="help-tile__more">Игры →</span>
-        </a>
-
-        <a href="#contact" class="reveal-scale reveal-delay-2 card card-featured help-tile p-6 sm:p-8">
-          <div class="help-tile__icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-          </div>
-          <h3 class="font-heading text-2xl font-bold mb-2">Другой вопрос</h3>
-          <p class="text-muted text-sm leading-relaxed">Опишите задачу в Telegram — скажу, смогу ли помочь и сколько часов это займёт.</p>
-          <span class="help-tile__more help-tile__more--ember">от 10 000 ₽ / час →</span>
-        </a>
+      <div class="reveal">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Я за 10 секунд</span>
+        <div class="ten mt-5">
+          <div class="ten__row"><span class="ten__years">2009 — 2018</span><span class="ten__role">Инженер</span><span class="ten__what">Физфак НГУ, наукоёмкий CAD на C++: BricsCAD, Renga.</span></div>
+          <div class="ten__row"><span class="ten__years">2018 — 2026</span><span class="ten__role">Руководитель</span><span class="ten__what">Директор MuseScore, CTO двух стартапов, руководитель отдела разработки мобильного приложения Ozon, директор по технологиям сортировочных центров Ozon в РФ.</span></div>
+          <div class="ten__row"><span class="ten__years">2021 — сейчас</span><span class="ten__role">Разработчик</span><span class="ten__what">iOS-приложения, боты и сайты — для себя и на заказ для малого бизнеса.</span></div>
+          <div class="ten__row ten__row--now"><span class="ten__years">2026 +</span><span class="ten__role">Своё дело</span><span class="ten__what">Всё ниже. Подробный путь — <a href="#path" class="text-cyan hover:text-cyan-bright underline underline-offset-2">в карусели</a>.</span></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ PROJECTS ═══════ -->
-  <section id="projects" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
-    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
+  <!-- ═══════ НАПРАВЛЕНИЯ: 4 группы; в блоке вопрос → что делаю → проекты → написать ═══════ -->
+  <section id="help" class="py-12 sm:py-20 px-4 sm:px-6 lg:px-8">
+    <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-16"></div>
     <div class="max-w-6xl mx-auto">
-      <div class="reveal mb-10 sm:mb-14">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Проекты</span>
+      <div class="reveal mb-4 sm:mb-6">
+        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Чем помогу</span>
         <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Чем я занимаюсь <span class="text-gradient">сейчас</span>
+          Узнали себя? <span class="text-gradient">Напишите про это</span>
         </h2>
       </div>
 
-      <!-- ── Group: Energy ── -->
-      <div id="energy" class="project-group">
-        <div class="reveal group-head">
-          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Энергия и мотивация</h3>
-            <p class="text-muted text-sm sm:text-base">Исследую жизнь с точки зрения нейронауки — и превращаю это в практику.</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-          <article class="reveal-scale card card-featured project md:col-span-2">
-            <div class="project__meta"><span>Бот · протокол · групповое и персональное ведение</span></div>
-            <h4 class="project__title">Dopamine Reboot</h4>
-            <p class="project__text">Протокол возвращения энергичного состояния без хронической тревоги, стресса и выгорания. Более 100 научных источников — в конкретные, проверенные рычаги вместо «соберись и возьми себя в руки».</p>
-            <div class="project__links">
-              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20Dopamine%20Reboot" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Хочу в протокол</a>
-              <a href="actuallydoit/" class="btn-outline link-btn">13 статей, на которых он стоит</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-1 card project">
-            <div class="project__meta"><span>Книга · канал</span></div>
-            <h4 class="project__title">Хотеть и Делать</h4>
-            <p class="project__text">Почему «сделать или не сделать» решает не сила воли, а аукцион нейронных цепей. Статьи о дофамине, стрессе, сне и любви.</p>
-            <div class="project__links">
-              <a href="actuallydoit/" class="btn-outline link-btn">osokin.ai/actuallydoit</a>
-              <a href="https://t.me/want_auction" target="_blank" rel="noopener" class="btn-outline link-btn">@want_auction</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale card project md:col-span-3">
-            <div class="project__meta"><span>Таск-трекер · life-трекер · ИИ</span></div>
-            <h4 class="project__title">AI Tracker</h4>
-            <p class="project__text">Трекер задач и жизни с постоянной помощью ИИ: помогает не прокрастинировать, находить повторяющиеся паттерны избегания и проводить саморефлексию.</p>
-            <div class="project__links">
-              <a href="https://tracker.osokin.ai" target="_blank" rel="noopener" class="btn-outline link-btn ext">tracker.osokin.ai</a>
-            </div>
-          </article>
-        </div>
+      <div class="reveal d-group">
+        <span class="d-group__num">01</span>
+        <div><h2 class="d-group__title">Разработка и продукт</h2><p class="d-group__sub">Делаю сам, помогаю вашему продукту расти — или учу сделать самому.</p></div>
       </div>
-
-      <!-- ── Group: Tech ── -->
-      <div id="tech" class="project-group">
-        <div class="reveal group-head">
-          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Разработка</h3>
-            <p class="text-muted text-sm sm:text-base">Боты, сайты и приложения — и техническое развитие чужих проектов.</p>
+        <article id="tech" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Разработка</span>
+            <h3 class="direction__q">Нужен сайт, бот или приложение?</h3>
+            <p class="direction__text">Делаю сам и быстро: от Telegram-бота до iOS-приложения в App Store. 14 лет в IT — от инженера до директора по технологиям.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%95%D1%81%D1%82%D1%8C%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0%20%D0%BF%D0%BE%20%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B5" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
           </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          <article class="reveal-scale card card-featured project">
-            <div class="project__meta"><span>Боты для бизнеса</span></div>
-            <h4 class="project__title">Бот для Авито</h4>
-            <p class="project__text">Принёс заказчику переполненный склад — товары складывать уже некуда. Окупился за 2 месяца.</p>
-            <div class="project__stats">
-              <div><div class="case-label">Окупаемость</div><div class="case-number case-number--ember text-2xl">2 мес</div></div>
-              <div><div class="case-label">Склад</div><div class="case-number case-number--ember text-2xl">полон</div></div>
-            </div>
-            <div class="project__links">
-              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D0%B1%D0%BE%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Обсудить бота</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-1 card project">
-            <div class="project__meta"><span>iOS-приложение</span></div>
-            <h4 class="project__title">Pitlane</h4>
-            <p class="project__text">Цифровая история обслуживания автомобиля: заказ-наряды в телефоне, распознавание документов с ИИ.</p>
-            <div class="project__links">
-              <a href="https://pitlane.uk" target="_blank" rel="noopener" class="btn-outline link-btn ext">pitlane.uk</a>
-              <a href="https://apps.apple.com/us/app/pitlane-car-service-scanner/id6761056052" target="_blank" rel="noopener" class="btn-outline link-btn ext">App Store</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-2 card project">
-            <div class="project__meta"><span>Техническое развитие</span></div>
-            <h4 class="project__title">Love In DNA</h4>
-            <p class="project__text">Веду техническое развитие проекта.</p>
-            <div class="project__links">
-              <a href="https://loveindna.com" target="_blank" rel="noopener" class="btn-outline link-btn ext">loveindna.com</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale card project">
-            <div class="project__meta"><span>Техническое развитие</span></div>
-            <h4 class="project__title">Хлеб Первоистоков</h4>
-            <p class="project__text">Сайт ремесленника-хлебопёка с приёмом заказов через Telegram-бота.</p>
-            <div class="project__links">
-              <a href="https://pervoistokov.uk" target="_blank" rel="noopener" class="btn-outline link-btn ext">pervoistokov.uk</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-1 card project">
-            <div class="project__meta"><span>Сайт и исходный код</span></div>
-            <h4 class="project__title">Лолита Забаштан</h4>
-            <p class="project__text">Персональный сайт мастера: практики, услуги, запись на консультации. Исходный код и поддержка — на мне.</p>
-            <div class="project__links">
-              <a href="https://lolitapsy.pro" target="_blank" rel="noopener" class="btn-outline link-btn ext">lolitapsy.pro</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-2 card project">
-            <div class="project__meta"><span>Курс</span><span class="status">в разработке</span></div>
-            <h4 class="project__title">Свой сайт с ИИ за 1 день</h4>
-            <p class="project__text">Курс для тех, кто хочет сам: от установки Claude Code до своего сайта, открытого в браузере.</p>
-            <div class="project__links">
-              <a href="mastering-ai/" class="btn-outline link-btn">Черновик курса</a>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- ── Group: Food ── -->
-      <div id="food" class="project-group">
-        <div class="reveal group-head group-head--ember">
-          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg></div>
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Здоровое питание</h3>
-            <p class="text-muted text-sm sm:text-base">Свежие продукты с ФудСити, крупнейшего продовольственного рынка Москвы, — с проводником или с доставкой до двери.</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          <article class="reveal-scale card card-featured project">
-            <div class="project__meta"><span>Экскурсия · Москва</span></div>
-            <h4 class="project__title">Экскурсии на ФудСити</h4>
-            <p class="project__text">Рассказываю, что есть на рынке и как он устроен, где лучшие цены, на что обращать внимание и как торговаться.</p>
-            <div class="project__stats">
-              <div><div class="case-label">Экономия в первую поездку</div><div class="case-number case-number--ember text-2xl sm:text-3xl">до 5 000 ₽*</div></div>
-            </div>
-            <div class="project__links">
-              <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BD%D0%B0%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%A4%D1%83%D0%B4%D0%A1%D0%B8%D1%82%D0%B8" target="_blank" rel="noopener" class="btn-outline btn-outline--ember link-btn">Записаться на экскурсию</a>
-            </div>
-            <p class="text-dim text-xs mt-4">*зависит от объёма покупок</p>
-          </article>
-
-          <article class="reveal-scale reveal-delay-1 card project">
-            <div class="project__meta"><span>Подписка · еженедельно</span></div>
-            <h4 class="project__title">Доставка с ФудСити</h4>
-            <p class="project__text">Свежие продукты по оптовым ценам с еженедельной доставкой до двери — по подписке.</p>
-            <div class="project__links">
-              <a href="https://foodcity.osokingauss.workers.dev/" target="_blank" rel="noopener" class="btn-outline link-btn ext">Оформить подписку</a>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- ── Group: Relations ── -->
-      <div id="relations" class="project-group">
-        <div class="reveal group-head group-head--ember">
-          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Отношения</h3>
-            <p class="text-muted text-sm sm:text-base">Работа с состоянием — вместе с Ольгой Забаштан.</p>
-          </div>
-        </div>
-
-        <article class="reveal-scale card card-featured project">
-          <div class="project__meta"><span>Индивидуально · пары · группы · ретриты</span></div>
-          <h4 class="project__title">Ассоциация мужско-женских отношений</h4>
-          <p class="project__text max-w-3xl">Настройка мужского и женского состояния, сонастройка пары, мужские, женские и смешанные круги. Метод — guided imagery, направляемое воображение.</p>
-          <div class="project__links">
-            <a href="family_retreats/" class="btn-outline btn-outline--ember link-btn">Сонастройка — подробнее</a>
+          <div class="direction__rows">
+            <div class="d-rows__label"><span class="glow-dot glow-dot--ember"></span>Примеры моих работ</div>
+            <a class="d-row" href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%9D%D1%83%D0%B6%D0%B5%D0%BD%20%D0%B1%D0%BE%D1%82%20%D0%B4%D0%BB%D1%8F%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%D0%B0" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Бот для Авито<span class="d-row__meta">автоматизация</span></div><div class="d-row__line">Переполненный склад заказчика, окупился за 2 месяца.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://pitlaneapp.uk" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Pitlane<span class="d-row__meta">iOS</span></div><div class="d-row__line">Цифровая история обслуживания автомобиля.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://loveindna.com" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Love In DNA<span class="d-row__meta">техническое развитие</span></div><div class="d-row__line">loveindna.com</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://pervoistokov.uk" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Хлеб Первоистоков<span class="d-row__meta">техническое развитие</span></div><div class="d-row__line">Сайт пекаря с заказами через Telegram.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://lolitapsy.pro" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Лолита Забаштан<span class="d-row__meta">сайт и исходный код</span></div><div class="d-row__line">Сайт мастера с записью на консультации.</div></div><span class="d-row__arrow">↗</span></a>
           </div>
         </article>
-      </div>
-
-      <!-- ── Group: Games ── -->
-      <div id="games" class="project-group">
-        <div class="reveal group-head">
-          <div class="group-head__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg></div>
-          <div>
-            <h3 class="font-heading text-2xl sm:text-3xl font-bold">Игры</h3>
-            <p class="text-muted text-sm sm:text-base">Соло-разработка с ИИ — от покерного движка до экономических стратегий.</p>
+        <article id="audit" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Аудит продукта</span>
+            <h3 class="direction__q">Продукт растёт не так, как хотелось бы?</h3>
+            <p class="direction__text">Разбираюсь в разработке, продукте, метриках и бизнес-моделях. Провожу аудит, выстраиваю стратегию изменений и помогаю её реализовать.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82%20%D0%BF%D1%80%D0%BE%D0%B4%D1%83%D0%BA%D1%82%D0%B0" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
           </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          <article class="reveal-scale card project">
-            <div class="project__meta"><span>Покер с друзьями</span></div>
-            <h4 class="project__title">Anima Poker</h4>
-            <p class="project__text">Пространство для игры в покер с друзьями: свой стол, турниры, мультитейблинг — и боты с человеческой логикой, если не хватает игроков.</p>
-            <div class="project__links">
-              <a href="https://animapoker.com" target="_blank" rel="noopener" class="btn-outline link-btn ext">animapoker.com</a>
-            </div>
-          </article>
-
-          <article class="reveal-scale reveal-delay-1 card project">
-            <div class="project__meta"><span>Экономическая стратегия · iOS</span></div>
-            <h4 class="project__title">Island Colony</h4>
-            <p class="project__text">Ремейк старой доброй Sakhalin Colony — экономическая стратегия для iPhone.</p>
-          </article>
-
-          <article class="reveal-scale card card-featured project md:col-span-2">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
-              <div>
-                <div class="project__meta"><span>Action-RPG</span><span class="status">в разработке</span></div>
-                <h4 class="project__title">Emberhold</h4>
-                <p class="project__text">Сессионный диаблоид с глубоким производством и строительством базы. Короткие вылазки во тьму — а лагерь живёт и перерабатывает добычу, пока вы сражаетесь.</p>
-                <p class="font-heading text-lg sm:text-xl text-platinum">«Diablo, в который можно играть по 25 минут, и Valheim, в котором можно жить годами»</p>
-              </div>
-              <button type="button" class="js-lightbox case-shot" data-full="portfolio/emberhold-title.jpg" aria-label="Emberhold — заглавный кадр, открыть крупнее">
-                <img src="portfolio/emberhold-title.jpg" alt="Emberhold — сессионная Action-RPG с обустройством базы" loading="lazy">
-              </button>
-            </div>
-          </article>
-        </div>
+          <div class="direction__rows">
+            <div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">Аудит<span class="d-row__meta">1</span></div><div class="d-row__line">Разработка, продукт, метрики и бизнес-модель — где теряются деньги и время.</div></div></div><div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">Стратегия изменений<span class="d-row__meta">2</span></div><div class="d-row__line">Что менять, в каком порядке и как измерять эффект.</div></div></div><div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">Реализация<span class="d-row__meta">3</span></div><div class="d-row__line">Помогаю провести изменения — с командой или вместо недостающей роли.</div></div></div><div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">Ozon<span class="d-row__meta">опыт</span></div><div class="d-row__line">Заработал для Ozon 28 млрд рублей*; попадание в сроки — с 25% до 80%.</div></div></div><div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">MuseScore · JackPoker<span class="d-row__meta">опыт</span></div><div class="d-row__line">Релизы — с «раз в 2 года» до «раз в квартал»; критические баги — с 5 до 0 за 3 месяца.</div></div></div>
+          </div>
+        </article>
+        <article id="course" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Курс · в разработке</span>
+            <h3 class="direction__q">Хотите сделать свой сайт сами?</h3>
+            <p class="direction__text">Курс «Сайт с ИИ за 1 день»: за один день — от нуля до своего сайта, без опыта в программировании.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%BA%D1%83%D1%80%D1%81%20%D0%BF%D0%BE%20%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D1%8E%20%D1%81%D0%B2%D0%BE%D0%B5%D0%B3%D0%BE%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
+          </div>
+          <div class="direction__rows">
+            <a class="d-row" href="mastering-ai/"><div class="d-row__main"><div class="d-row__name">Программа курса<span class="d-row__meta">черновик</span></div><div class="d-row__line">12 уроков по 6 минут — от установки до сайта, открытого в браузере.</div></div><span class="d-row__arrow">→</span></a><div class="d-row d-row--static"><div class="d-row__main"><div class="d-row__name">Два проекта<span class="d-row__meta">практика</span></div><div class="d-row__line">Сайт-визитка и мини-интернет-магазин — по вашему контенту.</div></div></div>
+          </div>
+        </article>
+      <div class="reveal d-group">
+        <span class="d-group__num">02</span>
+        <div><h2 class="d-group__title">Нейронаука</h2><p class="d-group__sub">Энергия и мотивация — на научной основе.</p></div>
       </div>
+        <article id="energy" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Энергия и мотивация</span>
+            <h3 class="direction__q">Выгорание, стресс, тревога?</h3>
+            <p class="direction__text">Помогаю вернуть энергичное состояние без хронического стресса и выгорания — по протоколу, собранному из 100+ научных исследований.</p>
+          </div>
+          <div class="direction__rows">
+            <a class="d-row d-row--featured" href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20Dopamine%20Reboot" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Dopamine Reboot<span class="d-row__meta">бот · протокол · ведение</span></div><div class="d-row__line">Групповое и персональное ведение по протоколу.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://tracker.osokin.ai" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">AI Tracker<span class="d-row__meta">трекер с ИИ</span></div><div class="d-row__line">Задачи и жизнь: ловит прокрастинацию и паттерны избегания.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="actuallydoit/"><div class="d-row__main"><div class="d-row__name">Хотеть и Делать<span class="d-row__meta">13 статей</span></div><div class="d-row__line">Почему «сделать или не сделать» решает не сила воли.</div></div><span class="d-row__arrow">→</span></a><a class="d-row" href="https://t.me/want_auction" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">@want_auction<span class="d-row__meta">канал</span></div><div class="d-row__line">Жизнь с точки зрения нейронауки.</div></div><span class="d-row__arrow">↗</span></a>
+          </div>
+        </article>
+      <div class="reveal d-group">
+        <span class="d-group__num">03</span>
+        <div><h2 class="d-group__title">Гармоничная жизнь</h2><p class="d-group__sub">Отношения и здоровое питание.</p></div>
+      </div>
+        <article id="relations" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Отношения</span>
+            <h3 class="direction__q">Хотите больше тепла и понимания в паре?</h3>
+            <p class="direction__text">Вместе с Ольгой Забаштан работаем с мужским и женским состоянием методом guided imagery — индивидуально, с парами и в группах.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D1%80%D0%BE%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%83%20%D1%81%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D1%8F%D0%BC%D0%B8" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
+          </div>
+          <div class="direction__rows">
+            <a class="d-row" href="family_retreats/"><div class="d-row__main"><div class="d-row__name">Ассоциация мужско-женских отношений<span class="d-row__meta">пары · группы · ретриты</span></div><div class="d-row__line">Сонастройка пары, мужские и женские круги.</div></div><span class="d-row__arrow">→</span></a>
+          </div>
+        </article>
+        <article id="food" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Здоровое питание</span>
+            <h3 class="direction__q">Хотите есть свежее и платить меньше?</h3>
+            <p class="direction__text">ФудСити — крупнейший продовольственный рынок Москвы. Покажу его изнутри — или буду привозить продукты оттуда каждую неделю.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D0%BE%D0%B5%20%D0%BF%D0%B8%D1%82%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%A4%D1%83%D0%B4%D0%A1%D0%B8%D1%82%D0%B8" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
+          </div>
+          <div class="direction__rows">
+            <a class="d-row" href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BD%D0%B0%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8E%20%D0%BF%D0%BE%20%D0%A4%D1%83%D0%B4%D0%A1%D0%B8%D1%82%D0%B8" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Экскурсия на ФудСити<span class="d-row__meta">Москва</span></div><div class="d-row__line">Как устроен рынок, где цены ниже, как торговаться. До 5 000 ₽ экономии в первую поездку*.</div></div><span class="d-row__arrow">↗</span></a><a class="d-row" href="https://foodcity.osokingauss.workers.dev/" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Доставка по подписке<span class="d-row__meta">еженедельно</span></div><div class="d-row__line">Свежие продукты по оптовым ценам до двери.</div></div><span class="d-row__arrow">↗</span></a><p class="text-dim text-xs mt-3">*зависит от объёма покупок</p>
+          </div>
+        </article>
+      <div class="reveal d-group">
+        <span class="d-group__num">04</span>
+        <div><h2 class="d-group__title">Guilty pleasure</h2><p class="d-group__sub">Игры — и их разработка.</p></div>
+      </div>
+        <article id="games" class="reveal card direction">
+          <div class="direction__ask">
+            <span class="direction__eyebrow">Игры</span>
+            <h3 class="direction__q">Разработка «той самой» игры</h3>
+            <p class="direction__text">Соло-разработка — от покерного движка до экономической стратегии. Ищу игроков, тестеров и единомышленников.</p>
+            <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B8%D0%B3%D1%80%D0%B0%D1%82%D1%8C%20/%20%D0%BF%D0%BE%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%D0%B0%D1%88%D0%B8%20%D0%B8%D0%B3%D1%80%D1%8B" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
+          </div>
+          <div class="direction__rows">
+            <a class="d-row" href="https://animapoker.com" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Anima Poker<span class="d-row__meta">покер с друзьями</span></div><div class="d-row__line">Свой стол, турниры и боты, если не хватает игроков.</div></div><span class="d-row__arrow">↗</span></a><button type="button" class="d-row js-lightbox" data-full="portfolio/emberhold-title.jpg"><div class="d-row__main"><div class="d-row__name">Emberhold<span class="d-row__meta">action-RPG · в разработке</span></div><div class="d-row__line">Diablo на 25 минут и Valheim на годы.</div></div><img class="d-row__thumb" src="portfolio/emberhold-title.jpg" alt="Emberhold — кадр из игры" loading="lazy"></button><a class="d-row" href="https://testflight.apple.com/join/jWqRfwrG" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Island Colony<span class="d-row__meta">iOS · TestFlight</span></div><div class="d-row__line">Ремейк Sakhalin Colony — экономическая стратегия.</div></div><span class="d-row__arrow">↗</span></a>
+          </div>
+        </article>
     </div>
   </section>
 
@@ -430,20 +300,6 @@
   <section id="path" class="py-12 sm:py-24 px-4 sm:px-6 lg:px-8">
     <div class="section-divider max-w-6xl mx-auto mb-10 sm:mb-20"></div>
     <div class="max-w-6xl mx-auto">
-      <div class="reveal mb-8 sm:mb-12">
-        <span class="text-cyan text-sm font-semibold tracking-widest uppercase">Путь</span>
-        <h2 class="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mt-4">
-          Откуда <span class="text-gradient">мой опыт</span>
-        </h2>
-      </div>
-
-      <div class="reveal grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 sm:mb-14">
-        <div class="card metric"><div class="case-number text-3xl sm:text-4xl">14 лет</div><div class="case-label mt-2">в IT</div></div>
-        <div class="card metric"><div class="case-number case-number--ember text-3xl sm:text-4xl">28+ млрд ₽</div><div class="case-label mt-2">GMV фич в Ozon</div></div>
-        <div class="card metric"><div class="case-number text-3xl sm:text-4xl">130+</div><div class="case-label mt-2">разработчиков под началом</div></div>
-        <div class="card metric"><div class="case-number case-number--ember text-3xl sm:text-4xl">100+</div><div class="case-label mt-2">научных источников в протоколе</div></div>
-      </div>
-
       <div class="bio reveal" data-carousel>
         <div class="bio-nav" role="tablist" aria-label="Годы"></div>
 
@@ -498,7 +354,7 @@
             <div class="bio-body">
               <div class="bio-period">2022 — 2025 · Ozon Tech</div>
               <h3 class="bio-title">Мобильное приложение Ozon</h3>
-              <p class="bio-text">Руководил отделом разработки приложения покупателя: главная, личный кабинет, карточка товара — фичи на 28+ млрд ₽ GMV. Попадание в сроки — с 25% до 80%. Вырастил тимлида себе на замену.</p>
+              <p class="bio-text">Руководил отделом разработки приложения покупателя: главная, личный кабинет, карточка товара. Заработал для Ozon 28 млрд рублей*. Попадание в сроки — с 25% до 80%. Вырастил тимлида себе на замену.</p>
             </div>
           </article>
 
@@ -525,7 +381,7 @@
             <div class="bio-body">
               <div class="bio-period">Сейчас</div>
               <h3 class="bio-title">Своё дело</h3>
-              <p class="bio-text">Нейронаука мотивации и протокол Dopamine Reboot, разработка с ИИ, здоровое питание, работа с парами. Всё, что выше, — теперь в одних руках.</p>
+              <p class="bio-text">Нейронаука мотивации и протокол Dopamine Reboot, разработка, здоровое питание, работа с парами. Всё, что выше, — теперь в одних руках.</p>
             </div>
           </article>
         </div>
@@ -581,14 +437,14 @@
               Давайте <span class="text-gradient">поработаем вместе</span>
             </h2>
             <p class="text-muted text-base sm:text-lg leading-relaxed mb-6">
-              Персональное ведение, консультации, разработка, разбор вашего проекта или команды.
-              Напишите, с чем пришли, — отвечу, чем могу помочь и сколько часов это займёт.
+              Я люблю знакомиться и отвечаю на каждое сообщение. Напишите, с чем пришли, —
+              скажу, чем могу помочь и сколько часов это займёт. Даже если вопрос не из списка выше.
             </p>
             <div class="mb-2">
-              <span class="price-tag price-tag--ember text-4xl sm:text-5xl">от 10 000 &#8381;</span>
+              <span class="price-tag price-tag--ember text-4xl sm:text-5xl">от 10 000<span class="rate-star">*</span> &#8381;</span>
               <span class="text-muted text-lg ml-1">/ час</span>
             </div>
-            <p class="text-dim text-sm">Доставка продуктов, экскурсии и курс — по своим ценам: доставка — <a href="https://foodcity.osokingauss.workers.dev/" target="_blank" rel="noopener" class="text-muted underline underline-offset-2 hover:text-light">на её сайте</a>, остальное — в Telegram.</p>
+            <p class="text-dim text-xs">*первый час бесплатно</p>
           </div>
 
           <div class="lg:col-span-2 space-y-3">
@@ -618,8 +474,9 @@
   <footer class="border-t border-brd py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-dim text-sm">
       <p>&copy; 2026 Анатолий Осокин</p>
-      <p>Энергия · Разработка · Здоровое питание · Отношения · Игры</p>
+      <p>Разработка · Аудит продукта · Нейронаука · Гармоничная жизнь · Игры</p>
     </div>
+    <p id="gmv-note" class="max-w-6xl mx-auto mt-4 text-dim text-xs text-center sm:text-left">* Оценка изменения GMV совокупно от всех изменений, сделанных моими отделами за 2,5 года разработки.</p>
   </footer>
 
   <!-- ═══════ IMAGE LIGHTBOX ═══════ -->
