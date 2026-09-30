@@ -92,6 +92,10 @@
     .d-row--featured:hover { padding-left: 1.1rem; padding-right: 1.1rem; background: linear-gradient(var(--surface-hover), var(--surface-hover)) padding-box, linear-gradient(135deg, #FFE3A3, #E0A94A 45%, #B8862F 70%, #FFD58A) border-box; box-shadow: 0 0 32px rgba(224, 169, 74, 0.35); }
     .d-row--featured .d-row__name { color: #FFE3A3; }
     .rate-star { position: relative; top: -0.3em; margin-left: 0.04em; font-size: 0.6em; line-height: 0; }
+    .d-row__links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem; flex-shrink: 0; }
+    .d-row__links a { padding: 0.3rem 0.65rem; font-size: 0.8rem; color: var(--cyan); border: 1px solid var(--pane-line); border-radius: 8px; white-space: nowrap; transition: all 0.2s ease; }
+    .d-row__links a:hover { border-color: var(--cyan); background: rgba(95, 217, 228, 0.1); }
+    @media (max-width: 639px) { .d-row--multi { flex-wrap: wrap; } .d-row--multi .d-row__links { width: 100%; justify-content: flex-start; } }
   </style>
 </head>
 <body class="font-body bg-bg text-light">
@@ -286,7 +290,7 @@
             <a href="https://t.me/osokin_ai?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B8%D0%B3%D1%80%D0%B0%D1%82%D1%8C%20/%20%D0%BF%D0%BE%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B2%D0%B0%D1%88%D0%B8%20%D0%B8%D0%B3%D1%80%D1%8B" target="_blank" rel="noopener" class="btn-outline btn-outline--ember direction__cta">Написать мне</a>
           </div>
           <div class="direction__rows">
-            <a class="d-row" href="https://animapoker.com" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Anima Poker<span class="d-row__meta">покер с друзьями</span></div><div class="d-row__line">Свой стол, турниры и боты, если не хватает игроков.</div></div><span class="d-row__arrow">↗</span></a><button type="button" class="d-row js-lightbox" data-full="portfolio/emberhold-title.jpg"><div class="d-row__main"><div class="d-row__name">Emberhold<span class="d-row__meta">action-RPG · в разработке</span></div><div class="d-row__line">Diablo на 25 минут и Valheim на годы.</div></div><img class="d-row__thumb" src="portfolio/emberhold-title.jpg" alt="Emberhold — кадр из игры" loading="lazy"></button><a class="d-row" href="https://testflight.apple.com/join/jWqRfwrG" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Island Colony<span class="d-row__meta">iOS · TestFlight</span></div><div class="d-row__line">Ремейк Sakhalin Colony — экономическая стратегия.</div></div><span class="d-row__arrow">↗</span></a>
+            <a class="d-row" href="https://animapoker.com" target="_blank" rel="noopener"><div class="d-row__main"><div class="d-row__name">Anima Poker<span class="d-row__meta">покер с друзьями</span></div><div class="d-row__line">Свой стол и турниры.</div></div><span class="d-row__arrow">↗</span></a><button type="button" class="d-row js-lightbox" data-full="portfolio/emberhold-title.jpg"><div class="d-row__main"><div class="d-row__name">Emberhold<span class="d-row__meta">action-RPG · в разработке</span></div><div class="d-row__line">Diablo на 25 минут и Valheim на годы.</div></div><img class="d-row__thumb" src="portfolio/emberhold-title.jpg" alt="Emberhold — кадр из игры" loading="lazy"></button><div class="d-row d-row--static d-row--multi"><div class="d-row__main"><div class="d-row__name">Island Colony<span class="d-row__meta">iOS</span></div><div class="d-row__line">Ремейк Sakhalin Colony — экономическая стратегия.</div></div><div class="d-row__links"><a href="https://island-colony.osokingauss.workers.dev/" target="_blank" rel="noopener">Сайт ↗</a><a href="https://apps.apple.com/us/app/island-colony/id6814608215" target="_blank" rel="noopener">App Store ↗</a></div></div>
           </div>
         </article>
     </div>
