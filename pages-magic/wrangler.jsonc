@@ -1,0 +1,9 @@
+{
+  // Cloudflare Pages config for magic.osokin.ai.
+  // Deploy from the repo root:  npx wrangler pages deploy --cwd pages-magic
+  // The bundle is built into ../dist-magic by build-pages.sh (sources: magic/).
+  // A separate directory keeps this config apart from the osokin.ai one at the root.
+  "name": "osokin-magic",
+  "compatibility_date": "2026-04-07",
+  "pages_build_output_dir": "../dist-magic"
+}
