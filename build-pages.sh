@@ -54,7 +54,7 @@ done
 
 # Directories (self-contained)
 cp -R portfolio manifest profiling family_retreats mastering-ai actuallydoit magic "${DIST}/"
-rm -f "${DIST}"/magic/books/*.png
+find "${DIST}/magic/books" -type f ! -name '*.webp' -delete
 
 # books.json: the gallery list; title goes into alt text. Books of one arcana
 # stay together ("15_Аркан_…", "Обложка_15_Аркан") in arcana order, then the
