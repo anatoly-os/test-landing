@@ -9,3 +9,6 @@
 
 # Cloudflare Pages build output
 dist/
+
+# /magic covers: print-size PNG sources stay local; the webp made from them is committed
+magic/books/*.png
