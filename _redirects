@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects (copied into dist/ by build-pages.sh).
+# 302, not 301: browsers cache 301 forever, and these targets will change.
+# /tg is printed as a QR code on business cards — never remove it, only retarget.
+/tg  https://t.me/want_auction  302

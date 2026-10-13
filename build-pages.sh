@@ -35,7 +35,7 @@ rm -rf "${DIST}"
 mkdir -p "${DIST}"
 
 # Root-level files
-cp style.css script.js photo.png "${DIST}/"
+cp style.css script.js photo.png _redirects "${DIST}/"
 
 # Directories (self-contained)
 cp -R portfolio manifest profiling family_retreats mastering-ai actuallydoit "${DIST}/"
