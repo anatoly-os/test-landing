@@ -9,11 +9,3 @@
 
 # Cloudflare Pages build output
 dist/
-
-# /magic covers: print-size PNG sources (and any archives) stay local;
-# only the webp made from them is committed
-magic/books/*
-!magic/books/*.webp
-
-# magic.osokin.ai build output
-dist-magic/

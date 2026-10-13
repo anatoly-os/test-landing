@@ -20,20 +20,6 @@
       "port": 4321
     },
     {
-      "name": "magic-pages",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": [
-        "wrangler",
-        "pages",
-        "dev",
-        "--cwd",
-        "pages-magic",
-        "--port",
-        "8788"
-      ],
-      "port": 8788
-    },
-    {
       "name": "main-pages",
       "runtimeExecutable": "npx",
       "runtimeArgs": [

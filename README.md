@@ -12,21 +12,16 @@ Source for the **osokin.ai** site.
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
 | `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, linked from the main landing's «Отношения» block).|
 | `cv.html`   | `osokin.ai/cv`          | Standalone CV. Pages serves `foo.html` at the clean URL `/foo` automatically (same for `/private1`, `/private2`).|
-| `magic/`    | `magic.osokin.ai/`      | Separate site (own Pages project `osokin-magic`): magical mentoring page (`index.html`), `/levelup` (5 sessions) and `/genesis` (year program), own `404.html`. Book covers: drop print PNGs into `magic/books/` (gitignored) — the build makes the committed webp + `books.json`. The old `osokin.ai/magic/*` URLs 301 to the new domain (`_redirects`). |
+| `_redirects` | `osokin.ai/tg`, `osokin.ai/magic/*` | Cloudflare Pages redirects. `/magic/*` → `magic.osokin.ai` (301): that site lives in its own repo now (`work/osokin-magic`, Pages project `osokin-magic`). |
 
 ## How production works
 
 **The site is hosted on Cloudflare Pages.** Static bundle + one Pages Function.
 
 ```bash
-bash build-pages.sh                            # builds dist/ and dist-magic/
-npx wrangler pages deploy                      # osokin.ai: dist/ + functions/ (config: wrangler.jsonc)
-npx wrangler pages deploy --cwd pages-magic    # magic.osokin.ai: dist-magic/ (config: pages-magic/wrangler.jsonc)
+bash build-pages.sh            # builds dist/ (cache-busted asset refs, no dnevnik)
+npx wrangler pages deploy      # deploys dist/ + functions/ (config: wrangler.jsonc)
 ```
-
-`magic.osokin.ai` one-time setup: `npx wrangler pages project create osokin-magic
---production-branch main`, then in the dashboard: Workers & Pages → osokin-magic
-→ Custom domains → add `magic.osokin.ai`.
 
 One-time setup: `npx wrangler login`, create the Pages project, add the custom
 domain `osokin.ai`, and set the function secrets `BOT_TOKEN` / `CHAT_ID`
