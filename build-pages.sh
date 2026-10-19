@@ -28,14 +28,16 @@ hash10() {
 
 CSS_HASH=$(hash10 style.css)
 JS_HASH=$(hash10 script.js)
+CV_HASH=$(hash10 cv.css)
 echo "style.css  -> ?v=${CSS_HASH}"
 echo "script.js  -> ?v=${JS_HASH}"
+echo "cv.css     -> ?v=${CV_HASH}"
 
 rm -rf "${DIST}"
 mkdir -p "${DIST}"
 
 # Root-level files
-cp style.css script.js photo.png _redirects "${DIST}/"
+cp style.css script.js cv.css cv-photo.jpg photo.png _redirects "${DIST}/"
 
 # Directories (self-contained). /magic moved to magic.osokin.ai (its own
 # repo, osokin-magic) — the old URLs redirect there via _redirects.
@@ -45,10 +47,11 @@ cp -R portfolio manifest profiling family_retreats mastering-ai actuallydoit "${
 # already-copied HTML inside dirs is rewritten in place below.
 bust() {
   sed -e "s|style\.css\"|style.css?v=${CSS_HASH}\"|g" \
-      -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" "$1"
+      -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" \
+      -e "s|cv\.css\"|cv.css?v=${CV_HASH}\"|g" "$1"
 }
 
-for f in index.html 404.html cv.html private1.html private2.html private1-letter.html private2-letter.html; do
+for f in index.html 404.html cv.html cv-cto.html private1.html private2.html private1-letter.html private2-letter.html; do
   bust "$f" > "${DIST}/$f"
 done
 
@@ -61,5 +64,5 @@ echo "Built ${DIST}/:"
 du -sh "${DIST}"
 find "${DIST}" -maxdepth 1 | sort | sed 's/^/  /'
 echo
-echo "Clean URLs (/cv, /private1, ...) and the custom 404 are handled by"
+echo "Clean URLs (/cv, /cv-cto, /private1, ...) and the custom 404 are handled by"
 echo "Cloudflare Pages automatically (foo.html is served at /foo; 404.html is the 404 page)."

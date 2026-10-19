@@ -1,0 +1,94 @@
+/* CV pages (cv.html, cv-cto.html): a plain document in the osokin.ai palette
+   (same tokens as style.css). One column; print = white sheet, same structure. */
+:root{
+  --bg:#060A0D; --surface:#0C1319; --border:#1C2B33; --border-hover:#2E4650;
+  --cyan:#5FD9E4; --cyan-dim:#3FA8B4;
+  --text:#E9F1F2; --text-muted:#8CA3AB; --text-dim:#5A7078;
+  --font-heading:'Cormorant',Georgia,serif; --font-body:'Montserrat',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--bg)}
+body{font-family:var(--font-body); color:var(--text); background:var(--bg); -webkit-font-smoothing:antialiased;
+     font-size:14.5px; line-height:1.55}
+a{color:inherit}
+
+.sheet{max-width:840px; margin:40px auto; background:var(--surface); border:1px solid var(--border);
+       padding:56px 64px 48px}
+
+header{position:relative; padding-right:140px}
+header .photo{position:absolute; right:0; top:0; width:112px; height:112px; object-fit:cover; border-radius:50%; border:1px solid var(--border)}
+header h1{font-family:var(--font-heading); font-size:44px; font-weight:600; letter-spacing:.3px; line-height:1.05}
+header .target{font-size:15px; color:var(--cyan); margin-top:6px; letter-spacing:.2px}
+header .contacts{margin-top:14px; font-size:13px; color:var(--text-muted); display:flex; flex-wrap:wrap; gap:4px 0}
+header .contacts a{color:var(--text-muted); text-decoration:none}
+header .contacts a:hover{color:var(--cyan)}
+header .contacts span+span::before{content:"·"; margin:0 8px; color:var(--text-dim)}
+header .contacts .pdf{margin-left:auto; font-size:12.5px; color:var(--cyan-dim); text-decoration:underline}
+
+section{margin-top:28px}
+h2{font-family:var(--font-body); font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.14em; color:var(--cyan);
+   padding-bottom:7px; border-bottom:1px solid var(--border); margin-bottom:14px}
+.summary{color:var(--text-muted)}
+
+.job{margin-bottom:18px}
+.job-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px}
+.job-title{font-weight:600; font-size:15px; color:var(--text)}
+.job-co{color:var(--text)}
+.job-meta{font-size:13px; color:var(--text-dim); white-space:nowrap}
+.job-ctx{font-size:13.5px; color:var(--text-dim); margin-top:2px}
+.job ul{margin:7px 0 0 18px}
+.job li{margin-top:4px; color:var(--text-muted)}
+.job li::marker{color:var(--border-hover)}
+.job li b{font-weight:600; color:var(--text)}
+.job.compact li{font-size:13.5px}
+
+.skills dl{display:grid; grid-template-columns:150px 1fr; gap:7px 16px; font-size:14px}
+.skills dt{color:var(--text-dim)}
+.skills dd{color:var(--text-muted)}
+.skills a{color:var(--text-muted)}
+.skills a:hover{color:var(--cyan)}
+
+.edu p{font-size:14px; color:var(--text-muted)}
+.edu .deg{font-weight:600; color:var(--text)}
+
+.note{margin-top:28px; font-size:12px; color:var(--text-dim)}
+
+@media(max-width:720px){
+  body{font-size:14px}
+  .sheet{margin:0; padding:32px 20px 40px; border:none}
+  header{padding-right:0}
+  header .photo{position:static; display:block; width:96px; height:96px; margin-bottom:14px}
+  header h1{font-size:36px}
+  .job-top{flex-direction:column; gap:0}
+  .job-meta{white-space:normal}
+  .skills dl{grid-template-columns:1fr; gap:2px}
+  .skills dt{margin-top:6px}
+  header .contacts .pdf{margin-left:0; flex-basis:100%; margin-top:6px}
+}
+
+@media print{
+  @page{margin:12mm 14mm}
+  :root{--text:#0B1218; --text-muted:#2E3A40; --text-dim:#6B7A80; --cyan:#2E6F78; --cyan-dim:#2E6F78; --border:#D5DCE0; --border-hover:#9AA8AE}
+  html,body{background:#fff; font-size:11.5px; line-height:1.4}
+  .sheet{max-width:none; margin:0; padding:0; border:none; background:#fff}
+  .pdf{display:none}
+  header{padding-right:110px}
+  header .photo{width:88px; height:88px; border-color:#D5DCE0}
+  header h1{font-size:30px}
+  header .target{font-size:13px}
+  header .contacts{font-size:11px; margin-top:6px}
+  section{margin-top:14px}
+  h2{font-size:9.5px; margin-bottom:8px; padding-bottom:4px}
+  .summary{font-size:11.5px}
+  .job{margin-bottom:9px; break-inside:avoid}
+  .job-title{font-size:12px}
+  .job-meta{font-size:10.5px}
+  .job-ctx{font-size:10.5px}
+  .job ul{margin-top:3px}
+  .job li{margin-top:1px}
+  .job.compact li{font-size:11px}
+  .skills dl{font-size:11px; gap:3px 12px; grid-template-columns:120px 1fr}
+  .edu p{font-size:11px}
+  .note{margin-top:12px; font-size:9.5px}
+  a{text-decoration:none}
+}

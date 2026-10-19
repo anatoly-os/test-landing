@@ -11,7 +11,7 @@ Source for the **osokin.ai** site.
 | `manifest/` | `osokin.ai/manifest/`   | "Путь" — a hand-crafted multi-page essay (static).      |
 | `profiling/`| `osokin.ai/profiling/`  | Standalone landing for a masterclass (static, self-contained, **not linked from anywhere** — reachable only by direct URL).|
 | `family_retreats/` | `osokin.ai/family_retreats/` | Standalone landing «Сонастройка» (static, self-contained, linked from the main landing's «Отношения» block).|
-| `cv.html`   | `osokin.ai/cv`          | Standalone CV. Pages serves `foo.html` at the clean URL `/foo` automatically (same for `/private1`, `/private2`).|
+| `cv.html`, `cv-cto.html`, `cv.css`, `cv-photo.jpg` | `osokin.ai/cv`, `osokin.ai/cv-cto` | Two CVs, one per target role: `/cv` — руководитель отдела разработки, `/cv-cto` — директор по технологиям. Same facts, different framing/metrics; no cross-links on purpose (a recruiter for one role shouldn't see the other). Shared `cv.css` (cache-busted by `build-pages.sh`) with a print stylesheet — «Скачать PDF» = `window.print()`. Pages serves `foo.html` at the clean URL `/foo` automatically (same for `/private1`, `/private2`).|
 | `_redirects` | `osokin.ai/tg`, `osokin.ai/magic/*` | Cloudflare Pages redirects. `/magic/*` → `magic.osokin.ai` (301): that site lives in its own repo now (`work/osokin-magic`, Pages project `osokin-magic`). |
 
 ## How production works
