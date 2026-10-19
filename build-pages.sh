@@ -37,7 +37,9 @@ rm -rf "${DIST}"
 mkdir -p "${DIST}"
 
 # Root-level files
-cp style.css script.js cv.css cv-photo.jpg photo.png _redirects "${DIST}/"
+# CV PDFs: regenerate from the HTML when Chrome is around, else ship the committed ones.
+if bash build-cv-pdf.sh 2>/dev/null; then :; else echo "cv.pdf / cv-cto.pdf: using committed files (Chrome not found)"; fi
+cp style.css script.js cv.css cv-photo.jpg cv.pdf cv-cto.pdf photo.png _redirects "${DIST}/"
 
 # Directories (self-contained). /magic moved to magic.osokin.ai (its own
 # repo, osokin-magic) — the old URLs redirect there via _redirects.
