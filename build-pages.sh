@@ -38,8 +38,8 @@ mkdir -p "${DIST}"
 
 # Root-level files
 # CV PDFs: regenerate from the HTML when Chrome is around, else ship the committed ones.
-if bash build-cv-pdf.sh 2>/dev/null; then :; else echo "cv.pdf / cv-cto.pdf: using committed files (Chrome not found)"; fi
-cp style.css script.js cv.css cv-photo.jpg cv.pdf cv-cto.pdf photo.png _redirects "${DIST}/"
+if bash build-cv-pdf.sh 2>/dev/null; then :; else echo "CV PDFs: using committed files (Chrome not found)"; fi
+cp style.css script.js cv.css cv-photo.jpg cv.pdf cv-cto.pdf sber-cv.pdf photo.png _redirects "${DIST}/"
 
 # Directories (self-contained). /magic moved to magic.osokin.ai (its own
 # repo, osokin-magic) — the old URLs redirect there via _redirects.
@@ -53,7 +53,7 @@ bust() {
       -e "s|cv\.css\"|cv.css?v=${CV_HASH}\"|g" "$1"
 }
 
-for f in index.html 404.html cv.html cv-cto.html private1.html private2.html private1-letter.html private2-letter.html; do
+for f in index.html 404.html cv.html cv-cto.html sber-cv.html private1.html private2.html private1-letter.html private2-letter.html; do
   bust "$f" > "${DIST}/$f"
 done
 
@@ -66,5 +66,5 @@ echo "Built ${DIST}/:"
 du -sh "${DIST}"
 find "${DIST}" -maxdepth 1 | sort | sed 's/^/  /'
 echo
-echo "Clean URLs (/cv, /cv-cto, /private1, ...) and the custom 404 are handled by"
+echo "Clean URLs (/cv, /cv-cto, /sber-cv, /private1, ...) and the custom 404 are handled by"
 echo "Cloudflare Pages automatically (foo.html is served at /foo; 404.html is the 404 page)."

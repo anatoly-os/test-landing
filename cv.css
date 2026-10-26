@@ -101,3 +101,26 @@ h2{font-family:var(--font-body); font-size:11.5px; font-weight:600; text-transfo
   .note{margin-top:2.5mm; font-size:7.8pt}
   a{text-decoration:none; color:inherit}
 }
+
+/* ---------- /sber-cv theme: light, Sber-like (white sheet, green accent, plain sans) ---------- */
+.theme-sber{
+  --bg:#F2F4F7; --surface:#FFFFFF; --border:#E4E8EB; --border-hover:#B2B8BF;
+  --cyan:#16882F; --cyan-dim:#16882F;
+  --text:#1F1F22; --text-muted:#45494F; --text-dim:#7D838A;
+  --font-heading:'Inter',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+}
+.theme-sber .sheet{border:none; border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 32px rgba(31,31,34,.06)}
+.theme-sber header h1{font-weight:700; letter-spacing:-.02em; font-size:40px}
+.theme-sber header .target{font-weight:500}
+.theme-sber .job li::marker{color:var(--cyan)}
+.divider{border-top:1px solid var(--border); margin-bottom:14px}
+@media(max-width:720px){
+  .theme-sber .sheet{border-radius:0; box-shadow:none}
+  .theme-sber header h1{font-size:32px}
+}
+@media print{
+  .theme-sber{--cyan:#16882F; --cyan-dim:#16882F; --text:#1F1F22; --text-muted:#3E4247; --text-dim:#7D838A; --border:#DDE2E5; --border-hover:#B2B8BF}
+  .theme-sber .sheet{box-shadow:none; border-radius:0}
+  .theme-sber header h1{font-size:22pt}
+  .divider{margin-bottom:2.5mm}
+}
