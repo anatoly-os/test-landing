@@ -29,9 +29,14 @@ hash10() {
 CSS_HASH=$(hash10 style.css)
 JS_HASH=$(hash10 script.js)
 CV_HASH=$(hash10 cv.css)
+# cv-photo.jpg is also the og:image of the landing and CV pages: a new ?v=
+# whenever the photo changes makes Telegram & co. refetch it instead of
+# showing a cached preview.
+PHOTO_HASH=$(hash10 cv-photo.jpg)
 echo "style.css  -> ?v=${CSS_HASH}"
 echo "script.js  -> ?v=${JS_HASH}"
 echo "cv.css     -> ?v=${CV_HASH}"
+echo "cv-photo   -> ?v=${PHOTO_HASH}"
 
 rm -rf "${DIST}"
 mkdir -p "${DIST}"
@@ -50,7 +55,8 @@ cp -R portfolio manifest profiling family_retreats mastering-ai actuallydoit "${
 bust() {
   sed -e "s|style\.css\"|style.css?v=${CSS_HASH}\"|g" \
       -e "s|script\.js\"|script.js?v=${JS_HASH}\"|g" \
-      -e "s|cv\.css\"|cv.css?v=${CV_HASH}\"|g" "$1"
+      -e "s|cv\.css\"|cv.css?v=${CV_HASH}\"|g" \
+      -e "s|cv-photo\.jpg\"|cv-photo.jpg?v=${PHOTO_HASH}\"|g" "$1"
 }
 
 for f in index.html 404.html cv.html cv-cto.html sber-cv.html private1.html private2.html private1-letter.html private2-letter.html; do
