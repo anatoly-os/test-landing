@@ -187,4 +187,6 @@ h2{font-family:var(--font-body); font-size:11.5px; font-weight:600; text-transfo
   :root:has(a.pdf[href^="irevolution-cv"]) .job{break-inside:avoid}
   :root:has(a.pdf[href^="irevolution-cv"]) .case{padding:2.2mm 3mm 1.8mm; margin-bottom:2.2mm}
   :root:has(a.pdf[href^="irevolution-cv"]) .case dl{gap:.5mm 4mm; margin-top:1.2mm}
+  :root:has(a.pdf[href^="irevolution-cv"]) section{margin-top:2.4mm}
+  :root:has(a.pdf[href^="irevolution-cv"]) .job{margin-bottom:2.1mm}
 }
