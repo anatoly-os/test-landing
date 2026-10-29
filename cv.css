@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 /* CV pages (cv.html, cv-cto.html): a plain document in the osokin.ai palette
    (same tokens as style.css). One column; print = white sheet, same structure. */
 :root{
@@ -102,6 +103,28 @@ h2{font-family:var(--font-body); font-size:11.5px; font-weight:600; text-transfo
   a{text-decoration:none; color:inherit}
 }
 
+/* ---------- cases (/irevolution-cv): context → task → solution → result ---------- */
+.case{border:1px solid var(--border); border-radius:10px; padding:14px 16px 12px; margin-bottom:12px}
+.case-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px}
+.case-title{font-weight:600; font-size:15px; color:var(--text)}
+.case-ctx{font-size:13.5px; color:var(--text-dim); margin-top:2px}
+.case dl{display:grid; grid-template-columns:92px 1fr; gap:5px 14px; margin-top:9px; font-size:14px}
+.case dt{color:var(--text-dim)}
+.case dd{color:var(--text-muted)}
+.case dd b{color:var(--text); font-weight:600}
+@media(max-width:720px){
+  .case{padding:12px 12px 10px}
+  .case-top{flex-direction:column; gap:0}
+  .case dl{grid-template-columns:1fr; gap:1px}
+  .case dt{margin-top:6px}
+}
+@media print{
+  .case{border-radius:2mm; padding:2.6mm 3.2mm 2.2mm; margin-bottom:2.6mm; break-inside:avoid}
+  .case-title{font-size:10.2pt}
+  .case-ctx{font-size:8.6pt; margin-top:.4mm}
+  .case dl{grid-template-columns:22mm 1fr; gap:.8mm 4mm; margin-top:1.6mm; font-size:9.2pt; line-height:1.34}
+}
+
 /* ---------- /sber-cv theme: light, Sber-like (white sheet, green accent, plain sans) ---------- */
 .theme-sber{
   --bg:#F2F4F7; --surface:#FFFFFF; --border:#E4E8EB; --border-hover:#B2B8BF;
@@ -123,4 +146,43 @@ h2{font-family:var(--font-body); font-size:11.5px; font-weight:600; text-transfo
   .theme-sber .sheet{box-shadow:none; border-radius:0}
   .theme-sber header h1{font-size:22pt}
   .divider{margin-bottom:2.5mm}
+}
+
+/* ---------- /irevolution-cv theme: corporate logistics + finance ----------
+   Blue = trust / global logistics (headings, accents), green = money / growth
+   (result figures), warm grey = reliability (neutrals, markers). Plain bold
+   sans (IBM Plex Sans). Selected by the page's own PDF link, so
+   irevolution-cv.html needs no class (can switch to a class later). */
+:root:has(a.pdf[href^="irevolution-cv"]){
+  --bg:#EEF1F5; --surface:#FFFFFF; --border:#D9DDE3; --border-hover:#8C857E;
+  --cyan:#0D47A1; --cyan-dim:#0D47A1;
+  --text:#1F2329; --text-muted:#40464F; --text-dim:#7A746E;
+  --ir-green:#1B7F3B; --ir-grey:#8C857E;
+  --font-heading:'IBM Plex Sans',system-ui,sans-serif; --font-body:'IBM Plex Sans',system-ui,sans-serif;
+}
+:root:has(a.pdf[href^="irevolution-cv"]) body{background:var(--bg)}
+:root:has(a.pdf[href^="irevolution-cv"]) .sheet{border:none; border-top:6px solid var(--cyan); border-radius:4px; box-shadow:0 2px 6px rgba(31,35,41,.06),0 12px 32px rgba(31,35,41,.06)}
+:root:has(a.pdf[href^="irevolution-cv"]) header h1{font-weight:700; letter-spacing:-.015em; font-size:38px; line-height:1.1}
+:root:has(a.pdf[href^="irevolution-cv"]) header .target{font-weight:600; font-size:16px}
+:root:has(a.pdf[href^="irevolution-cv"]) h2{font-weight:700; letter-spacing:.12em; border-bottom-color:var(--border)}
+:root:has(a.pdf[href^="irevolution-cv"]) .case{background:#F7F9FC; border:1px solid var(--border); border-left:4px solid var(--cyan); border-radius:4px}
+:root:has(a.pdf[href^="irevolution-cv"]) .case-title{font-weight:700; font-size:16px}
+:root:has(a.pdf[href^="irevolution-cv"]) .case dd b{color:var(--ir-green)}
+:root:has(a.pdf[href^="irevolution-cv"]) .job-title{font-weight:700}
+:root:has(a.pdf[href^="irevolution-cv"]) .job li::marker{color:var(--ir-grey)}
+:root:has(a.pdf[href^="irevolution-cv"]) a:hover{color:var(--cyan)}
+:root:has(a.pdf[href^="irevolution-cv"]) header .contacts .pdf{color:var(--cyan)}
+@media(max-width:720px){
+  :root:has(a.pdf[href^="irevolution-cv"]) .sheet{border-radius:0}
+  :root:has(a.pdf[href^="irevolution-cv"]) header h1{font-size:30px}
+}
+@media print{
+  :root:has(a.pdf[href^="irevolution-cv"]){--text:#1F2329; --text-muted:#3A4049; --text-dim:#7A746E; --cyan:#0D47A1; --border:#D9DDE3}
+  :root:has(a.pdf[href^="irevolution-cv"]) body{background:#fff}
+  :root:has(a.pdf[href^="irevolution-cv"]) .sheet{border:none; border-radius:0; box-shadow:none; background:#fff}
+  :root:has(a.pdf[href^="irevolution-cv"]) header h1{font-size:22pt}
+  :root:has(a.pdf[href^="irevolution-cv"]) header .target{font-size:11pt}
+  :root:has(a.pdf[href^="irevolution-cv"]) .case{background:#fff; border-radius:1mm; border-left:1.2mm solid var(--cyan)}
+  :root:has(a.pdf[href^="irevolution-cv"]) .case-title{font-size:10.2pt}
+  :root:has(a.pdf[href^="irevolution-cv"]) .job{break-inside:avoid}
 }

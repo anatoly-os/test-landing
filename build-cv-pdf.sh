@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Render cv.html / cv-cto.html / sber-cv.html to the PDFs that the «PDF» links serve
-# (cv.pdf, cv-cto.pdf, sber-cv.pdf — committed; build-pages.sh copies them into dist/).
+# Render the CV pages (cv, cv-cto, sber-cv, irevolution-cv) to the PDFs that
+# their «PDF» links serve (<page>.pdf — committed; build-pages.sh copies them into dist/).
 # Needs Google Chrome; fonts are fetched from Google Fonts, so it needs network.
 #   bash build-cv-pdf.sh
 set -euo pipefail
@@ -11,7 +11,7 @@ if [ ! -x "$CHROME" ]; then
   echo "Chrome not found at $CHROME (set CHROME=/path/to/chrome)"; exit 1
 fi
 
-for page in cv cv-cto sber-cv; do
+for page in cv cv-cto sber-cv irevolution-cv; do
   "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
     --virtual-time-budget=8000 \
     --print-to-pdf="$PWD/$page.pdf" "file://$PWD/$page.html" 2>/dev/null
