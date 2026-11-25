@@ -1,5 +1,20 @@
 {
   "name": "osokin-relationships",
+  "account_id": "87c4bbdd0f7a2863a043ca88dfbd5ba7",
   "compatibility_date": "2026-11-25",
-  "pages_build_output_dir": "dist"
+  "assets": {
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "relationships.osokin.ai",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  }
 }

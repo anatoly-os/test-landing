@@ -34,17 +34,18 @@ automatically; clean URLs need no config.
 ### Relationships subdomain
 
 `relationships.html` is also deployed as the root page of
-`relationships.osokin.ai` through the separate Pages project
+`relationships.osokin.ai` through the static-assets Worker
 `osokin-relationships`. The existing `/relationships` URL remains available.
 
 ```bash
 bash relationships-site/build.sh
-npx wrangler --cwd relationships-site pages deploy dist --project-name osokin-relationships --branch main
+npx wrangler --cwd relationships-site deploy
 ```
 
-Custom domain: `relationships.osokin.ai`; DNS CNAME target:
-`osokin-relationships.pages.dev`. The custom domain has been registered in Pages;
-DNS activation must be completed in the Cloudflare dashboard.
+The custom domain is declared in `relationships-site/wrangler.jsonc`.
+Cloudflare manages its DNS record and TLS certificate automatically.
+The earlier Pages project `osokin-relationships` is unused; its pending
+custom-domain binding was removed when the Worker was deployed.
 
 ### Legacy: the RF VDS (nginx on `77.105.169.236`)
 
