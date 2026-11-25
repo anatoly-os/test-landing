@@ -31,6 +31,21 @@ domain `osokin.ai`, and set the function secrets `BOT_TOKEN` / `CHAT_ID`
 (Settings → Variables and Secrets). `404.html` is picked up as the custom 404
 automatically; clean URLs need no config.
 
+### Relationships subdomain
+
+`relationships.html` is also deployed as the root page of
+`relationships.osokin.ai` through the separate Pages project
+`osokin-relationships`. The existing `/relationships` URL remains available.
+
+```bash
+bash relationships-site/build.sh
+npx wrangler --cwd relationships-site pages deploy dist --project-name osokin-relationships --branch main
+```
+
+Custom domain: `relationships.osokin.ai`; DNS CNAME target:
+`osokin-relationships.pages.dev`. The custom domain has been registered in Pages;
+DNS activation must be completed in the Cloudflare dashboard.
+
 ### Legacy: the RF VDS (nginx on `77.105.169.236`)
 
 The previous production. `deploy-landing.sh`, `deploy-private.sh`,
