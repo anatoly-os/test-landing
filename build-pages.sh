@@ -59,7 +59,7 @@ bust() {
       -e "s|cv-photo\.jpg\"|cv-photo.jpg?v=${PHOTO_HASH}\"|g" "$1"
 }
 
-for f in index.html 404.html cv.html cv-cto.html sber-cv.html irevolution-cv.html private1.html private2.html private1-letter.html private2-letter.html; do
+for f in index.html 404.html relationships.html cv.html cv-cto.html sber-cv.html irevolution-cv.html private1.html private2.html private1-letter.html private2-letter.html; do
   bust "$f" > "${DIST}/$f"
 done
 

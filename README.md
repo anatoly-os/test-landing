@@ -5,6 +5,7 @@ Source for the **osokin.ai** site.
 | Path        | URL                     | What it is                                              |
 |-------------|-------------------------|---------------------------------------------------------|
 | `index.html`, `style.css`, `script.js`, `photo.png` | `osokin.ai/` | The personal landing page (plain static): what I help with → current projects → bio carousel → cooperation/contacts (rate from 10 000 ₽/h). Bio slide photos: put a file in `bio/` and set `data-photo="bio/…"` on the slide's `.bio-media` (add `bio` to the `cp -R` list in `build-pages.sh`). |
+| `relationships.html` | `osokin.ai/relationships` | Standalone attachment self-reflection questionnaire; all styles and scripts are inline. |
 | `portfolio/` | `osokin.ai/portfolio/` | Static assets for the landing's portfolio section (Anima Poker PDF, Emberhold images). |
 | `mastering-ai/` | `osokin.ai/mastering-ai/` | Course landing «Mastering AI. Part 1» (static, uses root `style.css`/`script.js`; incl. offer/privacy/rules pages + SBP-payment modal). |
 | `functions/` | `osokin.ai/mastering-ai/api/pay-lead` | Cloudflare Pages Function: the course buy modal POSTs the lead (tariff + contact) here, and it forwards a message to a Telegram channel. Runs on Cloudflare's edge (outside RF), so `api.telegram.org` is reachable directly. Secrets `BOT_TOKEN` / `CHAT_ID` are set in the Pages project (Settings → Variables and Secrets), never in the repo/frontend. |
